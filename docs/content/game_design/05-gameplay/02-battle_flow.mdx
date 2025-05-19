@@ -2,68 +2,6 @@ import ZoomableDiagram from "../../../src/components/ZoomableDiagram/index.tsx";
 
 # Fluxo de batalha:
 
-## Eventos do Fluxo de Batalha
-
-- Estados da Batalha
-
-  - Batalha Iniciada
-  - Batalha Pausada
-  - Batalha Continuada
-  - Batalha Finalizada
-
-- Fase 1: Setup:
-
-  - Etapa 1: Geração de Inimigos
-  - Etapa 2: Posicionamento dos Personagens
-  - Etapa 3: Criação da Fila de Iniciativa
-  - Etapa 4: Transição para Rodadas
-
-- Iniciativa
-
-  - Atualiza a ordem quando um personagem é adicionado à fila
-  - Atualiza a ordem quando um personagem é removido da fila
-  - Atualiza a ordem quando a iniciativa de um personagem é alterada
-
-- Fase 2: Rodadas:
-
-  - Etapa 1: Início da Rodada
-  - Etapa 2: Declaração de Ações
-  - Etapa 3: Resolução em Turnos
-  - Etapa 4: Fim da Rodada
-
-- Eventos de inimigos
-
-  - Inimigo declara ação
-
-- Eventos de jogadores
-
-  - Personagem rola para coletar mana
-  - Jogador declara ação
-  - Jogador seleciona alvo
-  - Jogador cancela ação
-
-- Eventos dos turnos
-    - Turno de um personagem começa
-    - Personagem executa ação
-    - Personagem é movido para o final da fila de iniciativa
-    - Turno de um personagem termina
-
-- Verificações
-    - Verifica se um novo turno deve começar ou se a rodada deve terminar
-    - Verifica se uma nova rodada deve começar ou se a batalha deve terminar
-
-- Fase 3: Resultado da Batalha
-
-  - Etapa 1: Verificação do Resultado
-  - Etapa 2: Transição para o Pós-Batalha
-
-- Fase 4: Pós-Batalha
-  - Recompensas
-    ou
-  - Game Over
-
----
-
 ## Fases da Batalha
 
 ### Fase 1: Setup da Batalha
