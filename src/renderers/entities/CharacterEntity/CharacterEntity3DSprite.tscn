@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cyt7peem686tr" path="res://renderers/entities/CharacterEntity/CharacterEntity.cs" id="1_uj6du"]
 [ext_resource type="Resource" uid="uid://ctp5er4mb8u3k" path="res://resources/Characters/Dummy.tres" id="2_deese"]
-[ext_resource type="SpriteFrames" uid="uid://bkvhu7v1tmcfy" path="res://assets/characters/dummyOtsoga/DummyOtsogaSprites.tres" id="3_sjymn"]
+[ext_resource type="SpriteFrames" uid="uid://bskb8ffl72voq" path="res://assets/characters/eleonoreOtsoga/EleonoreOtsogaSprites.tres" id="3_uj6du"]
 [ext_resource type="Script" uid="uid://brrwunmhujwhd" path="res://renderers/components/AnimatedComponents/AnimatedSprite3DComponent.cs" id="4_xlkq2"]
 [ext_resource type="PackedScene" uid="uid://5kiqnxxh0yrs" path="res://renderers/components/SelectableComponents/SelectableComponent.tscn" id="5_hro2o"]
 
@@ -18,9 +18,9 @@ billboard = 1
 shaded = true
 double_sided = false
 texture_filter = 0
-sprite_frames = ExtResource("3_sjymn")
+sprite_frames = ExtResource("3_uj6du")
 animation = &"idle"
-frame_progress = 0.662222
+frame_progress = 0.0987081
 script = ExtResource("4_xlkq2")
 
 [node name="SelectableComponent" parent="." instance=ExtResource("5_hro2o")]

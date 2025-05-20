@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterType" load_steps=17 format=3 uid="uid://byngv32mrx7r4"]
+[gd_resource type="Resource" script_class="CharacterType" load_steps=18 format=3 uid="uid://byngv32mrx7r4"]
 
 [ext_resource type="Script" uid="uid://cxt7qolwarsf1" path="res://models/data/Character/CharacterAction.cs" id="1_yxcqs"]
 [ext_resource type="Resource" uid="uid://c8xr12tkory0k" path="res://resources/Actions/ArcaneStrike.tres" id="2_yxcqs"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://dqt7qsspicnj4" path="res://resources/Dice/TestingDice.tres" id="9_g4qar"]
 [ext_resource type="Resource" uid="uid://bjc78p06uwuy3" path="res://resources/Locations/EnemySquad.tres" id="10_07qdx"]
 [ext_resource type="Resource" uid="uid://bjfhwocmqh4uy" path="res://resources/Roles/EnemyVillager.tres" id="11_gpg27"]
+[ext_resource type="Texture2D" uid="uid://04v6gisw8i5w" path="res://assets/characters/villager/villager_portrait.png" id="11_xjnof"]
 [ext_resource type="Script" uid="uid://0ip2w43r0d2a" path="res://models/data/Character/CharacterType.cs" id="12_up07s"]
 
 [sub_resource type="Resource" id="Resource_xjnof"]
@@ -41,6 +42,7 @@ BaseValue = 10
 [resource]
 script = ExtResource("12_up07s")
 Name = "Enemy"
+Portrait = ExtResource("11_xjnof")
 CharacterAnimations = {
 "Idle": ExtResource("7_qxyci")
 }

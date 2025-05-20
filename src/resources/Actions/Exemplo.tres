@@ -1,0 +1,179 @@
+[gd_resource type="Resource" script_class="ActionType" load_steps=25 format=3 uid="uid://b04rcpu6qtvou"]
+
+[ext_resource type="Script" uid="uid://dunaxvn3b6xe0" path="res://models/data/Effect/EffectType.cs" id="1_w0dtl"]
+[ext_resource type="Script" uid="uid://yxgkinium01u" path="res://models/data/Dice/DiceEnergy.cs" id="2_fkbod"]
+[ext_resource type="Resource" uid="uid://b43duhk6atdos" path="res://resources/Effects/DamageEffect.tres" id="2_gu7bf"]
+[ext_resource type="Script" uid="uid://dk6es2dobyja5" path="res://models/data/Action/ActionType.cs" id="3_8tx44"]
+[ext_resource type="Resource" uid="uid://d1fdrw7p7rywt" path="res://resources/Energy/BlueEnergy.tres" id="4_n7ip2"]
+[ext_resource type="Resource" uid="uid://djkgjo1axl23k" path="res://resources/Energy/GreenEnergy.tres" id="5_r4y36"]
+[ext_resource type="Script" uid="uid://ca6up1de7fo4q" path="res://models/data/Grid/GridType.cs" id="6_ou301"]
+[ext_resource type="Script" uid="uid://bnrom8367617i" path="res://models/data/GridCell/GridCellType.cs" id="7_i0r0x"]
+[ext_resource type="Script" uid="uid://1fvttm4h5sf3" path="res://models/data/Target/TargetBoardType.cs" id="8_iep1h"]
+
+[sub_resource type="Resource" id="Resource_7o0w4"]
+script = ExtResource("7_i0r0x")
+Value = 0
+Row = 0
+Column = 0
+Index = 0
+Label = "G0"
+IsWalkable = true
+IsOccupied = false
+Id = "fae62c61-13f5-4158-99a2-6d078a633cdd"
+
+[sub_resource type="Resource" id="Resource_l0ag8"]
+script = ExtResource("7_i0r0x")
+Value = 0
+Row = 0
+Column = 1
+Index = 1
+Label = "G1"
+IsWalkable = true
+IsOccupied = false
+Id = "49ec4a25-133a-4e9d-ae76-929a7d793d20"
+
+[sub_resource type="Resource" id="Resource_1wfu3"]
+script = ExtResource("7_i0r0x")
+Value = 1
+Row = 0
+Column = 2
+Index = 2
+Label = "G2"
+IsWalkable = true
+IsOccupied = false
+Id = "0e456deb-2560-4dd8-b8f3-54318eb99f48"
+
+[sub_resource type="Resource" id="Resource_a0mdc"]
+script = ExtResource("7_i0r0x")
+Value = 0
+Row = 1
+Column = 0
+Index = 3
+Label = "G3"
+IsWalkable = true
+IsOccupied = false
+Id = "c5959330-9976-4fe1-9022-9b27f20351b7"
+
+[sub_resource type="Resource" id="Resource_3bnjj"]
+script = ExtResource("7_i0r0x")
+Value = 0
+Row = 1
+Column = 1
+Index = 4
+Label = "G4"
+IsWalkable = true
+IsOccupied = false
+Id = "7924f1c3-d683-4739-b7c4-65ed7a47ef1e"
+
+[sub_resource type="Resource" id="Resource_0gw7i"]
+script = ExtResource("7_i0r0x")
+Value = 1
+Row = 1
+Column = 2
+Index = 5
+Label = "G5"
+IsWalkable = true
+IsOccupied = false
+Id = "7f8704ae-1f13-498e-9be9-a087374d7b06"
+
+[sub_resource type="Resource" id="Resource_5v2dw"]
+script = ExtResource("6_ou301")
+Prefix = "G"
+Direction = 0
+Rows = 2
+Columns = 3
+Cells = Array[ExtResource("7_i0r0x")]([SubResource("Resource_7o0w4"), SubResource("Resource_l0ag8"), SubResource("Resource_1wfu3"), SubResource("Resource_a0mdc"), SubResource("Resource_3bnjj"), SubResource("Resource_0gw7i")])
+Id = "69339a51-68f1-4d9a-bd57-1aff25c71fba"
+metadata/_custom_type_script = "uid://ca6up1de7fo4q"
+
+[sub_resource type="Resource" id="Resource_00nre"]
+script = ExtResource("7_i0r0x")
+Value = 3
+Row = 0
+Column = 0
+Index = 0
+Label = "G0"
+IsWalkable = true
+IsOccupied = false
+Id = "ea5b3392-df85-4211-b5be-3e465fba4bbf"
+
+[sub_resource type="Resource" id="Resource_t711w"]
+script = ExtResource("7_i0r0x")
+Value = 3
+Row = 0
+Column = 1
+Index = 1
+Label = "G1"
+IsWalkable = true
+IsOccupied = false
+Id = "c29b9ddc-749c-4609-bba1-799fc2a2dbd1"
+
+[sub_resource type="Resource" id="Resource_w0k25"]
+script = ExtResource("7_i0r0x")
+Value = 3
+Row = 0
+Column = 2
+Index = 2
+Label = "G2"
+IsWalkable = true
+IsOccupied = false
+Id = "844cf52d-8383-4e1f-a079-e318f72c9f78"
+
+[sub_resource type="Resource" id="Resource_xy2d4"]
+script = ExtResource("7_i0r0x")
+Value = 3
+Row = 1
+Column = 0
+Index = 3
+Label = "G3"
+IsWalkable = true
+IsOccupied = false
+Id = "06d8ab63-6318-4d10-a645-be20eeec7e01"
+
+[sub_resource type="Resource" id="Resource_p1x3r"]
+script = ExtResource("7_i0r0x")
+Value = 3
+Row = 1
+Column = 1
+Index = 4
+Label = "G4"
+IsWalkable = true
+IsOccupied = false
+Id = "f17c9a3f-f04c-4cbf-8ad4-d15cec0b345e"
+
+[sub_resource type="Resource" id="Resource_abd7o"]
+script = ExtResource("7_i0r0x")
+Value = 3
+Row = 1
+Column = 2
+Index = 5
+Label = "G5"
+IsWalkable = true
+IsOccupied = false
+Id = "42b9b2da-8489-47ee-b4a1-c7b1b1f195d3"
+
+[sub_resource type="Resource" id="Resource_7kvv1"]
+script = ExtResource("6_ou301")
+Prefix = "G"
+Direction = 0
+Rows = 2
+Columns = 3
+Cells = Array[ExtResource("7_i0r0x")]([SubResource("Resource_00nre"), SubResource("Resource_t711w"), SubResource("Resource_w0k25"), SubResource("Resource_xy2d4"), SubResource("Resource_p1x3r"), SubResource("Resource_abd7o")])
+Id = "0d4a7268-9cb9-475c-ac7c-fdc0f319a0c2"
+metadata/_custom_type_script = "uid://ca6up1de7fo4q"
+
+[sub_resource type="Resource" id="Resource_foiev"]
+script = ExtResource("8_iep1h")
+IsSingleTarget = false
+Grids = Array[ExtResource("6_ou301")]([SubResource("Resource_5v2dw"), SubResource("Resource_7kvv1")])
+metadata/_custom_type_script = "uid://1fvttm4h5sf3"
+
+[resource]
+script = ExtResource("3_8tx44")
+Name = "Exemplo"
+Description = "Descrição de exemplo."
+RequiredEnergy = Array[ExtResource("2_fkbod")]([ExtResource("4_n7ip2"), ExtResource("5_r4y36")])
+Effects = Array[ExtResource("1_w0dtl")]([ExtResource("2_gu7bf")])
+TargetBoard = SubResource("Resource_foiev")
+Id = "5b0ec239-dd8a-43f9-af8c-3df23c4f58b5"
+metadata/_custom_type_script = "uid://dk6es2dobyja5"

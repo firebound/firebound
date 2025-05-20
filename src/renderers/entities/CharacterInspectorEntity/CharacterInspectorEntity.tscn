@@ -44,6 +44,7 @@ theme_override_constants/margin_bottom = 16
 [node name="CharacterPortrait" type="TextureRect" parent="MainContainer/PortraitMargin"]
 layout_mode = 2
 texture = ExtResource("3_qti0a")
+expand_mode = 2
 stretch_mode = 5
 script = ExtResource("2_acmgq")
 metadata/_custom_type_script = "uid://bfbtej5ynhelf"

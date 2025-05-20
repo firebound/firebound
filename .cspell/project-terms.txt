@@ -9,6 +9,7 @@ dicerolling
 firebound
 gameplay
 Gameplay
+gamificação
 Harutai
 Humanóides
 imrp
@@ -21,6 +22,7 @@ Mauyaq
 Mawari
 Murikaan
 Pachok
+projetinho
 roguelike
 Roguelike
 roguelikes
