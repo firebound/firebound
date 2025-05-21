@@ -1,3 +1,3 @@
 # Introdução
 
-Este documento descreve a arquitetura de **DICE ROLLING FRAMEWORK**.
+Este documento descreve a arquitetura de **FIREBOUND FRAMEWORK**.

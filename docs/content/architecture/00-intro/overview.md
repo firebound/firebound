@@ -6,7 +6,7 @@
 
 A arquitetura desta framework é projetada para oferecer **flexibilidade e modularidade**, permitindo modificações e expansões sem impacto direto em outras partes do sistema.
 
-A ideia é ter uma arquitetura baseada em Modelos, Renderizadores, Controladores e Eventos, que são organizados em camadas para facilitar a manutenção e a expansão do código:
+A ideia é ter uma arquitetura baseada em **Modelos, Renderizadores, Controladores e Eventos**, que são organizados em camadas para facilitar a manutenção e a expansão do código:
 
 1. Os **Modelos** armazenam e gerenciam os dados do jogo, estruturados em três camadas: Data, Stores e Services;
 2. Os **Renderizadores** representam os dados em elementos visuais;
