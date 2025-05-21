@@ -1,1 +1,0 @@
-# Visão de Longo Prazo

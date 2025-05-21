@@ -1,1 +1,0 @@
-# Conceito Geral

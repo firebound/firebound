@@ -1,4 +1,4 @@
-# Arte e Estilo Visual
+# Guia de Arte e Estilo Visual
 
 ## Visão Geral
 

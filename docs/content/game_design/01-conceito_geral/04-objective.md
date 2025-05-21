@@ -1,1 +1,0 @@
-# Objetivo do Jogo
