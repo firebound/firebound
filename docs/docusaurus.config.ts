@@ -3,6 +3,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import path from 'path';
 import fs from 'fs';
+import remarkRemoveLinkPrefix from './src/plugins/remark-remove-link-prefix.js';
 
 // const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
 // const baseUrl = isGitHubPages ? '/sw-game-dice-rolling/' : '/';
@@ -43,6 +44,7 @@ const config: Config = {
                 docs: {
                     path: './content',
                     sidebarPath: './sidebars.ts',
+                    remarkPlugins: [remarkRemoveLinkPrefix],
                 },
                 theme: {
                     customCss: './src/css/custom.css',
