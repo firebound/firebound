@@ -8,7 +8,9 @@ O objetivo é fornecer uma visão clara e concisa do que o jogo representa e com
 
 ### História e Narrativa
 
-Mais detalhes no [Guia de História](../01-setting/00-story_guide).  
+A narrativa do jogo é inspirada em mitologias e culturas indígenas das Américas, como Astecas, Maias, Tupi, Guarani e Cherokee. Elementos dessas culturas são reinterpretados para criar um universo de fantasia único, com divindades, heróis e monstros próprios. A história se desenvolve em ciclos míticos e históricos, abordando temas de criação, destruição e renascimento, sempre com respeito e valorização simbólica dessas tradições.
+
+Mais detalhes no [Guia de História](../01-setting/00-story_guide/index.md).  
 
 ### Arte e Estilo Visual
 
@@ -18,7 +20,7 @@ Para ajudar a criar um mundo coeso e rico, o design de personagens, cenários e 
 
 A intenção é criar uma experiência visual que não apenas represente essas culturas, mas também as celebre e as integre de forma respeitosa e autêntica.
 
-Mais detalhes no [Guia de Arte e Estilo Visual](../01-setting/01-visual_guide).  
+Mais detalhes no [Guia de Arte e Estilo Visual](../01-setting/01-visual_guide/index.md).  
 
 #### Personagens Jogáveis
 
@@ -32,7 +34,7 @@ Mais detalhes no [Guia de Personagens Jogáveis](../01-setting/01-visual_guide/0
 
 Os NPCs mantêm a mesma proposta estética: formas fortes, detalhes culturais e ornamentos que indicam sua origem ou função no mundo. Desde comerciantes até figuras importantes da história, todos possuem elementos visuais que os conectam às regiões e tradições do universo, bem como características que os tornam únicos, memoráveis e que refletem suas funções narrativas.
 
-Por exemplo, um comerciante pode ter um manto colorido e adornos que indicam sua riqueza, enquanto um líder tribal pode usar símbolos de poder e proteção.
+> Por exemplo, um comerciante pode ter um manto colorido e adornos que indicam sua riqueza, enquanto um líder tribal pode usar símbolos de poder e proteção.
 
 Mais detalhes no [Guia de Personagens Não Jogáveis](../01-setting/01-visual_guide/02-non_playable_characters.md).  
 
@@ -54,11 +56,11 @@ Mais detalhes no [Guia de Cenários](../01-setting/01-visual_guide/04-scenarios.
 
 ### Interface do Usuário
 
-Mais detalhes no [Guia de Interface do Usuário](../01-setting/02-ui_guide).  
+Mais detalhes no [Guia de Interface do Usuário](../01-setting/02-ui_guide/index.md).  
 
 ### Música e Efeitos Sonoros
 
-Mais detalhes no [Guia de Música e Efeitos Sonoros](../01-setting/03-sound_guide).  
+Mais detalhes no [Guia de Música e Efeitos Sonoros](../01-setting/03-sound_guide/index.md).  
 
 ---
 

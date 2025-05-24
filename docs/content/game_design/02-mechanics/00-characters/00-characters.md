@@ -3,7 +3,7 @@
 ## Composição
 
 - Possuem:
-  - [Atributos](./attributes)
+  - [Atributos](./attributes/attributes.md)
   - [Papéis jogáveis](../05-game_content/roles/playable_roles.md) (players) ou [não jogáveis](../05-game_content/roles/unplayable_roles.md) (inimigos)
   - Slots para [equipamentos](./equipments)
 - Realizam [ações](./actions) em combate
