@@ -2,6 +2,8 @@
 
 Este documento apresenta as bases culturais e históricas que inspiram o universo do jogo, explicando como essas referências são adaptadas para criar uma experiência única de fantasia.
 
+---
+
 ## Referências Culturais e Históricas
 
 A estética e a narrativa do jogo são inspiradas em culturas indígenas das Américas, como as civilizações Asteca e Maia, os povos Tupi e Guarani do Brasil, e tribos norte-americanas como os Cherokee. Cada cultura contribui com simbolismos, mitologias e tradições, reinterpretados para formar um universo de fantasia coeso.
@@ -35,7 +37,5 @@ As adaptações seguem três princípios:
 - **Representação Simbólica**: Aspectos visuais (arquitetura, vestimentas, armas) e narrativos (rituais, tradições, idioma) são representados de forma estilizada, capturando o espírito e simbolismo cultural, sem reproduções literais.
 
 ![Referência Cultural 5](../../../../public/game_design/culref5_reference.png)
-
----
 
 Essas escolhas reforçam a identidade do jogo, promovendo uma experiência rica, respeitosa e única, baseada na diversidade e profundidade das culturas indígenas das Américas.

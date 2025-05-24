@@ -126,12 +126,12 @@ html {
     --docusaurus-collapse-button-bg-hover: rgba(206, 89, 15, 0.1) !important;
 }
 
-html.docs-wrapper{
+html.docs-wrapper {
     --doc-sidebar-width: 250px;
     --doc-sidebar-hidden-width: 24px;
 }
 
-html[data-theme='dark']{
+html[data-theme='dark'] {
     --ifm-color-emphasis-0: var(--color-firebound-brown-950);
     --ifm-color-emphasis-100: var(--color-firebound-brown-100);
     --ifm-color-emphasis-200: var(--color-firebound-brown-200);
@@ -167,30 +167,39 @@ html[data-theme='dark']{
     --ifm-font-color-base: var(--color-firebound-beige-50);
 
     --ifm-footer-background-color: var(--color-firebound-brown-800);
-    
+
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
     --custom-heading-color-target: var(--color-firebound-beige-400);
 
-}
-
-[data-theme="dark"] .navbar {
-    --ifm-color-emphasis-200: var(--color-firebound-orange-400);
-}
-
-[data-theme="dark"] .navbar .clean-btn:hover {
-    color: var(--color-firebound-orange-950);
-    transition: all 500ms;
-}
-
-[data-theme="dark"] .table-of-contents__link {
-    color: var(--color-firebound-beige-200);
-
-    &:hover {
-        color: var(--color-firebound-orange-400);
+    .navbar {
+        --ifm-color-emphasis-200: var(--color-firebound-orange-400);
     }
+
+    .navbar .clean-btn:hover {
+        color: var(--color-firebound-orange-950);
+        transition: all 500ms;
+    }
+
+    .table-of-contents__link {
+        color: var(--color-firebound-beige-200);
+
+        &:hover {
+            color: var(--color-firebound-orange-400);
+        }
+    }
+
+    blockquote {
+        color: var(--ifm-color-emphasis-200);
+    }
+
 }
+
 
 p {
     margin: initial;
     padding: initial;
+}
+
+blockquote {
+    color: var(--ifm-color-emphasis-400);
 }

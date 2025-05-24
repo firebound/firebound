@@ -1,42 +1,63 @@
 # Atributos
 
-Os personagens possuem atributos que influenciam diretamente no combate.
+Os atributos representam as características essenciais dos personagens e influenciam diretamente suas ações e desempenho em combate.
 
-## Level
+---
 
-## Experiência
+## Evolução dos personagens
 
-## Vida
+Os personagens evoluem ao longo do jogo, adquirindo novas habilidades e aumentando seus atributos. Essa evolução é representada por níveis e experiência, que são usados para desbloquear novas habilidades.
 
-Representa a quantidade de dano que o personagem pode receber antes de morrer;
+### Level
 
-```txt
-Mínimo: 1
-Máximo: 999
-```
+Indica o grau de experiência e evolução do personagem ao longo da jornada.
 
-## Escudo Mágico
+### Experiência
 
-Quantidade de vida temporária que o personagem pode receber antes de começar a perder vida.
+Acumulada ao realizar feitos, vencer batalhas ou cumprir tarefas, permitindo que o personagem evolua e desbloqueie novas habilidades.
 
-## Poder de Ataque
+---
 
-Multiplicador de dano.
+## Atributos básicos
 
-## Defesa
+Os atributos básicos são fundamentais para o funcionamento do sistema de combate e determinam a eficácia dos personagens em diferentes situações.
 
-Redução de dano.
+### Vida
 
-## Velocidade
+Representa a resistência física do personagem, ou quanto dano ele pode suportar antes de cair em combate.
 
-Determina a iniciativa no combate e a ordem nos turnos.
+> Exemplo: Um ancião pode ter menos vida, mas compensar com habilidades espirituais.
+
+### Escudo Mágico
+
+Vida temporária concedida por rituais, bênçãos ou artefatos sagrados, protegendo o personagem antes de sofrer dano real.
+
+### Poder de Ataque
+
+Multiplicador que determina a força dos ataques físicos ou espirituais do personagem.
+
+> Exemplo: Um guerreiro com lança tribal pode causar mais dano em ataques corpo a corpo.
+
+### Defesa
+
+Reduz o dano recebido, seja por armaduras cerimoniais, peles de animais sagrados ou técnicas de proteção.
+
+### Velocidade
+
+Define a ordem das ações no combate e a agilidade do personagem para reagir a ameaças.
+
+> Exemplo: Uma serpente pode agir antes dos demais devido à sua velocidade.
 
 ### Desempate na iniciativa
 
-## Poderes elementais
+Em caso de empate, outros fatores como sorte podem ser considerados.
 
-Multiplicador de dano elemental.
+### Poderes elementais
 
-## Defesa elemental
+Multiplicador para ataques ligados a elementos naturais, como fogo, água, terra ou vento, inspirados em mitologias indígenas.
 
-Redução de dano elemental.
+> Exemplo: Um xamã da floresta pode lançar ataques de vento ou relâmpago.
+
+### Defesa elemental
+
+Reduz o dano recebido de ataques elementais, seja por proteção espiritual, amuletos ou afinidade com determinado elemento.
