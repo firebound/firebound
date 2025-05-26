@@ -1,17 +1,15 @@
 # Estruturas
 
-Na cidade existem vários locais onde o jogador pode realizar ações que irão ajudá-lo a melhorar seus personagens e equipamentos.
-
-Cada local possui um propósito específico e todos podem ser melhorados para aumentar sua eficiência.
+Na cidade existem vários locais onde o jogador pode realizar ações que ajudam a fortalecer seus personagens e avançar na jornada. Cada construção tem um propósito único, inspirado em tradições e símbolos culturais, e pode ser aprimorada para oferecer mais benefícios ao grupo.
 
 ---
 
 ## Treinamento
 
-O jogador pode alocar personagens para aumentar níveis.
+Espaço dedicado ao crescimento dos personagens, onde é possível alocá-los para ganhar experiência e subir de nível.
 
 - Usa [gold](../currency/#gold) para treinar;
-- Coloca o personagem em treinamento por um tempo, bloqueando-o para batalhas;
+- O personagem fica temporariamente indisponível para batalhas enquanto treina.
 
 ### Restrições do treinamento
 
@@ -30,76 +28,76 @@ O jogador pode alocar personagens para aumentar níveis.
 
 ## Recrutamento
 
-O jogador pode recrutar novos personagens.
+Local para encontrar e trazer novos aliados para o grupo, representando a chegada de viajantes, guerreiros ou espíritos dispostos a ajudar.
 
 - Usa [gold](../currency/#gold) para recrutar;
-- Escolhe entre uma seleção aleatória de personagens;
+- O jogador escolhe entre uma seleção aleatória de personagens.
 
 ### Restrições do recrutamento
 
-- Inicialmente, pode escolher entre 2 personagens aleatórios por dia;
-- Inicialmente, personagem começa com level 1;
+- Inicialmente, 2 personagens aleatórios por dia;
+- Personagens começam no level 1.
 
 ### Upgrades do recrutamento
 
-- Aumenta a quantidade de personagens disponíveis para recrutamento;
-- Aumenta o level inicial dos personagens.
+- Aumenta a quantidade de personagens disponíveis;
+- Eleva o level inicial dos personagens.
 
 ---
 
 ## Enfermaria
 
-O jogador pode:
+Espaço de cura e renascimento, onde personagens feridos podem se recuperar e aqueles que caíram em batalha podem ser trazidos de volta por meio de rituais e ervas medicinais.
 
-- Alocar personagens para curá-los;
-- Alocar os restos mortais de personagens mortos para ressuscitá-los.
-
-- Usa [gold](../currency/#gold) para usar os serviços;
-- Coloca o personagem em cura por um tempo, bloqueando-o para batalhas;
+- Aloca personagens para curar;
+- Permite ressuscitar personagens mortos usando seus restos mortais;
+- Usa [gold](../currency/#gold) para os serviços;
+- O personagem fica temporariamente indisponível durante a cura.
 
 ### Restrições da enfermaria
 
-- Inicialmente possui 1 slot para uso diário;
+- Inicialmente, 1 slot disponível por dia.
 
 ### Upgrades da enfermaria
 
 - Aumenta a eficiência da cura;
-- Aumenta a quantidade de slots disponíveis;
-- Diminui algum _tradeoff_ quando ressuscita personagens.
+- Aumenta o número de slots;
+- Reduz penalidades ao ressuscitar personagens.
 
 ---
 
 ## Loja de equipamentos
 
-O jogador pode:
+Mercado onde é possível comprar e vender armas, armaduras, dados e amuletos, todos confeccionados por artesãos locais e inspirados em artefatos tradicionais.
 
-- Comprar ou vender [equipamentos](../equipments#) por [gold](../currency/#gold);
-- Comprar ou vender dados por [gold](../currency/#gold);
-- Escolhe entre uma seleção aleatória de dados e equipamentos.
+- Compra e venda de [equipamentos](../equipments#) e dados por [gold](../currency/#gold);
+- Seleção aleatória de itens disponíveis.
 
 ### Restrições da loja de equipamentos
 
-- Inicialmente, possui 6 slots de equipamentos aleatórios por dia;
-- Inicialmente, só vende equipamentos do tier 1;
+- Inicialmente, 6 slots de equipamentos aleatórios por dia;
+- Apenas equipamentos do tier 1 disponíveis.
 
 ### Upgrades da loja de equipamentos
 
-- Aumenta a quantidade de slots disponíveis;
-- Aumenta o tier dos equipamentos disponíveis;
+- Aumenta a quantidade de slots;
+- Disponibiliza equipamentos de tiers mais altos.
 
 ---
 
 ## Mural de quests
 
-O jogador pode aceitar quests para ganhar recompensas.
+Painel onde são oferecidas tarefas e desafios para os personagens, conectando o grupo às necessidades e histórias da comunidade.
+
+- O jogador pode aceitar quests para ganhar recompensas.
 
 ### Restrições do mural de quests
 
-- Inicialmente, possui 3 quests disponíveis por dia;
-- Inicialmente, as quests são de nível 1;
-- Pode aceitar apenas uma quest por vez;
+- Inicialmente, 3 quests disponíveis por dia;
+- Quests de nível 1;
+- Apenas uma quest pode ser aceita por vez.
 
 ### Upgrades do mural de quests
 
 - Aumenta a quantidade de quests disponíveis;
-- Aumenta o nível das quests disponíveis;
+- Disponibiliza quests de níveis mais altos.

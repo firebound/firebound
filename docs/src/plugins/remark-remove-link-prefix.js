@@ -4,19 +4,11 @@ const plugin = () => {
     return (tree) => {
         visit(tree, 'link', (node) => {
             if (node.url && typeof node.url === 'string') {
-                // Regex para encontrar links relativos que começam com ../ seguido por um número e hífen
-                const match = node.url.match(/^(\.\.\/)(?:\d+-)?([^\/]+)(\/.*)?$/);
-                
-                if (match) {
-                    const prefix = match[1]; // ../
-                    let directoryName = match[2]; // nome do diretório sem o número e hífen
-                    const restOfPath = match[3] || ''; // o resto do caminho, incluindo a barra inicial se houver
-
-                    // Remove o prefixo numérico se existir (ex: 00-intro -> intro)
-                    directoryName = directoryName.replace(/^\d+-/, '');
-
-                    node.url = `${prefix}${directoryName}${restOfPath}`;
-                }
+                // Divide o caminho em segmentos, remove prefixos numéricos de cada diretório e remonta a URL
+                node.url = node.url.split('/').map(segment => {
+                    // Remove prefixo numérico apenas de diretórios (não de arquivos)
+                    return segment.replace(/^\d+-/, '');
+                }).join('/');
             }
         });
     };
