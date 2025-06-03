@@ -1,26 +1,27 @@
 [gd_scene load_steps=6 format=3 uid="uid://rxqv3kf4uaq8"]
 
 [ext_resource type="Script" uid="uid://cyt7peem686tr" path="res://renderers/entities/CharacterEntity/CharacterEntity.cs" id="1_uj6du"]
-[ext_resource type="Resource" uid="uid://ctp5er4mb8u3k" path="res://resources/Characters/Dummy.tres" id="2_deese"]
-[ext_resource type="SpriteFrames" uid="uid://bskb8ffl72voq" path="res://assets/characters/eleonoreOtsoga/EleonoreOtsogaSprites.tres" id="3_uj6du"]
+[ext_resource type="Resource" uid="uid://bkolttux1bvi1" path="res://resources/Characters/Joanna.tres" id="2_uj6du"]
+[ext_resource type="SpriteFrames" uid="uid://fdkgmyh24b0q" path="res://assets/characters/joannaOtsoga/JoannaOtsogaSprites.tres" id="3_uj6du"]
 [ext_resource type="Script" uid="uid://brrwunmhujwhd" path="res://renderers/components/AnimatedComponents/AnimatedSprite3DComponent.cs" id="4_xlkq2"]
 [ext_resource type="PackedScene" uid="uid://5kiqnxxh0yrs" path="res://renderers/components/SelectableComponents/SelectableComponent.tscn" id="5_hro2o"]
 
 [node name="CharacterEntity3DSprite" type="Node3D"]
 script = ExtResource("1_uj6du")
-PreviewCharacterData = ExtResource("2_deese")
+PreviewCharacterData = ExtResource("2_uj6du")
 metadata/_custom_type_script = "uid://cyt7peem686tr"
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-pixel_size = 0.02
+offset = Vector2(0, -10)
+pixel_size = 0.016
 billboard = 1
 shaded = true
 double_sided = false
 texture_filter = 0
 sprite_frames = ExtResource("3_uj6du")
 animation = &"idle"
-frame_progress = 0.570962
+frame_progress = 0.734128
 script = ExtResource("4_xlkq2")
 
 [node name="SelectableComponent" parent="." instance=ExtResource("5_hro2o")]

@@ -7,7 +7,6 @@ namespace DiceRolling.Entities;
 [GlobalClass]
 public partial class GridEntity : Entity3D {
 
-    [ExportGroup("Data")]
     public GridType? GridData => GetData<GridType>();
 
     [ExportGroup("Preview")]
@@ -16,12 +15,8 @@ public partial class GridEntity : Entity3D {
     [ExportToolButton("Update Preview")]
     public Callable UpdatePreviewData => Callable.From(() => {
         if (Engine.IsEditorHint()) {
-            if (Data != PreviewGridData) {
-                Data = PreviewGridData;
-            }
-            else {
-                NotifyUpdate();
-            }
+            Data = PreviewGridData;
+            NotifyUpdate();
         }
     });
 

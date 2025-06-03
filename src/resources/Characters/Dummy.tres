@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://c765rrtwoaq76" path="res://resources/Attributes/Health.tres" id="4_fnxuv"]
 [ext_resource type="Resource" uid="uid://d37vh6vtgnxkp" path="res://resources/Attributes/Armor.tres" id="5_6285t"]
 [ext_resource type="Resource" uid="uid://bviiaflcxorr0" path="res://resources/Roles/Unplayable/DummyRole.tres" id="5_suo5q"]
-[ext_resource type="SpriteFrames" uid="uid://bskb8ffl72voq" path="res://assets/characters/eleonoreOtsoga/EleonoreOtsogaSprites.tres" id="6_fnxuv"]
+[ext_resource type="SpriteFrames" uid="uid://bkvhu7v1tmcfy" path="res://assets/characters/dummyOtsoga/DummyOtsogaSprites.tres" id="6_fnxuv"]
 [ext_resource type="Script" uid="uid://6jc2e71j4ljb" path="res://models/data/Dice/DiceType.cs" id="7_fnxuv"]
 [ext_resource type="Script" uid="uid://0ip2w43r0d2a" path="res://models/data/Character/CharacterType.cs" id="8_ktuse"]
 

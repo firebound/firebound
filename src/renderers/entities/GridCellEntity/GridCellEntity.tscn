@@ -1,28 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://2jqadvotpskf"]
+[gd_scene load_steps=5 format=3 uid="uid://2jqadvotpskf"]
 
 [ext_resource type="Script" uid="uid://d2163e68sbuxu" path="res://renderers/entities/GridCellEntity/GridCellEntity.cs" id="1_ms2v1"]
-[ext_resource type="Resource" uid="uid://byngv32mrx7r4" path="res://resources/Characters/_enemy.tres" id="2_detn8"]
-[ext_resource type="Script" uid="uid://bnrom8367617i" path="res://models/data/GridCell/GridCellType.cs" id="2_k85n8"]
 [ext_resource type="PackedScene" uid="uid://b0rl2juis6ehx" path="res://renderers/components/GridComponents/GridCellComponent.tscn" id="4_colqg"]
 [ext_resource type="Script" uid="uid://yl5hkmseiouh" path="res://renderers/components/GridComponents/CharacterGridCellComponent.cs" id="5_rmfyh"]
 [ext_resource type="PackedScene" uid="uid://b5fpv2rdkq5c" path="res://renderers/entities/CharacterEntity/CharacterEntity3DModel.tscn" id="6_c1m82"]
 
-[sub_resource type="Resource" id="Resource_e3qvn"]
-script = ExtResource("2_k85n8")
-Character = ExtResource("2_detn8")
-Value = 0
-Row = 1
-Column = 1
-Index = 0
-Label = ""
-IsWalkable = false
-IsOccupied = true
-Id = "c9d78c06-2e53-4e44-9fd1-11e5f4e97afc"
-metadata/_custom_type_script = "uid://bnrom8367617i"
-
 [node name="GridCellEntity" type="Node3D"]
 script = ExtResource("1_ms2v1")
-CellData = SubResource("Resource_e3qvn")
 metadata/_custom_type_script = "uid://d2163e68sbuxu"
 
 [node name="GridCellComponent" parent="." instance=ExtResource("4_colqg")]

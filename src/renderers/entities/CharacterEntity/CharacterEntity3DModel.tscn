@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5fpv2rdkq5c"]
+[gd_scene load_steps=4 format=3 uid="uid://b5fpv2rdkq5c"]
 
 [ext_resource type="Script" uid="uid://cyt7peem686tr" path="res://renderers/entities/CharacterEntity/CharacterEntity.cs" id="1_pm1qc"]
-[ext_resource type="Resource" uid="uid://dt2412y63ikgc" path="res://resources/Characters/_player.tres" id="2_pm1qc"]
 [ext_resource type="Script" uid="uid://c1aj48pya8gf1" path="res://renderers/components/AnimatedComponents/AnimatedModel3DComponent.cs" id="3_aa5ks"]
 [ext_resource type="PackedScene" uid="uid://5kiqnxxh0yrs" path="res://renderers/components/SelectableComponents/SelectableComponent.tscn" id="4_lkcyv"]
 
 [node name="CharacterEntity3DModel" type="Node3D"]
 script = ExtResource("1_pm1qc")
-PreviewCharacterData = ExtResource("2_pm1qc")
 metadata/_custom_type_script = "uid://cyt7peem686tr"
 
 [node name="AnimatedModel3DComponent" type="Node3D" parent="."]

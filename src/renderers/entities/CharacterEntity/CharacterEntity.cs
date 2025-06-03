@@ -7,7 +7,6 @@ namespace DiceRolling.Entities;
 [GlobalClass]
 public partial class CharacterEntity : Entity3D {
 
-    [ExportGroup("Data")]
     public CharacterType? CharacterData => GetData<CharacterType>();
 
     [ExportGroup("Preview")]
@@ -16,12 +15,8 @@ public partial class CharacterEntity : Entity3D {
     [ExportToolButton("Update Preview")]
     public Callable UpdatePreviewData => Callable.From(() => {
         if (Engine.IsEditorHint()) {
-            if (Data != PreviewCharacterData) {
-                Data = PreviewCharacterData;
-            }
-            else {
-                NotifyUpdate();
-            }
+            Data = PreviewCharacterData;
+            NotifyUpdate();
         }
     });
 

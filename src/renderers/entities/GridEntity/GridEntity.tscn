@@ -1,94 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqux57kvwbyix"]
+[gd_scene load_steps=4 format=3 uid="uid://bqux57kvwbyix"]
 
 [ext_resource type="Script" uid="uid://ctc1mk501yyuj" path="res://renderers/entities/GridEntity/GridEntity.cs" id="1_0ephl"]
-[ext_resource type="Script" uid="uid://bnrom8367617i" path="res://models/data/GridCell/GridCellType.cs" id="2_oxlr7"]
-[ext_resource type="Resource" uid="uid://dt2412y63ikgc" path="res://resources/Characters/_player.tres" id="3_oxlr7"]
-[ext_resource type="Resource" uid="uid://snt34yslyn4f" path="res://resources/Characters/Stores/PlayerCharacterStore.tres" id="5_ffcyv"]
-[ext_resource type="Script" uid="uid://ca6up1de7fo4q" path="res://models/data/Grid/GridType.cs" id="5_p07r4"]
 [ext_resource type="Script" uid="uid://cycvmb2ix6vas" path="res://renderers/components/GridComponents/GridContainerComponent.cs" id="6_tyrak"]
 [ext_resource type="PackedScene" uid="uid://2jqadvotpskf" path="res://renderers/entities/GridCellEntity/GridCellEntity.tscn" id="7_1mxpx"]
 
-[sub_resource type="Resource" id="Resource_ffcyv"]
-script = ExtResource("2_oxlr7")
-Value = 0
-Row = 0
-Column = 0
-Index = 0
-Label = "G0"
-IsWalkable = true
-IsOccupied = false
-Id = "d835380a-452e-47f5-b539-a8879d198ce7"
-
-[sub_resource type="Resource" id="Resource_p5vyd"]
-script = ExtResource("2_oxlr7")
-Value = 0
-Row = 0
-Column = 1
-Index = 1
-Label = "G1"
-IsWalkable = true
-IsOccupied = false
-Id = "acba29d2-339a-4571-80b4-e98b9fc25209"
-
-[sub_resource type="Resource" id="Resource_v36a5"]
-script = ExtResource("2_oxlr7")
-Character = ExtResource("3_oxlr7")
-Value = 0
-Row = 0
-Column = 2
-Index = 2
-Label = "G2"
-IsWalkable = true
-IsOccupied = true
-Id = "7db9a0dc-8d35-4044-9311-c6e06de7f823"
-
-[sub_resource type="Resource" id="Resource_bl0jg"]
-script = ExtResource("2_oxlr7")
-Value = 0
-Row = 1
-Column = 0
-Index = 3
-Label = "G3"
-IsWalkable = true
-IsOccupied = false
-Id = "8021d5d0-bc50-4216-9651-520eff1df4db"
-
-[sub_resource type="Resource" id="Resource_vdxgo"]
-script = ExtResource("2_oxlr7")
-Value = 0
-Row = 1
-Column = 1
-Index = 4
-Label = "G4"
-IsWalkable = true
-IsOccupied = false
-Id = "0ca43c75-c0e6-46d9-9121-43c7147cdb18"
-
-[sub_resource type="Resource" id="Resource_kxcxi"]
-script = ExtResource("2_oxlr7")
-Value = 0
-Row = 1
-Column = 2
-Index = 5
-Label = "G5"
-IsWalkable = true
-IsOccupied = false
-Id = "e4beb0fd-915e-47ef-94fa-0b10fe496e50"
-
-[sub_resource type="Resource" id="Resource_5vga2"]
-script = ExtResource("5_p07r4")
-Prefix = "G"
-CharacterStore = ExtResource("5_ffcyv")
-Direction = 0
-Rows = 2
-Columns = 3
-Cells = Array[ExtResource("2_oxlr7")]([SubResource("Resource_ffcyv"), SubResource("Resource_p5vyd"), SubResource("Resource_v36a5"), SubResource("Resource_bl0jg"), SubResource("Resource_vdxgo"), SubResource("Resource_kxcxi")])
-Id = "af2419d1-e714-418d-ae89-fef43e4fa445"
-metadata/_custom_type_script = "uid://ca6up1de7fo4q"
-
 [node name="Grid" type="Node3D"]
 script = ExtResource("1_0ephl")
-GridData = SubResource("Resource_5vga2")
 metadata/_custom_type_script = "uid://ctc1mk501yyuj"
 
 [node name="GridContainerComponent" type="Node3D" parent="."]

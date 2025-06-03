@@ -69,7 +69,6 @@ public partial class AnimatedModel3DComponent : Node3D {
         if (_parent != null) {
             SignalHelper.DisconnectSignal(_parent, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
         }
-        DestroyCurrentModel();
     }
 
     public override void _Process(double delta) {
@@ -136,7 +135,6 @@ public partial class AnimatedModel3DComponent : Node3D {
         if (targetScene != null) {
             // Check if we need to instantiate a new model
             if (_currentModelInstance == null || _currentModelInstance.SceneFilePath != targetScene.ResourcePath) {
-                DestroyCurrentModel();
                 InstantiateModel(targetScene);
             }
             // Ensure visibility if model exists
@@ -145,7 +143,6 @@ public partial class AnimatedModel3DComponent : Node3D {
             }
         }
         else {
-            DestroyCurrentModel();
             if (characterData != null) {
                 GD.PrintErr($"[AnimatedModel3DComponent] No suitable animation scene found for character {characterData.Name} (requested: '{CurrentAnimationName}').");
             }
@@ -201,13 +198,6 @@ public partial class AnimatedModel3DComponent : Node3D {
         }
         else {
             GD.PrintErr($"[AnimatedModel3DComponent] Failed to instantiate Character Animation scene: {modelScene.ResourcePath}");
-        }
-    }
-
-    private void DestroyCurrentModel() {
-        if (_currentModelInstance != null && IsInstanceValid(_currentModelInstance)) {
-            _currentModelInstance.QueueFree();
-            _currentModelInstance = null;
         }
     }
 
