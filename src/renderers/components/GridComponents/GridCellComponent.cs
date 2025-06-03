@@ -31,12 +31,7 @@ public partial class GridCellComponent : Node3D {
         if (_cellData != null && _cellData.Character != null) {
             _cellData.IsOccupied = true;
             _cellData.NotifyChanged();
-
-            // Use a API pública do GridCellEntity para notificar atualizações
-            if (_cellEntity != null) {
-                _cellEntity.UpdateCellData.Call();
-                GD.Print($"Refreshing character in cell {_cellData.Label}");
-            }
+            GD.Print($"Refreshing character in cell {_cellData.Label}");
         }
     });
 

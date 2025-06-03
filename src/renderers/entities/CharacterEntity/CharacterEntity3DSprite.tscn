@@ -8,7 +8,7 @@
 
 [node name="CharacterEntity3DSprite" type="Node3D"]
 script = ExtResource("1_uj6du")
-CharacterData = ExtResource("2_deese")
+PreviewCharacterData = ExtResource("2_deese")
 metadata/_custom_type_script = "uid://cyt7peem686tr"
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite3D" parent="."]
@@ -20,7 +20,7 @@ double_sided = false
 texture_filter = 0
 sprite_frames = ExtResource("3_uj6du")
 animation = &"idle"
-frame_progress = 0.0987081
+frame_progress = 0.570962
 script = ExtResource("4_xlkq2")
 
 [node name="SelectableComponent" parent="." instance=ExtResource("5_hro2o")]

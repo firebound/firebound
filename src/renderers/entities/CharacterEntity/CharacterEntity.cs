@@ -7,12 +7,36 @@ namespace DiceRolling.Entities;
 [GlobalClass]
 public partial class CharacterEntity : Entity3D {
 
-    [Export]
-    public CharacterType? CharacterData {
-        get => GetData<CharacterType>();
-        set => Data = value;
-    }
+    [ExportGroup("Data")]
+    public CharacterType? CharacterData => GetData<CharacterType>();
 
-    [ExportToolButton("Update Character")]
-    public Callable UpdateCharacterData => Callable.From(() => NotifyUpdate());
+    [ExportGroup("Preview")]
+    [Export] public CharacterType? PreviewCharacterData { get; set; }
+
+    [ExportToolButton("Update Preview")]
+    public Callable UpdatePreviewData => Callable.From(() => {
+        if (Engine.IsEditorHint()) {
+            if (Data != PreviewCharacterData) {
+                Data = PreviewCharacterData;
+            }
+            else {
+                NotifyUpdate();
+            }
+        }
+    });
+
+    public override void _Ready() {
+        base._Ready();
+
+        if (Engine.IsEditorHint()) {
+            if (PreviewCharacterData != null) {
+                if (Data != PreviewCharacterData) {
+                    Data = PreviewCharacterData;
+                }
+            }
+        }
+        else {
+            // Runtime specific logic for CharacterEntity (if any)
+        }
+    }
 }

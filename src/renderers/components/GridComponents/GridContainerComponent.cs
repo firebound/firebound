@@ -56,7 +56,7 @@ public partial class GridContainerComponent : Node3D {
         }
 
         var instance = CellScene.Instantiate<GridCellEntity>();
-        instance.CellData = cell;
+        instance.Data = cell;
         instance.Position = CalculateCellPosition(cell);
         AddChild(instance);
         _cellEntities[cell.Id] = instance;

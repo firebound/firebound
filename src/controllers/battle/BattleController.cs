@@ -244,7 +244,7 @@ public partial class BattleController : Node {
             CharacterStore = characterStore
         };
 
-        gridEntity.GridData = gridData;
+        gridEntity.Data = gridData;
 
         return gridEntity;
     }
