@@ -7,12 +7,36 @@ namespace DiceRolling.Entities;
 [GlobalClass]
 public partial class GridEntity : Entity3D {
 
-    [Export]
-    public GridType? GridData {
-        get => GetData<GridType>();
-        set => Data = value;
-    }
+    [ExportGroup("Data")]
+    public GridType? GridData => GetData<GridType>();
 
-    [ExportToolButton("Update Grid")]
-    public Callable UpdateGridData => Callable.From(() => NotifyUpdate());
+    [ExportGroup("Preview")]
+    [Export] public GridType? PreviewGridData { get; set; }
+
+    [ExportToolButton("Update Preview")]
+    public Callable UpdatePreviewData => Callable.From(() => {
+        if (Engine.IsEditorHint()) {
+            if (Data != PreviewGridData) {
+                Data = PreviewGridData;
+            }
+            else {
+                NotifyUpdate();
+            }
+        }
+    });
+
+    public override void _Ready() {
+        base._Ready();
+
+        if (Engine.IsEditorHint()) {
+            if (PreviewGridData != null) {
+                if (Data != PreviewGridData) {
+                    Data = PreviewGridData;
+                }
+            }
+        }
+        else {
+            // Runtime specific logic for GridEntity (if any)
+        }
+    }
 }
