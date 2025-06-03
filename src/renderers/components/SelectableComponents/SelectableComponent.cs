@@ -1,7 +1,6 @@
 using Godot;
 using DiceRolling.Entities;
 using DiceRolling.Events;
-using DiceRolling.Helpers;
 
 namespace DiceRolling.Components;
 
@@ -71,29 +70,29 @@ public partial class SelectableComponent : Node3D {
 
     private void ConnectSignals() {
         if (_parent != null) {
-            SignalHelper.ConnectSignal(_parent, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
+            _parent.EntityUpdated += OnEntityUpdated;
         }
 
-        SignalHelper.ConnectSignal(EventBus.Instance, nameof(EventBus.ComponentUnselected), this, nameof(OnComponentUnselected));
+        EventBus.Instance.ComponentUnselected += OnComponentUnselected;
 
         if (InputAreaNode != null) {
-            SignalHelper.ConnectSignal(InputAreaNode, "input_event", this, nameof(OnInputEvent));
-            SignalHelper.ConnectSignal(InputAreaNode, "mouse_entered", this, nameof(OnMouseEntered));
-            SignalHelper.ConnectSignal(InputAreaNode, "mouse_exited", this, nameof(OnMouseExited));
+            InputAreaNode.InputEvent += OnInputEvent;
+            InputAreaNode.MouseEntered += OnMouseEntered;
+            InputAreaNode.MouseExited += OnMouseExited;
         }
     }
 
     private void DisconnectSignals() {
         if (_parent != null) {
-            SignalHelper.DisconnectSignal(_parent, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
+            _parent.EntityUpdated -= OnEntityUpdated;
         }
 
-        SignalHelper.DisconnectSignal(EventBus.Instance, nameof(EventBus.ComponentUnselected), this, nameof(OnComponentUnselected));
+        EventBus.Instance.ComponentUnselected -= OnComponentUnselected;
 
         if (InputAreaNode != null) {
-            SignalHelper.DisconnectSignal(InputAreaNode, "input_event", this, nameof(OnInputEvent));
-            SignalHelper.DisconnectSignal(InputAreaNode, "mouse_entered", this, nameof(OnMouseEntered));
-            SignalHelper.DisconnectSignal(InputAreaNode, "mouse_exited", this, nameof(OnMouseExited));
+            InputAreaNode.InputEvent -= OnInputEvent;
+            InputAreaNode.MouseEntered -= OnMouseEntered;
+            InputAreaNode.MouseExited -= OnMouseExited;
         }
     }
 
@@ -114,7 +113,7 @@ public partial class SelectableComponent : Node3D {
     private static void OnEntityUpdated() {
     }
 
-    private void OnInputEvent(Node camera, InputEvent @event, Vector3 clickPosition, Vector3 normal, int shapeIdx) {
+    private void OnInputEvent(Node camera, InputEvent @event, Vector3 clickPosition, Vector3 normal, long shapeIdx) {
         if (@event is InputEventMouseButton { Pressed: true }) {
             HandleSelection(this);
         }

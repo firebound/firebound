@@ -19,7 +19,7 @@ public partial class CharacterPortraitComponent : TextureRect {
             return;
         }
 
-        SignalHelper.ConnectSignal(_inspectorEntity, EntityControl.SignalName.EntityUpdated, this, nameof(OnEntityUpdated));
+        _inspectorEntity.EntityUpdated += OnEntityUpdated;
 
         // Initial update
         OnEntityUpdated();
@@ -27,7 +27,7 @@ public partial class CharacterPortraitComponent : TextureRect {
 
     public override void _ExitTree() {
         if (_inspectorEntity != null) {
-            SignalHelper.DisconnectSignal(_inspectorEntity, EntityControl.SignalName.EntityUpdated, this, nameof(OnEntityUpdated));
+            _inspectorEntity.EntityUpdated -= OnEntityUpdated;
         }
     }
 

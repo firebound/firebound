@@ -3,7 +3,6 @@ using System.Linq;
 using System.Collections.Generic;
 
 using DiceRolling.Characters;
-using DiceRolling.Helpers;
 
 namespace DiceRolling.Controllers;
 
@@ -34,19 +33,19 @@ public partial class QueueController : RefCounted {
 
     private void ConnectEvents() {
         DisconnectEvents();
-        SignalHelper.ConnectSignal(BattleEvents.Instance, nameof(BattleEvents.CharactersPositioned), this, nameof(OnCharactersPositioned));
-        SignalHelper.ConnectSignal(BattleEvents.Instance, nameof(BattleEvents.CharacterAddedToQueue), this, nameof(OnCharacterAddedToQueue));
-        SignalHelper.ConnectSignal(BattleEvents.Instance, nameof(BattleEvents.CharacterRemovedFromQueue), this, nameof(OnCharacterRemovedFromQueue));
-        SignalHelper.ConnectSignal(BattleEvents.Instance, nameof(BattleEvents.CharacterInitiativeModified), this, nameof(OnCharacterInitiativeModified));
+        BattleEvents.Instance.CharactersPositioned += OnCharactersPositioned;
+        BattleEvents.Instance.CharacterAddedToQueue += OnCharacterAddedToQueue;
+        BattleEvents.Instance.CharacterRemovedFromQueue += OnCharacterRemovedFromQueue;
+        BattleEvents.Instance.CharacterInitiativeModified += OnCharacterInitiativeModified;
 
     }
 
     private void DisconnectEvents() {
         if (BattleEvents.Instance != null) {
-            SignalHelper.DisconnectSignal(BattleEvents.Instance, nameof(BattleEvents.CharactersPositioned), this, nameof(OnCharactersPositioned));
-            SignalHelper.DisconnectSignal(BattleEvents.Instance, nameof(BattleEvents.CharacterAddedToQueue), this, nameof(OnCharacterAddedToQueue));
-            SignalHelper.DisconnectSignal(BattleEvents.Instance, nameof(BattleEvents.CharacterRemovedFromQueue), this, nameof(OnCharacterRemovedFromQueue));
-            SignalHelper.DisconnectSignal(BattleEvents.Instance, nameof(BattleEvents.CharacterInitiativeModified), this, nameof(OnCharacterInitiativeModified));
+            BattleEvents.Instance.CharactersPositioned -= OnCharactersPositioned;
+            BattleEvents.Instance.CharacterAddedToQueue -= OnCharacterAddedToQueue;
+            BattleEvents.Instance.CharacterRemovedFromQueue -= OnCharacterRemovedFromQueue;
+            BattleEvents.Instance.CharacterInitiativeModified -= OnCharacterInitiativeModified;
         }
     }
 

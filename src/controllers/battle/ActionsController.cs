@@ -1,7 +1,6 @@
 using Godot;
 using DiceRolling.Characters;
 using System.Collections.Generic;
-using DiceRolling.Helpers;
 using DiceRolling.Services;
 
 namespace DiceRolling.Controllers;
@@ -35,18 +34,18 @@ public partial class ActionsController : RefCounted {
 
     private void ConnectEvents() {
         DisconnectEvents();
-        SignalHelper.ConnectSignal(BattleEvents.Instance, nameof(BattleEvents.PlayerActionDeclared), this, nameof(OnPlayerActionDeclared));
-        SignalHelper.ConnectSignal(BattleEvents.Instance, nameof(BattleEvents.PlayerTargetSelected), this, nameof(OnPlayerTargetSelected));
-        SignalHelper.ConnectSignal(BattleEvents.Instance, nameof(BattleEvents.PlayerActionCancelled), this, nameof(OnPlayerActionCancelled));
-        SignalHelper.ConnectSignal(BattleEvents.Instance, nameof(BattleEvents.EnemyActionDeclared), this, nameof(OnEnemyActionDeclared));
+        BattleEvents.Instance.PlayerActionDeclared += OnPlayerActionDeclared;
+        BattleEvents.Instance.PlayerTargetSelected += OnPlayerTargetSelected;
+        BattleEvents.Instance.PlayerActionCancelled += OnPlayerActionCancelled;
+        BattleEvents.Instance.EnemyActionDeclared += OnEnemyActionDeclared;
     }
 
     private void DisconnectEvents() {
         if (BattleEvents.Instance != null) {
-            SignalHelper.DisconnectSignal(BattleEvents.Instance, nameof(BattleEvents.PlayerActionDeclared), this, nameof(OnPlayerActionDeclared));
-            SignalHelper.DisconnectSignal(BattleEvents.Instance, nameof(BattleEvents.PlayerTargetSelected), this, nameof(OnPlayerTargetSelected));
-            SignalHelper.DisconnectSignal(BattleEvents.Instance, nameof(BattleEvents.PlayerActionCancelled), this, nameof(OnPlayerActionCancelled));
-            SignalHelper.DisconnectSignal(BattleEvents.Instance, nameof(BattleEvents.EnemyActionDeclared), this, nameof(OnEnemyActionDeclared));
+            BattleEvents.Instance.PlayerActionDeclared -= OnPlayerActionDeclared;
+            BattleEvents.Instance.PlayerTargetSelected -= OnPlayerTargetSelected;
+            BattleEvents.Instance.PlayerActionCancelled -= OnPlayerActionCancelled;
+            BattleEvents.Instance.EnemyActionDeclared -= OnEnemyActionDeclared;
         }
     }
 

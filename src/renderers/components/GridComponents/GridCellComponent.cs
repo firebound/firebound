@@ -1,7 +1,6 @@
 using Godot;
 using DiceRolling.Entities;
 using DiceRolling.Grids;
-using DiceRolling.Helpers;
 
 namespace DiceRolling.Components.Grids;
 
@@ -41,14 +40,14 @@ public partial class GridCellComponent : Node3D {
 
         if (_cellEntity != null) {
             // Connect to entity updates
-            SignalHelper.ConnectSignal(_cellEntity, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
+            _cellEntity.EntityUpdated += OnEntityUpdated;
 
             // Get initial data
             _cellData = _cellEntity.CellData;
 
             if (_cellData != null) {
                 // Connect to cell data changes
-                SignalHelper.ConnectSignal(_cellData, nameof(GridCellType.CellChanged), this, nameof(OnCellDataChanged));
+                _cellData.CellChanged += OnCellDataChanged;
 
                 // Initial update
                 UpdateVisual();
@@ -58,11 +57,11 @@ public partial class GridCellComponent : Node3D {
 
     public override void _ExitTree() {
         if (_cellEntity != null) {
-            SignalHelper.DisconnectSignal(_cellEntity, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
+            _cellEntity.EntityUpdated -= OnEntityUpdated;
         }
 
         if (_cellData != null) {
-            SignalHelper.DisconnectSignal(_cellData, nameof(GridCellType.CellChanged), this, nameof(OnCellDataChanged));
+            _cellData.CellChanged -= OnCellDataChanged;
         }
     }
 
@@ -74,13 +73,13 @@ public partial class GridCellComponent : Node3D {
             // If data reference changed, reconnect signals
             if (_cellData != newCellData) {
                 if (_cellData != null) {
-                    SignalHelper.DisconnectSignal(_cellData, nameof(GridCellType.CellChanged), this, nameof(OnCellDataChanged));
+                    _cellData.CellChanged -= OnCellDataChanged;
                 }
 
                 _cellData = newCellData;
 
                 if (_cellData != null) {
-                    SignalHelper.ConnectSignal(_cellData, nameof(GridCellType.CellChanged), this, nameof(OnCellDataChanged));
+                    _cellData.CellChanged += OnCellDataChanged;
                 }
             }
 

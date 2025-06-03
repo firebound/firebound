@@ -1,7 +1,6 @@
 using Godot;
 using DiceRolling.Entities;
 using DiceRolling.Characters;
-using DiceRolling.Helpers;
 
 namespace DiceRolling.Components;
 
@@ -21,14 +20,14 @@ public partial class AnimatedSprite3DComponent : AnimatedSprite3D {
         _parent = GetParent<Entity3D>();
 
         if (_parent != null) {
-            SignalHelper.ConnectSignal(_parent, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
+            _parent.EntityUpdated += OnEntityUpdated;
             UpdateSprite();
         }
     }
 
     public override void _ExitTree() {
         if (_parent != null) {
-            SignalHelper.DisconnectSignal(_parent, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
+            _parent.EntityUpdated -= OnEntityUpdated;
         }
     }
 

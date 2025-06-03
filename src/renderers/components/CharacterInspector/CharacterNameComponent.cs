@@ -23,14 +23,14 @@ public partial class CharacterNameComponent : Label {
             return;
         }
 
-        SignalHelper.ConnectSignal(_inspectorEntity, EntityControl.SignalName.EntityUpdated, this, nameof(OnEntityUpdated));
+        _inspectorEntity.EntityUpdated += OnEntityUpdated;
 
         OnEntityUpdated();
     }
 
     public override void _ExitTree() {
         if (_inspectorEntity != null) {
-            SignalHelper.DisconnectSignal(_inspectorEntity, EntityControl.SignalName.EntityUpdated, this, nameof(OnEntityUpdated));
+            _inspectorEntity.EntityUpdated -= OnEntityUpdated;
         }
     }
 

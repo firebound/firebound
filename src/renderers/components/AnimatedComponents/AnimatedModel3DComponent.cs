@@ -58,7 +58,7 @@ public partial class AnimatedModel3DComponent : Node3D {
         _parent = GetParent<Entity3D>();
 
         if (_parent != null) {
-            SignalHelper.ConnectSignal(_parent, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
+            _parent.EntityUpdated += OnEntityUpdated;
             UpdateModel();
         }
 
@@ -67,7 +67,7 @@ public partial class AnimatedModel3DComponent : Node3D {
 
     public override void _ExitTree() {
         if (_parent != null) {
-            SignalHelper.DisconnectSignal(_parent, nameof(Entity3D.EntityUpdated), this, nameof(OnEntityUpdated));
+            _parent.EntityUpdated -= OnEntityUpdated;
         }
     }
 

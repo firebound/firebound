@@ -9,21 +9,6 @@
         "**/node_modules": true,
         "**/tmp": true
     },
-    "files.exclude": {
-        "**/.git": false,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/.ssh": true,
-        "**/*.uid": true,
-        "**/node_modules": true,
-        "src/.godot": true,
-        "docs/.docusaurus": true,
-        "docs/content/api": false,
-        "docs/api": true
-    },
     "eslint.workingDirectories": [
         {
             "directory": "./",
@@ -58,4 +43,19 @@
         "\"res.+\"",
         "\\w+\\s*=\\s*\"Lorem ipsum[^\"]*\""
     ],
+    "files.exclude": {
+        "**/.git": false,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.ssh": true,
+        "**/*.uid": true,
+        "**/node_modules": true,
+        "src/.godot": true,
+        "docs/.docusaurus": true,
+        "docs/content/api": false,
+        "docs/api": true
+    },
 }

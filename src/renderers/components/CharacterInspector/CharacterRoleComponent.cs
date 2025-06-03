@@ -23,7 +23,7 @@ public partial class CharacterRoleComponent : Label {
             return;
         }
 
-        SignalHelper.ConnectSignal(_inspectorEntity, EntityControl.SignalName.EntityUpdated, this, nameof(OnEntityUpdated));
+        _inspectorEntity.EntityUpdated += OnEntityUpdated;
 
         // Initial update
         OnEntityUpdated();
@@ -31,7 +31,7 @@ public partial class CharacterRoleComponent : Label {
 
     public override void _ExitTree() {
         if (_inspectorEntity != null) {
-            SignalHelper.DisconnectSignal(_inspectorEntity, EntityControl.SignalName.EntityUpdated, this, nameof(OnEntityUpdated));
+            _inspectorEntity.EntityUpdated -= OnEntityUpdated;
         }
     }
 
