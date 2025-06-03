@@ -102,10 +102,10 @@ public partial class CharacterGridCellComponent : Node3D {
                 // GD.Print("CharacterGridCellComponent: Criando nova CharacterEntity");
                 CreateCharacterEntity(); // This sets CharacterData internally
             }
-            else if (_characterEntity.CharacterData != _cellData.Character) {            // Only update if the character data is actually different
-            // GD.Print($"CharacterGridCellComponent: Atualizando CharacterData para {_cellData.Character.Name}");
-            _characterEntity.Data = _cellData.Character; // This might trigger EntityUpdated
-        }
+            else if (_characterEntity.Data != _cellData.Character) {
+                // GD.Print($"CharacterGridCellComponent: Atualizando CharacterData para {_cellData.Character.Name}");
+                _characterEntity.Data = _cellData.Character; // This might trigger EntityUpdated
+            }
 
             // Ensure visibility is correct
             if (_characterEntity != null && !_characterEntity.Visible) {
@@ -137,8 +137,9 @@ public partial class CharacterGridCellComponent : Node3D {
         AddChild(_characterEntity);
 
         // Set the character data when creating
-        if (_cellData?.Character != null) {        _characterEntity.Data = _cellData.Character; // This might trigger EntityUpdated
-    }
+        if (_cellData?.Character != null) {
+            _characterEntity.Data = _cellData.Character; // This might trigger EntityUpdated
+        }
         else {
             // Should not happen if called from UpdateCharacter's hasCharacter check, but good practice
             _characterEntity.Visible = false;
