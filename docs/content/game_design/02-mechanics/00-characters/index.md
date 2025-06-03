@@ -8,6 +8,12 @@ Os personagens possuem atributos básicos, como vida, força e defesa, que deter
 
 > Exemplo: Um curandeiro pode começar com 30-40 de vida, enquanto um guerreiro tribal começa com 50-60.
 
+## Energia
+
+Os personagens utilizam Energia para realizar a maioria de suas ações especiais em combate. Essa Energia é obtida através da rolagem dos Dados equipados pelo personagem e a quantidade e os tipos de Energia obtida dependem dos resultados dos Dados.
+
+> Exemplo: Um personagem pode rolar seus dados e obter Energia do tipo Fogo e Água, que podem ser usadas para ativar habilidades que requerem esses tipos específicos de Energia.
+
 ## Ações
 
 Cada personagem pode realizar uma ação por turno em combate. As ações incluem mover, defender, ataque básico e uso de habilidades especiais. Novas habilidades podem ser adquiridas conforme o personagem evolui.
@@ -31,6 +37,21 @@ Esses arquétipos definem as habilidades, atributos e equipamentos iniciais, que
 >- Humano, Guerreiro Jaguar, Tier 1: um combatente com alta defesa e ataque corpo a corpo, inspirado nos guerreiros das culturas mesoamericanas;
 >- Humano, Curandeiro, Tier 2: um personagem com habilidades de cura e manipulação de energias espirituais, inspirado em líderes espirituais indígenas;
 >- Besta, Serpente, Tier 3: um personagem ágil e furtivo, com habilidades de ataque rápido e evasão.
+
+## Efeitos de Status
+
+Personagens podem ser afetados por diversos Efeitos de Status **durante o combate**, que alteram temporariamente seus atributos, capacidades ou comportamento. Esses efeitos podem ser positivos (buffs) ou negativos (debuffs) e são geralmente aplicados por habilidades, itens ou interações com o ambiente.
+
+Cada efeito de status possui uma duração, normalmente medida em turnos, e pode ter uma variedade de impactos:
+
+- Modificar atributos (ex: aumentar ataque, diminuir defesa).
+- Causar dano contínuo (ex: envenenamento).
+- Restringir ações (ex: atordoamento impede qualquer ação).
+- Conceder bônus específicos (ex: regeneração de vida por turno).
+
+> Exemplo: Uma habilidade pode infligir "Queimadura" em um alvo, causando dano do tipo Fogo ao final de cada turno do alvo por 3 turnos. Outro personagem pode usar um item para ganhar "Fortalecido", aumentando seu atributo de Força por 2 turnos.
+
+A gestão dos efeitos (aplicação, remoção, contagem de turnos) é crucial para a dinâmica do combate.
 
 ## Morte
 

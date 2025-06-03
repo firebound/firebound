@@ -6,7 +6,7 @@ A cidade principal é o centro de preparação e gestão dos personagens, onde o
 
 ## Estruturas
 
-O jogador pode interagir com as [estruturas](./interest_points/buildings.md), como áreas de treinamento, enfermaria, loja de equipamentos e mural de missões. Cada local oferece serviços essenciais para o desenvolvimento dos personagens e pode ser aprimorado ao longo do tempo.
+O jogador pode interagir com as [estruturas](./buildings/index.md), como áreas de treinamento, enfermaria, loja de equipamentos e mural de missões. Cada local oferece serviços essenciais para o desenvolvimento dos personagens e pode ser aprimorado ao longo do tempo.
 
 ---
 
