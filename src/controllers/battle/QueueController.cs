@@ -22,13 +22,18 @@ namespace DiceRolling.Controllers;
 ///         <item>- Fornece informações sobre os próximos personagens a agir</item>
 ///     </list>
 /// </remarks>
-public partial class QueueController : RefCounted {
+[GlobalClass]
+public partial class QueueController : Node {
     // The initiative queue (order of characters' turns)
     private Queue<CharacterType> _initiativeQueue = new Queue<CharacterType>();
     public IEnumerable<CharacterType> InitiativeQueue => _initiativeQueue;
 
-    public QueueController() {
+    public override void _Ready() {
         ConnectEvents();
+    }
+
+    public override void _ExitTree() {
+        DisconnectEvents();
     }
 
     private void ConnectEvents() {

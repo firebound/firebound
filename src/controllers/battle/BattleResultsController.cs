@@ -20,10 +20,17 @@ namespace DiceRolling.Controllers;
 ///         <item>- Faz a transição para a tela de resultados (<c>PostBattleController</c>)</item>
 ///     </list>
 /// </remarks>
-public partial class BattleResultsController : RefCounted {
-    public BattleResultsController() {
+[GlobalClass]
+public partial class BattleResultsController : Node {
+    public override void _Ready() {
         // Conecta-se aos eventos relevantes
         BattleEvents.Instance.RoundEnded += OnRoundEnded;
+    }
+
+    public override void _ExitTree() {
+        if (BattleEvents.Instance != null) {
+            BattleEvents.Instance.RoundEnded -= OnRoundEnded;
+        }
     }
 
     // Verifica se houve vitória ou derrota

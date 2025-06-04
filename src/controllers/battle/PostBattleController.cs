@@ -17,11 +17,17 @@ namespace DiceRolling.Controllers;
 ///         <item>- Gerencia a transição para tela de game over</item>
 ///     </list>
 /// </remarks>
-
-public partial class PostBattleController : RefCounted {
-    public PostBattleController() {
+[GlobalClass]
+public partial class PostBattleController : Node {
+    public override void _Ready() {
         // Conecta-se aos eventos relevantes
         BattleEvents.Instance.BattleEnded += OnBattleEnded;
+    }
+
+    public override void _ExitTree() {
+        if (BattleEvents.Instance != null) {
+            BattleEvents.Instance.BattleEnded -= OnBattleEnded;
+        }
     }
 
     // Exibe a tela de vitória

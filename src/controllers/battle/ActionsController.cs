@@ -20,7 +20,8 @@ namespace DiceRolling.Controllers;
 ///         <item>- Recebe comandos de declaração de ações dos personagens dos jogadores</item>
 ///     </list>
 /// </remarks>
-public partial class ActionsController : RefCounted {
+[GlobalClass]
+public partial class ActionsController : Node {
     private readonly HashSet<CharacterType> _charactersDeclaredActions = [];
     private readonly Dictionary<CharacterType, DeclaredActionInfo> _declaredActions = new();
     private List<CharacterType> _playerTeam = [];
@@ -28,8 +29,12 @@ public partial class ActionsController : RefCounted {
 
     public IReadOnlyDictionary<CharacterType, DeclaredActionInfo> DeclaredActions => _declaredActions;
 
-    public ActionsController() {
+    public override void _Ready() {
         ConnectEvents();
+    }
+
+    public override void _ExitTree() {
+        DisconnectEvents();
     }
 
     private void ConnectEvents() {

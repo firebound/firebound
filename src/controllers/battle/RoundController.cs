@@ -21,7 +21,8 @@ namespace DiceRolling.Controllers;
 ///         <item>- Verifica o estado da batalha para decidir se deve continuar ou terminar</item>
 ///     </list>
 /// </remarks>
-public partial class RoundController : RefCounted {
+[GlobalClass]
+public partial class RoundController : Node {
     private ActionsController? _actionsController;
     private TurnController? _turnController;
     private RoundState _currentRoundState = RoundState.RoundStart;
@@ -29,15 +30,20 @@ public partial class RoundController : RefCounted {
     public RoundState CurrentRoundState => _currentRoundState;
     public int CurrentRound => _currentRound;
 
-    public RoundController() {
+    public override void _Ready() {
+        // Defer getting references until all controllers are initialized
+        CallDeferred(nameof(InitializeReferences));
         ConnectEvents();
     }
 
-    public RoundController(ActionsController actionsController, TurnController turnController) {
-        _actionsController = actionsController;
-        _turnController = turnController;
+    private void InitializeReferences() {
+        // Get references to other controllers from sibling nodes
+        _actionsController = GetParent()?.GetNode<ActionsController>("ActionsController");
+        _turnController = GetParent()?.GetNode<TurnController>("TurnController");
+    }
 
-        ConnectEvents();
+    public override void _ExitTree() {
+        DisconnectEvents();
     }
 
     private void ConnectEvents() {
@@ -66,12 +72,14 @@ public partial class RoundController : RefCounted {
     }
 
     public void StartRound() {
+        // Wait for initialization if controllers are not ready yet
         if (_actionsController == null || _turnController == null) {
-            GD.PrintErr("[RoundController] Controllers not initialized!");
+            GD.PrintRich("[color=violet][RoundController] Controllers not initialized yet, deferring StartRound...[/color]");
+            CallDeferred(nameof(StartRound));
             return;
         }
 
-        GD.Print("[color=violet][RoundController] Starting a new round...[/color]");
+        GD.PrintRich("[color=violet][RoundController] Starting a new round...[/color]");
 
         SetRoundState(RoundState.RoundStart);
 

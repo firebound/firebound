@@ -40,6 +40,7 @@ namespace DiceRolling.Controllers;
 ///     </list>
 /// </remarks>
 [Tool]
+[GlobalClass]
 [Icon("res://assets/editor/controller.svg")]
 public partial class BattleController : Node {
     private static BattleController? _instance;
@@ -137,13 +138,30 @@ public partial class BattleController : Node {
     // }
 
     private void InitializeControllers() {
-        // Create controllers
+        // Create controllers as child nodes
         _queueController = new QueueController();
-        _turnController = new TurnController(_queueController);
+        _queueController.Name = "QueueController";
+        AddChild(_queueController);
+
+        _turnController = new TurnController();
+        _turnController.Name = "TurnController";
+        AddChild(_turnController);
+
         _actionsController = new ActionsController();
-        _roundController = new RoundController(_actionsController, _turnController);
+        _actionsController.Name = "ActionsController";
+        AddChild(_actionsController);
+
+        _roundController = new RoundController();
+        _roundController.Name = "RoundController";
+        AddChild(_roundController);
+
         _battleResultsController = new BattleResultsController();
+        _battleResultsController.Name = "BattleResultsController";
+        AddChild(_battleResultsController);
+
         _postBattleController = new PostBattleController();
+        _postBattleController.Name = "PostBattleController";
+        AddChild(_postBattleController);
     }
 
     // Starts a new battle with the specified teams

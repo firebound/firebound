@@ -23,17 +23,24 @@ namespace DiceRolling.Controllers;
 ///         <item>- Finaliza o turno de um personagem</item>
 ///     </list>
 /// </remarks>
-public partial class TurnController : RefCounted {
+[GlobalClass]
+public partial class TurnController : Node {
     private QueueController? _queueController;
     private IReadOnlyDictionary<CharacterType, DeclaredActionInfo>? _declaredActions; // Store the declared actions
 
-    public TurnController() {
+    public override void _Ready() {
+        // Defer getting references until all controllers are initialized
+        CallDeferred(nameof(InitializeReferences));
         ConnectEvents();
     }
 
-    public TurnController(QueueController? queueController) {
-        _queueController = queueController ?? new QueueController();
-        ConnectEvents();
+    private void InitializeReferences() {
+        // Get reference to QueueController from sibling nodes
+        _queueController = GetParent()?.GetNode<QueueController>("QueueController");
+    }
+
+    public override void _ExitTree() {
+        DisconnectEvents();
     }
 
     private void ConnectEvents() {
@@ -44,6 +51,13 @@ public partial class TurnController : RefCounted {
     }
 
     public void StartTurnsResolution() {
+        // Wait for initialization if QueueController is not ready yet
+        if (_queueController == null) {
+            GD.PrintRich("[color=pink]TurnController: QueueController not initialized yet, deferring StartTurnsResolution...[/color]");
+            CallDeferred(nameof(StartTurnsResolution));
+            return;
+        }
+
         GD.PrintRich("[color=pink]TurnController: Starting turns resolution.[/color]");
         _declaredActions = BattleController.Instance.ActionsController?.DeclaredActions;
 
