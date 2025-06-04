@@ -166,7 +166,8 @@ public partial class RoundController : Node {
         if (hasPlayerAlive && hasEnemyAlive) {
             GD.PrintRich("[color=violet][RoundController] Battle continues. Starting next round.[/color]");
             // If the battle should continue, initiate the next round.
-            StartRound();
+            // Use CallDeferred to avoid recursion issues
+            CallDeferred(nameof(StartRound));
         }
         // If battle should end
         else {

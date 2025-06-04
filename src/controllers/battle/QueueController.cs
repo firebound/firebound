@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using DiceRolling.Characters;
+using DiceRolling.Stores;
 
 namespace DiceRolling.Controllers;
 
@@ -42,7 +43,8 @@ public partial class QueueController : Node {
         BattleEvents.Instance.CharacterAddedToQueue += OnCharacterAddedToQueue;
         BattleEvents.Instance.CharacterRemovedFromQueue += OnCharacterRemovedFromQueue;
         BattleEvents.Instance.CharacterInitiativeModified += OnCharacterInitiativeModified;
-
+        BattleEvents.Instance.TurnEnded += OnTurnEnded;
+        BattleEvents.Instance.RoundStarted += OnRoundStarted;
     }
 
     private void DisconnectEvents() {
@@ -51,6 +53,8 @@ public partial class QueueController : Node {
             BattleEvents.Instance.CharacterAddedToQueue -= OnCharacterAddedToQueue;
             BattleEvents.Instance.CharacterRemovedFromQueue -= OnCharacterRemovedFromQueue;
             BattleEvents.Instance.CharacterInitiativeModified -= OnCharacterInitiativeModified;
+            BattleEvents.Instance.TurnEnded -= OnTurnEnded;
+            BattleEvents.Instance.RoundStarted -= OnRoundStarted;
         }
     }
 
@@ -164,6 +168,13 @@ public partial class QueueController : Node {
     }
 
     public CharacterType? GetNextCharacter() {
+        if (_initiativeQueue.Count > 0) {
+            return _initiativeQueue.Dequeue(); // Remove and return the next character
+        }
+        return null;
+    }
+
+    public CharacterType? PeekNextCharacter() {
         return _initiativeQueue.Count > 0 ? _initiativeQueue.Peek() : null;
     }
 
@@ -190,5 +201,69 @@ public partial class QueueController : Node {
     private void OnCharacterInitiativeModified(CharacterType character) {
         GD.PrintRich("[color=pink]Event CharacterInitiativeModified fired on QueueController, re-sorting queue.[/color]");
         SortQueue();
+    }
+
+    private void OnTurnEnded(CharacterType character) {
+        GD.PrintRich($"[color=pink]Event TurnEnded fired on QueueController for {character.Name}.[/color]");
+
+        // Check if character should be removed from queue (e.g., if dead)
+        var attributesStore = AttributesStore.Instance;
+        var healthAttribute = attributesStore.GetAttributeByName("Health");
+
+        if (healthAttribute != null) {
+            int currentHealth = character.GetAttributeCurrentValue(healthAttribute);
+            if (currentHealth <= 0) {
+                GD.PrintRich($"[color=pink]Character {character.Name} has died (health: {currentHealth}). Removing from initiative queue.[/color]");
+                RemoveCharacterFromQueue(character);
+                return;
+            }
+        }
+
+        // Don't readd character to queue here - let TurnController handle queue management
+        // Characters will be readded to queue when a new round starts
+        GD.PrintRich($"[color=pink]Character {character.Name} turn ended. Remaining in queue: {_initiativeQueue.Count}[/color]");
+    }
+
+    private void OnRoundStarted(int roundNumber) {
+        GD.PrintRich($"[color=pink]Event RoundStarted fired on QueueController for round {roundNumber}.[/color]");
+
+        // Repopulate the queue with all living characters for the new round
+        RepopulateQueueForNewRound();
+    }
+
+    private void RepopulateQueueForNewRound() {
+        GD.PrintRich("[color=pink]QueueController: Repopulating queue for new round with all living characters.[/color]");
+
+        // Get all characters from battle controller
+        var allCharacters = BattleController.Instance.GetAllCharacters();
+        var attributesStore = AttributesStore.Instance;
+        var healthAttribute = attributesStore.GetAttributeByName("Health");
+
+        _initiativeQueue.Clear();
+
+        // Add only living characters to the queue
+        foreach (var character in allCharacters) {
+            if (character.Obj is CharacterType characterType) {
+                // Check if character is alive
+                bool isAlive = true;
+                if (healthAttribute != null) {
+                    int currentHealth = characterType.GetAttributeCurrentValue(healthAttribute);
+                    isAlive = currentHealth > 0;
+                }
+
+                if (isAlive) {
+                    _initiativeQueue.Enqueue(characterType);
+                    GD.PrintRich($"[color=pink]Added {characterType.Name} to new round queue (health: {(healthAttribute != null ? characterType.GetAttributeCurrentValue(healthAttribute) : "unknown")})[/color]");
+                }
+                else {
+                    GD.PrintRich($"[color=pink]Skipped dead character {characterType.Name} (health: {(healthAttribute != null ? characterType.GetAttributeCurrentValue(healthAttribute) : "unknown")})[/color]");
+                }
+            }
+        }
+
+        // Sort the queue by initiative
+        SortQueue();
+
+        GD.PrintRich($"[color=pink]Queue repopulated with {_initiativeQueue.Count} living characters.[/color]");
     }
 }

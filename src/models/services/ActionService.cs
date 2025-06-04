@@ -34,6 +34,7 @@ public static class ActionService {
 
         // If energy is required but the character has none available, they cannot afford it.
         if (character.AvailableEnergy == null || character.AvailableEnergy.Count == 0) {
+            GD.PrintRich($"[color=yellow]{character.Name} has no available energy (AvailableEnergy: {character.AvailableEnergy?.Count ?? 0})[/color]");
             return false;
         }
 
@@ -57,7 +58,7 @@ public static class ActionService {
             }
             // If a required energy type couldn't be found in the available pool, the character cannot afford the action.
             if (!foundAndRemoved) {
-                GD.Print($"{character.Name} cannot afford {action.Name}: Missing {required.Name}");
+                GD.PrintRich($"[color=yellow]{character.Name} cannot afford {action.Name}: Missing {required.Name}. Available energies: [{string.Join(", ", character.AvailableEnergy.Select(e => e?.Name ?? "null"))}][/color]");
                 return false;
             }
         }

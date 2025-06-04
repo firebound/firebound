@@ -122,25 +122,38 @@ public partial class TurnController : Node {
         if (declaredInfo.IsPass()) {
             GD.PrintRich($"[color=pink]TurnController: {character.Name} passes the turn.[/color]");
         }
-        else if (declaredInfo.Action != null) {
-            GD.PrintRich($"[color=pink]TurnController: Executing action '{declaredInfo.Action.Name}' for {character.Name} targeting {declaredInfo.Target?.Name ?? "None"}.[/color]");
+        else if (declaredInfo.Action != null && declaredInfo.Target != null) {
+            GD.PrintRich($"[color=pink]TurnController: Executing action '{declaredInfo.Action.Name}' for {character.Name} targeting {declaredInfo.Target.Name}.[/color]");
 
-            // Create context
-            var context = new ActionContext(character, declaredInfo.Target);
-
-            // Execute the action
-            bool success = declaredInfo.Action.Do(context); // Or use CharacterAction.Resolve if appropriate
-
-            if (success) {
-                // Consume the energy AFTER successful execution
-                ActionService.ConsumeEnergy(character, declaredInfo.Action);
-                GD.PrintRich($"[color=pink]TurnController: Action '{declaredInfo.Action.Name}' performed successfully by {character.Name}.[/color]");
-                BattleEvents.Instance.EmitActionPerformed(character); // Signal action success
+            // Validate the action can still be performed (energy check)
+            if (!ActionService.CanAffordAction(character, declaredInfo.Action)) {
+                GD.PrintRich($"[color=orange]TurnController: {character.Name} no longer has enough energy for '{declaredInfo.Action.Name}'. Action failed.[/color]");
             }
             else {
-                GD.PrintRich($"[color=orange]TurnController: Action '{declaredInfo.Action.Name}' failed for {character.Name}.[/color]");
-                // Handle action failure if needed (e.g., emit a different event)
+                // Create context for action execution
+                var context = new ActionContext(character, declaredInfo.Target);
+
+                try {
+                    // Execute the action through ActionType.Do() method
+                    bool success = declaredInfo.Action.Do(context);
+
+                    if (success) {
+                        // Consume the energy AFTER successful execution
+                        ActionService.ConsumeEnergy(character, declaredInfo.Action);
+                        GD.PrintRich($"[color=pink]TurnController: Action '{declaredInfo.Action.Name}' performed successfully by {character.Name} on {declaredInfo.Target.Name}.[/color]");
+                        BattleEvents.Instance.EmitActionPerformed(character); // Signal action success
+                    }
+                    else {
+                        GD.PrintRich($"[color=orange]TurnController: Action '{declaredInfo.Action.Name}' failed for {character.Name}.[/color]");
+                    }
+                }
+                catch (System.Exception ex) {
+                    GD.PrintErr($"TurnController: Exception during action execution for {character.Name}: {ex.Message}");
+                }
             }
+        }
+        else if (declaredInfo.Action != null) {
+            GD.PrintRich($"[color=orange]TurnController: Action '{declaredInfo.Action.Name}' for {character.Name} has no valid target. Skipping execution.[/color]");
         }
 
         // End the turn
@@ -149,8 +162,7 @@ public partial class TurnController : Node {
 
         // Process the next character
         // Add a slight delay or wait for animations if needed before processing next turn
-        // CallDeferred(nameof(ProcessNextCharacterTurn)); // Example using CallDeferred
-        ProcessNextCharacterTurn(); // Call directly for now
+        CallDeferred(nameof(ProcessNextCharacterTurn)); // Use CallDeferred to prevent stack overflow
     }
 
     private bool ShouldContinueBattle() {

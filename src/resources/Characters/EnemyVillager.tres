@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="CharacterType" load_steps=18 format=3 uid="uid://byngv32mrx7r4"]
+
+[ext_resource type="Script" uid="uid://cxt7qolwarsf1" path="res://models/data/Character/CharacterAction.cs" id="1_37j4d"]
+[ext_resource type="Resource" uid="uid://c8xr12tkory0k" path="res://resources/Actions/ArcaneStrike.tres" id="2_rv43t"]
+[ext_resource type="Script" uid="uid://6shb3cqcf2bt" path="res://models/data/Character/CharacterAttribute.cs" id="3_slgkv"]
+[ext_resource type="Resource" uid="uid://c765rrtwoaq76" path="res://resources/Attributes/Health.tres" id="4_bdug3"]
+[ext_resource type="Resource" uid="uid://blv7vekuqpawn" path="res://resources/Attributes/Speed.tres" id="5_c6m3f"]
+[ext_resource type="Resource" uid="uid://d37vh6vtgnxkp" path="res://resources/Attributes/Armor.tres" id="6_q43ld"]
+[ext_resource type="PackedScene" uid="uid://sytggmo8kub0" path="res://assets/characters/villager/idle.blend" id="7_c7rbg"]
+[ext_resource type="Script" uid="uid://6jc2e71j4ljb" path="res://models/data/Dice/DiceType.cs" id="8_hp8oc"]
+[ext_resource type="Resource" uid="uid://dqt7qsspicnj4" path="res://resources/Dice/TestingDice.tres" id="9_mspst"]
+[ext_resource type="Resource" uid="uid://bjc78p06uwuy3" path="res://resources/Locations/EnemySquad.tres" id="10_l5w7d"]
+[ext_resource type="Texture2D" uid="uid://04v6gisw8i5w" path="res://assets/characters/villager/villager_portrait.png" id="11_c2noe"]
+[ext_resource type="Resource" uid="uid://bjfhwocmqh4uy" path="res://resources/Roles/EnemyVillager.tres" id="12_yw1dm"]
+[ext_resource type="Script" uid="uid://0ip2w43r0d2a" path="res://models/data/Character/CharacterType.cs" id="13_y0kya"]
+
+[sub_resource type="Resource" id="Resource_xjnof"]
+script = ExtResource("1_37j4d")
+Type = ExtResource("2_rv43t")
+
+[sub_resource type="Resource" id="Resource_g87f5"]
+script = ExtResource("3_slgkv")
+Type = ExtResource("4_bdug3")
+MaxValue = 50
+CurrentValue = 50
+BaseValue = 50
+
+[sub_resource type="Resource" id="Resource_u7p37"]
+script = ExtResource("3_slgkv")
+Type = ExtResource("5_c6m3f")
+MaxValue = 10
+CurrentValue = 10
+BaseValue = 10
+
+[sub_resource type="Resource" id="Resource_n2x2v"]
+script = ExtResource("3_slgkv")
+Type = ExtResource("6_q43ld")
+MaxValue = 10
+CurrentValue = 10
+BaseValue = 10
+
+[resource]
+script = ExtResource("13_y0kya")
+Name = "EnemyVillager"
+Portrait = ExtResource("11_c2noe")
+CharacterAnimations = {
+"Idle": ExtResource("7_c7rbg")
+}
+PixelSize = 0.01
+ShowShadow = false
+SpritePositionX = 0.0
+SpritePositionY = 0.0
+Role = ExtResource("12_yw1dm")
+Attributes = Array[ExtResource("3_slgkv")]([SubResource("Resource_g87f5"), SubResource("Resource_u7p37"), SubResource("Resource_n2x2v")])
+Actions = Array[ExtResource("1_37j4d")]([SubResource("Resource_xjnof")])
+EquippedDice = Array[ExtResource("8_hp8oc")]([ExtResource("9_mspst")])
+Location = ExtResource("10_l5w7d")
+SlotIndex = 0
+Id = "927ed185-9e76-467b-a2ed-e4ba9e338733"
+metadata/_custom_type_script = "uid://0ip2w43r0d2a"

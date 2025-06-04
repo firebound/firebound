@@ -67,7 +67,10 @@ public partial class ActionsController : Node {
         GD.PrintRich("[color=cyan]ActionsController: Rolling dice for player characters...[/color]");
 
         foreach (var playerCharacter in _playerTeam) {
+            GD.PrintRich($"[color=cyan]Rolling dice for {playerCharacter.Name}. Equipped dice count: {playerCharacter.EquippedDice?.Count ?? 0}[/color]");
             playerCharacter.RollEquippedDiceForEnergy();
+            GD.PrintRich($"[color=cyan]{playerCharacter.Name} now has {playerCharacter.AvailableEnergy?.Count ?? 0} available energy[/color]");
+            BattleEvents.Instance.EmitPlayerEnergyRolled(playerCharacter);
         }
 
         GD.PrintRich("[color=cyan]ActionsController: Player dice rolling complete.[/color]");
@@ -148,7 +151,7 @@ public partial class ActionsController : Node {
 
                 // Check Energy
                 if (!ActionService.CanAffordAction(player, actionType)) {
-                    GD.Print($"Player {player.Name} cannot afford {actionType.Name}");
+                    GD.PrintRich($"[color=yellow]Player {player.Name} cannot afford {actionType.Name}. Required: {actionType.RequiredEnergy?.Count ?? 0} energies, Available: {player.AvailableEnergy?.Count ?? 0} energies[/color]");
                     continue;
                 }
 
@@ -172,7 +175,7 @@ public partial class ActionsController : Node {
             if (!actionDeclared) {
                 // Store a "Pass" action if none was valid
                 _declaredActions[player] = new DeclaredActionInfo(); // Pass action
-                GD.PrintRich($"[color=cyan]Player {player.Name} could not find any valid action to declare (Pass).[/color]");
+                GD.PrintRich($"[color=yellow]Player {player.Name} could not find any valid action to declare. Passing turn.[/color]");
                 BattleEvents.Instance.EmitPlayerActionDeclared(player);
             }
         }
