@@ -133,34 +133,36 @@ public partial class BattleController : Node {
         StartBattle();
     }
 
-    // public override void _Process(double delta) {
-    //     base._Process(delta);
-    // }
-
     private void InitializeControllers() {
         // Create controllers as child nodes
-        _queueController = new QueueController();
-        _queueController.Name = "QueueController";
+        _queueController = new QueueController {
+            Name = "QueueController"
+        };
         AddChild(_queueController);
 
-        _turnController = new TurnController();
-        _turnController.Name = "TurnController";
+        _turnController = new TurnController {
+            Name = "TurnController"
+        };
         AddChild(_turnController);
 
-        _actionsController = new ActionsController();
-        _actionsController.Name = "ActionsController";
+        _actionsController = new ActionsController {
+            Name = "ActionsController"
+        };
         AddChild(_actionsController);
 
-        _roundController = new RoundController();
-        _roundController.Name = "RoundController";
+        _roundController = new RoundController {
+            Name = "RoundController"
+        };
         AddChild(_roundController);
 
-        _battleResultsController = new BattleResultsController();
-        _battleResultsController.Name = "BattleResultsController";
+        _battleResultsController = new BattleResultsController {
+            Name = "BattleResultsController"
+        };
         AddChild(_battleResultsController);
 
-        _postBattleController = new PostBattleController();
-        _postBattleController.Name = "PostBattleController";
+        _postBattleController = new PostBattleController {
+            Name = "PostBattleController"
+        };
         AddChild(_postBattleController);
     }
 

@@ -76,15 +76,52 @@ public partial class QueueController : Node {
 
     // Sort the initiative queue based on character initiative values
     private void SortQueue() {
-        // Convert queue to list, sort it, then rebuild the queue
-        var sortedCharacters = _initiativeQueue.OrderByDescending(c => GetCharacterInitiative(c)).ToList();
+        // Convert queue to list for sorting
+        var characterList = _initiativeQueue.ToList();
+
+        // Create a dictionary to store tie-breaking values for display
+        var tieBreakingValues = new Dictionary<CharacterType, int>();
+
+        // Group by initiative and then randomize within each group
+        var sortedCharacters = characterList
+            .GroupBy(c => GetCharacterInitiative(c))
+            .OrderByDescending(group => group.Key) // Sort groups by initiative (highest first)
+            .SelectMany(group => {
+                // Check if tie-breaking is needed
+                if (group.Count() > 1) {
+                    GD.PrintRich($"[color=pink]Tie-breaking needed for initiative {group.Key}: {string.Join(", ", group.Select(c => c.Name))}[/color]");
+
+                    // Generate tie-breaking values for each character in the group
+                    foreach (var character in group) {
+                        tieBreakingValues[character] = (int)(GD.Randf() * 100); // Generate 0-99
+                    }
+                }
+                else {
+                    // No tie-breaking needed, but still assign a value for consistent display
+                    foreach (var character in group) {
+                        tieBreakingValues[character] = 0;
+                    }
+                }
+
+                // Sort within group by tie-breaking value (highest first for consistency)
+                var shuffledGroup = group.OrderByDescending(c => tieBreakingValues[c]).ToList();
+
+                if (group.Count() > 1) {
+                    GD.PrintRich($"[color=pink]After tie-breaking: {string.Join(", ", shuffledGroup.Select(c => $"{c.Name}({tieBreakingValues[c]})"))}[/color]");
+                }
+
+                return shuffledGroup;
+            })
+            .ToList();
+
         _initiativeQueue = new Queue<CharacterType>(sortedCharacters);
 
-        // Print queue information
+        // Print queue information with tie-breaking values
         GD.PrintRich("[color=pink]=== INITIATIVE QUEUE ===[/color]");
         int i = 1;
         foreach (var character in _initiativeQueue) {
             int initiative = GetCharacterInitiative(character);
+            int tieBreaker = tieBreakingValues.GetValueOrDefault(character, 0);
 
             // Determine team based on location
             string team = "Unknown";
@@ -95,7 +132,9 @@ public partial class QueueController : Node {
                 team = "Enemy";
             }
 
-            GD.PrintRich($"[color=pink]{i++}. {character.Name} (Team: {team}) - Initiative: {initiative}.[/color]");
+            // Show tie-breaking value only if it was used (when there were ties)
+            string tieBreakDisplay = tieBreaker > 0 ? $" + tie-breaking({tieBreaker})" : "";
+            GD.PrintRich($"[color=pink]{i++}. {character.Name} (Team: {team}) - Initiative: {initiative}{tieBreakDisplay}.[/color]");
         }
         GD.PrintRich("[color=pink]======================[/color]");
     }

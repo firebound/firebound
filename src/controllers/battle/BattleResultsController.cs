@@ -99,10 +99,43 @@ public partial class BattleResultsController : Node {
         return noPlayersLeft;
     }
 
+    // Método centralizado para verificar se a batalha deve continuar
+    // Usado tanto pelo RoundController quanto TurnController para evitar duplicação
+    public static bool ShouldBattleContinue() {
+        var battleController = BattleController.Instance;
+        if (battleController == null) {
+            GD.PrintErr("BattleResultsController: BattleController instance is null.");
+            return false;
+        }
+
+        var playerTeam = battleController.GetPlayerTeam();
+        var enemyTeam = battleController.GetEnemyTeam();
+        var attributesStore = GD.Load<AttributesStore>("res://resources/Attributes/AttributesStore.tres");
+        var healthAttribute = AttributesHelper.GetAttributeType(attributesStore, "Health");
+
+        if (healthAttribute == null) {
+            GD.PrintErr("BattleResultsController: Health attribute not found.");
+            return true; // Continue battle if we can't check health properly
+        }
+
+        bool hasPlayerAlive = playerTeam.Any(p => p != null && p.GetAttributeCurrentValue(healthAttribute) > 0);
+        bool hasEnemyAlive = enemyTeam.Any(e => e != null && e.GetAttributeCurrentValue(healthAttribute) > 0);
+
+        return hasPlayerAlive && hasEnemyAlive;
+    }
+
     // Transição para a fase de pós-batalha
     private void TransitionToPostBattle(bool victory) {
         // Atualiza o estado da batalha para finalizada
         BattleController.Instance.SetBattleState(BattleState.End);
+
+        // Chama o PostBattleController diretamente para exibir as telas apropriadas
+        if (victory) {
+            PostBattleController.ShowVictoryScreen();
+        }
+        else {
+            PostBattleController.ShowGameOverScreen();
+        }
 
         // Notifica o fim da batalha
         BattleEvents.Instance.EmitBattleEnded(victory);

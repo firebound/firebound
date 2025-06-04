@@ -1,8 +1,6 @@
 using Godot;
-using System.Linq;
 using System.Collections.Generic;
 using DiceRolling.Characters;
-using DiceRolling.Stores;
 using DiceRolling.Actions;
 using DiceRolling.Services;
 
@@ -166,37 +164,16 @@ public partial class TurnController : Node {
     }
 
     private bool ShouldContinueBattle() {
-        // Check if both teams still have active characters
-        var battleController = BattleController.Instance;
-        if (battleController == null) {
-            GD.PrintErr("TurnController: BattleController instance is null. Cannot check battle state.");
-            return false; // Cannot determine, assume end
+        // Usa o método centralizado do BattleResultsController para consistência
+        bool shouldContinue = BattleResultsController.ShouldBattleContinue();
+
+        if (!shouldContinue) {
+            GD.PrintRich("[color=pink]TurnController: Battle ending condition met.[/color]");
+        }
+        else {
+            GD.PrintRich("[color=pink]TurnController: Battle continuing - both teams have active characters.[/color]");
         }
 
-        // Get alive characters from each team
-        var playerTeam = battleController.GetPlayerTeam();
-        var enemyTeam = battleController.GetEnemyTeam();
-
-        // Get attributes store for health check - Consider making AttributesStore a singleton or injecting it
-        var attributesStore = AttributesStore.Instance; // Use singleton instance
-        var healthAttribute = attributesStore.GetAttributeByName("Health"); // Use method from store
-
-        if (healthAttribute == null) {
-            GD.PrintErr("TurnController: Health attribute not found in AttributesStore.");
-            return true; // Continue battle if we can't check health properly
-        }
-
-        // Check if there are alive characters in both teams
-        bool hasPlayerAlive = playerTeam.Any(p => p.GetAttributeCurrentValue(healthAttribute) > 0);
-        bool hasEnemyAlive = enemyTeam.Any(e => e.GetAttributeCurrentValue(healthAttribute) > 0);
-
-        // If either team has no living characters, battle should end
-        if (!hasPlayerAlive || !hasEnemyAlive) {
-            GD.PrintRich($"[color=pink]TurnController: Battle ending condition met - Players alive: {hasPlayerAlive}, Enemies alive: {hasEnemyAlive}.[/color]");
-            return false;
-        }
-
-        GD.PrintRich("[color=pink]TurnController: Battle continuing - both teams have active characters.[/color]");
-        return true;
+        return shouldContinue;
     }
 }
