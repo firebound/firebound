@@ -11,42 +11,58 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_57e7p")
-NameLabel = NodePath("AttributesList/AttributeTemplate/Title")
-CurrentValueLabel = NodePath("AttributesList/AttributeTemplate/ValueContainer/CurrentValue")
-MaxValueLabel = NodePath("AttributesList/AttributeTemplate/ValueContainer/MaxValue")
+NameLabel = NodePath("AttributesList/MarginContainer/Title")
+CurrentValueLabel = NodePath("AttributesList/ValueContainer/CurrentValue")
+MaxValueLabel = NodePath("AttributesList/ValueContainer/MaxValue")
 metadata/_custom_type_script = "uid://btewr614c85bw"
 
-[node name="AttributesList" type="VBoxContainer" parent="."]
+[node name="AttributesList" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 
-[node name="AttributeTemplate" type="VBoxContainer" parent="AttributesList"]
+[node name="MarginContainer" type="MarginContainer" parent="AttributesList"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="Title" type="Label" parent="AttributesList/AttributeTemplate"]
-layout_mode = 2
-text = "ATTRIBUTE NAME"
-
-[node name="ValueContainer" type="HBoxContainer" parent="AttributesList/AttributeTemplate"]
-layout_mode = 2
-
-[node name="CurrentValue" type="Label" parent="AttributesList/AttributeTemplate/ValueContainer"]
+[node name="Title" type="Label" parent="AttributesList/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "CURRENT"
+size_flags_vertical = 3
+text = "TITLE"
+vertical_alignment = 1
 
-[node name="Separator" type="Label" parent="AttributesList/AttributeTemplate/ValueContainer"]
+[node name="ValueContainer" type="HBoxContainer" parent="AttributesList"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CurrentValue" type="Label" parent="AttributesList/ValueContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "CURRENT VALUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator" type="Label" parent="AttributesList/ValueContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 text = "/"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MaxValue" type="Label" parent="AttributesList/AttributeTemplate/ValueContainer"]
+[node name="MaxValue" type="Label" parent="AttributesList/ValueContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "MAX"
-horizontal_alignment = 2
+size_flags_vertical = 1
+text = "MAX VALUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
