@@ -20,7 +20,8 @@ namespace DiceRolling.Controllers;
 ///         <item>- Recebe comandos de declaração de ações dos personagens dos jogadores</item>
 ///     </list>
 /// </remarks>
-public partial class ActionsController : RefCounted {
+[GlobalClass]
+public partial class ActionsController : Node {
     private readonly HashSet<CharacterType> _charactersDeclaredActions = [];
     private readonly Dictionary<CharacterType, DeclaredActionInfo> _declaredActions = new();
     private List<CharacterType> _playerTeam = [];
@@ -28,8 +29,12 @@ public partial class ActionsController : RefCounted {
 
     public IReadOnlyDictionary<CharacterType, DeclaredActionInfo> DeclaredActions => _declaredActions;
 
-    public ActionsController() {
+    public override void _Ready() {
         ConnectEvents();
+    }
+
+    public override void _ExitTree() {
+        DisconnectEvents();
     }
 
     private void ConnectEvents() {
@@ -62,7 +67,10 @@ public partial class ActionsController : RefCounted {
         GD.PrintRich("[color=cyan]ActionsController: Rolling dice for player characters...[/color]");
 
         foreach (var playerCharacter in _playerTeam) {
+            GD.PrintRich($"[color=cyan]Rolling dice for {playerCharacter.Name}. Equipped dice count: {playerCharacter.EquippedDice?.Count ?? 0}[/color]");
             playerCharacter.RollEquippedDiceForEnergy();
+            GD.PrintRich($"[color=cyan]{playerCharacter.Name} now has {playerCharacter.AvailableEnergy?.Count ?? 0} available energy[/color]");
+            BattleEvents.Instance.EmitPlayerEnergyRolled(playerCharacter);
         }
 
         GD.PrintRich("[color=cyan]ActionsController: Player dice rolling complete.[/color]");
@@ -143,7 +151,7 @@ public partial class ActionsController : RefCounted {
 
                 // Check Energy
                 if (!ActionService.CanAffordAction(player, actionType)) {
-                    GD.Print($"Player {player.Name} cannot afford {actionType.Name}");
+                    GD.PrintRich($"[color=yellow]Player {player.Name} cannot afford {actionType.Name}. Required: {actionType.RequiredEnergy?.Count ?? 0} energies, Available: {player.AvailableEnergy?.Count ?? 0} energies[/color]");
                     continue;
                 }
 
@@ -167,7 +175,7 @@ public partial class ActionsController : RefCounted {
             if (!actionDeclared) {
                 // Store a "Pass" action if none was valid
                 _declaredActions[player] = new DeclaredActionInfo(); // Pass action
-                GD.PrintRich($"[color=cyan]Player {player.Name} could not find any valid action to declare (Pass).[/color]");
+                GD.PrintRich($"[color=yellow]Player {player.Name} could not find any valid action to declare. Passing turn.[/color]");
                 BattleEvents.Instance.EmitPlayerActionDeclared(player);
             }
         }

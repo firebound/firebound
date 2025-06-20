@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using DiceRolling.Characters;
+using DiceRolling.Stores;
 
 namespace DiceRolling.Controllers;
 
@@ -22,13 +23,18 @@ namespace DiceRolling.Controllers;
 ///         <item>- Fornece informações sobre os próximos personagens a agir</item>
 ///     </list>
 /// </remarks>
-public partial class QueueController : RefCounted {
+[GlobalClass]
+public partial class QueueController : Node {
     // The initiative queue (order of characters' turns)
     private Queue<CharacterType> _initiativeQueue = new Queue<CharacterType>();
     public IEnumerable<CharacterType> InitiativeQueue => _initiativeQueue;
 
-    public QueueController() {
+    public override void _Ready() {
         ConnectEvents();
+    }
+
+    public override void _ExitTree() {
+        DisconnectEvents();
     }
 
     private void ConnectEvents() {
@@ -37,7 +43,8 @@ public partial class QueueController : RefCounted {
         BattleEvents.Instance.CharacterAddedToQueue += OnCharacterAddedToQueue;
         BattleEvents.Instance.CharacterRemovedFromQueue += OnCharacterRemovedFromQueue;
         BattleEvents.Instance.CharacterInitiativeModified += OnCharacterInitiativeModified;
-
+        BattleEvents.Instance.TurnEnded += OnTurnEnded;
+        BattleEvents.Instance.RoundStarted += OnRoundStarted;
     }
 
     private void DisconnectEvents() {
@@ -46,6 +53,8 @@ public partial class QueueController : RefCounted {
             BattleEvents.Instance.CharacterAddedToQueue -= OnCharacterAddedToQueue;
             BattleEvents.Instance.CharacterRemovedFromQueue -= OnCharacterRemovedFromQueue;
             BattleEvents.Instance.CharacterInitiativeModified -= OnCharacterInitiativeModified;
+            BattleEvents.Instance.TurnEnded -= OnTurnEnded;
+            BattleEvents.Instance.RoundStarted -= OnRoundStarted;
         }
     }
 
@@ -67,15 +76,52 @@ public partial class QueueController : RefCounted {
 
     // Sort the initiative queue based on character initiative values
     private void SortQueue() {
-        // Convert queue to list, sort it, then rebuild the queue
-        var sortedCharacters = _initiativeQueue.OrderByDescending(c => GetCharacterInitiative(c)).ToList();
+        // Convert queue to list for sorting
+        var characterList = _initiativeQueue.ToList();
+
+        // Create a dictionary to store tie-breaking values for display
+        var tieBreakingValues = new Dictionary<CharacterType, int>();
+
+        // Group by initiative and then randomize within each group
+        var sortedCharacters = characterList
+            .GroupBy(c => GetCharacterInitiative(c))
+            .OrderByDescending(group => group.Key) // Sort groups by initiative (highest first)
+            .SelectMany(group => {
+                // Check if tie-breaking is needed
+                if (group.Count() > 1) {
+                    GD.PrintRich($"[color=pink]Tie-breaking needed for initiative {group.Key}: {string.Join(", ", group.Select(c => c.Name))}[/color]");
+
+                    // Generate tie-breaking values for each character in the group
+                    foreach (var character in group) {
+                        tieBreakingValues[character] = (int)(GD.Randf() * 100); // Generate 0-99
+                    }
+                }
+                else {
+                    // No tie-breaking needed, but still assign a value for consistent display
+                    foreach (var character in group) {
+                        tieBreakingValues[character] = 0;
+                    }
+                }
+
+                // Sort within group by tie-breaking value (highest first for consistency)
+                var shuffledGroup = group.OrderByDescending(c => tieBreakingValues[c]).ToList();
+
+                if (group.Count() > 1) {
+                    GD.PrintRich($"[color=pink]After tie-breaking: {string.Join(", ", shuffledGroup.Select(c => $"{c.Name}({tieBreakingValues[c]})"))}[/color]");
+                }
+
+                return shuffledGroup;
+            })
+            .ToList();
+
         _initiativeQueue = new Queue<CharacterType>(sortedCharacters);
 
-        // Print queue information
+        // Print queue information with tie-breaking values
         GD.PrintRich("[color=pink]=== INITIATIVE QUEUE ===[/color]");
         int i = 1;
         foreach (var character in _initiativeQueue) {
             int initiative = GetCharacterInitiative(character);
+            int tieBreaker = tieBreakingValues.GetValueOrDefault(character, 0);
 
             // Determine team based on location
             string team = "Unknown";
@@ -86,7 +132,9 @@ public partial class QueueController : RefCounted {
                 team = "Enemy";
             }
 
-            GD.PrintRich($"[color=pink]{i++}. {character.Name} (Team: {team}) - Initiative: {initiative}.[/color]");
+            // Show tie-breaking value only if it was used (when there were ties)
+            string tieBreakDisplay = tieBreaker > 0 ? $" + tie-breaking({tieBreaker})" : "";
+            GD.PrintRich($"[color=pink]{i++}. {character.Name} (Team: {team}) - Initiative: {initiative}{tieBreakDisplay}.[/color]");
         }
         GD.PrintRich("[color=pink]======================[/color]");
     }
@@ -159,6 +207,13 @@ public partial class QueueController : RefCounted {
     }
 
     public CharacterType? GetNextCharacter() {
+        if (_initiativeQueue.Count > 0) {
+            return _initiativeQueue.Dequeue(); // Remove and return the next character
+        }
+        return null;
+    }
+
+    public CharacterType? PeekNextCharacter() {
         return _initiativeQueue.Count > 0 ? _initiativeQueue.Peek() : null;
     }
 
@@ -185,5 +240,69 @@ public partial class QueueController : RefCounted {
     private void OnCharacterInitiativeModified(CharacterType character) {
         GD.PrintRich("[color=pink]Event CharacterInitiativeModified fired on QueueController, re-sorting queue.[/color]");
         SortQueue();
+    }
+
+    private void OnTurnEnded(CharacterType character) {
+        GD.PrintRich($"[color=pink]Event TurnEnded fired on QueueController for {character.Name}.[/color]");
+
+        // Check if character should be removed from queue (e.g., if dead)
+        var attributesStore = AttributesStore.Instance;
+        var healthAttribute = attributesStore.GetAttributeByName("Health");
+
+        if (healthAttribute != null) {
+            int currentHealth = character.GetAttributeCurrentValue(healthAttribute);
+            if (currentHealth <= 0) {
+                GD.PrintRich($"[color=pink]Character {character.Name} has died (health: {currentHealth}). Removing from initiative queue.[/color]");
+                RemoveCharacterFromQueue(character);
+                return;
+            }
+        }
+
+        // Don't readd character to queue here - let TurnController handle queue management
+        // Characters will be readded to queue when a new round starts
+        GD.PrintRich($"[color=pink]Character {character.Name} turn ended. Remaining in queue: {_initiativeQueue.Count}[/color]");
+    }
+
+    private void OnRoundStarted(int roundNumber) {
+        GD.PrintRich($"[color=pink]Event RoundStarted fired on QueueController for round {roundNumber}.[/color]");
+
+        // Repopulate the queue with all living characters for the new round
+        RepopulateQueueForNewRound();
+    }
+
+    private void RepopulateQueueForNewRound() {
+        GD.PrintRich("[color=pink]QueueController: Repopulating queue for new round with all living characters.[/color]");
+
+        // Get all characters from battle controller
+        var allCharacters = BattleController.Instance.GetAllCharacters();
+        var attributesStore = AttributesStore.Instance;
+        var healthAttribute = attributesStore.GetAttributeByName("Health");
+
+        _initiativeQueue.Clear();
+
+        // Add only living characters to the queue
+        foreach (var character in allCharacters) {
+            if (character.Obj is CharacterType characterType) {
+                // Check if character is alive
+                bool isAlive = true;
+                if (healthAttribute != null) {
+                    int currentHealth = characterType.GetAttributeCurrentValue(healthAttribute);
+                    isAlive = currentHealth > 0;
+                }
+
+                if (isAlive) {
+                    _initiativeQueue.Enqueue(characterType);
+                    GD.PrintRich($"[color=pink]Added {characterType.Name} to new round queue (health: {(healthAttribute != null ? characterType.GetAttributeCurrentValue(healthAttribute) : "unknown")})[/color]");
+                }
+                else {
+                    GD.PrintRich($"[color=pink]Skipped dead character {characterType.Name} (health: {(healthAttribute != null ? characterType.GetAttributeCurrentValue(healthAttribute) : "unknown")})[/color]");
+                }
+            }
+        }
+
+        // Sort the queue by initiative
+        SortQueue();
+
+        GD.PrintRich($"[color=pink]Queue repopulated with {_initiativeQueue.Count} living characters.[/color]");
     }
 }

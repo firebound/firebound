@@ -24,70 +24,77 @@ script = ExtResource("1_rgds7")
 PreviewCharacterData = ExtResource("2_tqj6p")
 metadata/_custom_type_script = "uid://bjfejchykefts"
 
-[node name="MainContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 
-[node name="PortraitMargin" type="MarginContainer" parent="MainContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="PortraitMargin" type="MarginContainer" parent="HBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="CharacterPortrait" type="TextureRect" parent="MainContainer/PortraitMargin"]
+[node name="CharacterPortrait" type="TextureRect" parent="HBoxContainer/HBoxContainer/HBoxContainer/PortraitMargin"]
 layout_mode = 2
 texture = ExtResource("3_qti0a")
-expand_mode = 2
 stretch_mode = 5
 script = ExtResource("2_acmgq")
 metadata/_custom_type_script = "uid://bfbtej5ynhelf"
 
-[node name="DetailsContainer" type="VBoxContainer" parent="MainContainer"]
+[node name="DetailsMargin" type="MarginContainer" parent="HBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
-
-[node name="DetailsMargin" type="MarginContainer" parent="MainContainer/DetailsContainer"]
-layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="CharacterProperties" type="VBoxContainer" parent="MainContainer/DetailsContainer/DetailsMargin"]
+[node name="CharacterProperties" type="VBoxContainer" parent="HBoxContainer/HBoxContainer/HBoxContainer/DetailsMargin"]
 layout_mode = 2
 alignment = 1
 
-[node name="CharacterName" type="Label" parent="MainContainer/DetailsContainer/DetailsMargin/CharacterProperties"]
+[node name="CharacterName" type="Label" parent="HBoxContainer/HBoxContainer/HBoxContainer/DetailsMargin/CharacterProperties"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Eleonore"
+horizontal_alignment = 2
+vertical_alignment = 1
 script = ExtResource("3_iov45")
 metadata/_custom_type_script = "uid://dfwmeacqfxfdw"
 
-[node name="CharacterRole" type="Label" parent="MainContainer/DetailsContainer/DetailsMargin/CharacterProperties"]
+[node name="CharacterRole" type="Label" parent="HBoxContainer/HBoxContainer/HBoxContainer/DetailsMargin/CharacterProperties"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Mage"
+horizontal_alignment = 2
+vertical_alignment = 1
 script = ExtResource("4_f26iu")
 metadata/_custom_type_script = "uid://cuifmxs7wt3yg"
 
-[node name="DataContainer" type="HBoxContainer" parent="MainContainer/DetailsContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="AttributesScroll" type="ScrollContainer" parent="MainContainer/DetailsContainer/DataContainer"]
+[node name="ActionsScroll" type="ScrollContainer" parent="HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 vertical_scroll_mode = 2
 
-[node name="AttributesMargin" type="MarginContainer" parent="MainContainer/DetailsContainer/DataContainer/AttributesScroll"]
+[node name="ActionsMargin" type="MarginContainer" parent="HBoxContainer/HBoxContainer/ActionsScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -96,33 +103,37 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="AttributeList" type="VBoxContainer" parent="MainContainer/DetailsContainer/DataContainer/AttributesScroll/AttributesMargin"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("5_tqj6p")
-AttributeDisplayScene = ExtResource("6_f26iu")
-metadata/_custom_type_script = "uid://vw8re4xt4ics"
-
-[node name="ActionsScroll" type="ScrollContainer" parent="MainContainer/DetailsContainer/DataContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-vertical_scroll_mode = 2
-
-[node name="ActionsMargin" type="MarginContainer" parent="MainContainer/DetailsContainer/DataContainer/ActionsScroll"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="ActionList" type="GridContainer" parent="MainContainer/DetailsContainer/DataContainer/ActionsScroll/ActionsMargin"]
+[node name="ActionList" type="GridContainer" parent="HBoxContainer/HBoxContainer/ActionsScroll/ActionsMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 script = ExtResource("7_78p11")
 ActionButtonScene = ExtResource("8_tqj6p")
 metadata/_custom_type_script = "uid://d023ags5u1bed"
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttributesScroll" type="ScrollContainer" parent="HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+vertical_scroll_mode = 2
+
+[node name="AttributesMargin" type="MarginContainer" parent="HBoxContainer/HBoxContainer2/AttributesScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="AttributeList" type="VBoxContainer" parent="HBoxContainer/HBoxContainer2/AttributesScroll/AttributesMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_tqj6p")
+AttributeDisplayScene = ExtResource("6_f26iu")
+metadata/_custom_type_script = "uid://vw8re4xt4ics"

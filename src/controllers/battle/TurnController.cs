@@ -1,8 +1,6 @@
 using Godot;
-using System.Linq;
 using System.Collections.Generic;
 using DiceRolling.Characters;
-using DiceRolling.Stores;
 using DiceRolling.Actions;
 using DiceRolling.Services;
 
@@ -23,17 +21,24 @@ namespace DiceRolling.Controllers;
 ///         <item>- Finaliza o turno de um personagem</item>
 ///     </list>
 /// </remarks>
-public partial class TurnController : RefCounted {
+[GlobalClass]
+public partial class TurnController : Node {
     private QueueController? _queueController;
     private IReadOnlyDictionary<CharacterType, DeclaredActionInfo>? _declaredActions; // Store the declared actions
 
-    public TurnController() {
+    public override void _Ready() {
+        // Defer getting references until all controllers are initialized
+        CallDeferred(nameof(InitializeReferences));
         ConnectEvents();
     }
 
-    public TurnController(QueueController? queueController) {
-        _queueController = queueController ?? new QueueController();
-        ConnectEvents();
+    private void InitializeReferences() {
+        // Get reference to QueueController from sibling nodes
+        _queueController = GetParent()?.GetNode<QueueController>("QueueController");
+    }
+
+    public override void _ExitTree() {
+        DisconnectEvents();
     }
 
     private void ConnectEvents() {
@@ -44,6 +49,13 @@ public partial class TurnController : RefCounted {
     }
 
     public void StartTurnsResolution() {
+        // Wait for initialization if QueueController is not ready yet
+        if (_queueController == null) {
+            GD.PrintRich("[color=pink]TurnController: QueueController not initialized yet, deferring StartTurnsResolution...[/color]");
+            CallDeferred(nameof(StartTurnsResolution));
+            return;
+        }
+
         GD.PrintRich("[color=pink]TurnController: Starting turns resolution.[/color]");
         _declaredActions = BattleController.Instance.ActionsController?.DeclaredActions;
 
@@ -108,25 +120,38 @@ public partial class TurnController : RefCounted {
         if (declaredInfo.IsPass()) {
             GD.PrintRich($"[color=pink]TurnController: {character.Name} passes the turn.[/color]");
         }
-        else if (declaredInfo.Action != null) {
-            GD.PrintRich($"[color=pink]TurnController: Executing action '{declaredInfo.Action.Name}' for {character.Name} targeting {declaredInfo.Target?.Name ?? "None"}.[/color]");
+        else if (declaredInfo.Action != null && declaredInfo.Target != null) {
+            GD.PrintRich($"[color=pink]TurnController: Executing action '{declaredInfo.Action.Name}' for {character.Name} targeting {declaredInfo.Target.Name}.[/color]");
 
-            // Create context
-            var context = new ActionContext(character, declaredInfo.Target);
-
-            // Execute the action
-            bool success = declaredInfo.Action.Do(context); // Or use CharacterAction.Resolve if appropriate
-
-            if (success) {
-                // Consume the energy AFTER successful execution
-                ActionService.ConsumeEnergy(character, declaredInfo.Action);
-                GD.PrintRich($"[color=pink]TurnController: Action '{declaredInfo.Action.Name}' performed successfully by {character.Name}.[/color]");
-                BattleEvents.Instance.EmitActionPerformed(character); // Signal action success
+            // Validate the action can still be performed (energy check)
+            if (!ActionService.CanAffordAction(character, declaredInfo.Action)) {
+                GD.PrintRich($"[color=orange]TurnController: {character.Name} no longer has enough energy for '{declaredInfo.Action.Name}'. Action failed.[/color]");
             }
             else {
-                GD.PrintRich($"[color=orange]TurnController: Action '{declaredInfo.Action.Name}' failed for {character.Name}.[/color]");
-                // Handle action failure if needed (e.g., emit a different event)
+                // Create context for action execution
+                var context = new ActionContext(character, declaredInfo.Target);
+
+                try {
+                    // Execute the action through ActionType.Do() method
+                    bool success = declaredInfo.Action.Do(context);
+
+                    if (success) {
+                        // Consume the energy AFTER successful execution
+                        ActionService.ConsumeEnergy(character, declaredInfo.Action);
+                        GD.PrintRich($"[color=pink]TurnController: Action '{declaredInfo.Action.Name}' performed successfully by {character.Name} on {declaredInfo.Target.Name}.[/color]");
+                        BattleEvents.Instance.EmitActionPerformed(character); // Signal action success
+                    }
+                    else {
+                        GD.PrintRich($"[color=orange]TurnController: Action '{declaredInfo.Action.Name}' failed for {character.Name}.[/color]");
+                    }
+                }
+                catch (System.Exception ex) {
+                    GD.PrintErr($"TurnController: Exception during action execution for {character.Name}: {ex.Message}");
+                }
             }
+        }
+        else if (declaredInfo.Action != null) {
+            GD.PrintRich($"[color=orange]TurnController: Action '{declaredInfo.Action.Name}' for {character.Name} has no valid target. Skipping execution.[/color]");
         }
 
         // End the turn
@@ -135,42 +160,20 @@ public partial class TurnController : RefCounted {
 
         // Process the next character
         // Add a slight delay or wait for animations if needed before processing next turn
-        // CallDeferred(nameof(ProcessNextCharacterTurn)); // Example using CallDeferred
-        ProcessNextCharacterTurn(); // Call directly for now
+        CallDeferred(nameof(ProcessNextCharacterTurn)); // Use CallDeferred to prevent stack overflow
     }
 
     private bool ShouldContinueBattle() {
-        // Check if both teams still have active characters
-        var battleController = BattleController.Instance;
-        if (battleController == null) {
-            GD.PrintErr("TurnController: BattleController instance is null. Cannot check battle state.");
-            return false; // Cannot determine, assume end
+        // Usa o método centralizado do BattleResultsController para consistência
+        bool shouldContinue = BattleResultsController.ShouldBattleContinue();
+
+        if (!shouldContinue) {
+            GD.PrintRich("[color=pink]TurnController: Battle ending condition met.[/color]");
+        }
+        else {
+            GD.PrintRich("[color=pink]TurnController: Battle continuing - both teams have active characters.[/color]");
         }
 
-        // Get alive characters from each team
-        var playerTeam = battleController.GetPlayerTeam();
-        var enemyTeam = battleController.GetEnemyTeam();
-
-        // Get attributes store for health check - Consider making AttributesStore a singleton or injecting it
-        var attributesStore = AttributesStore.Instance; // Use singleton instance
-        var healthAttribute = attributesStore.GetAttributeByName("Health"); // Use method from store
-
-        if (healthAttribute == null) {
-            GD.PrintErr("TurnController: Health attribute not found in AttributesStore.");
-            return true; // Continue battle if we can't check health properly
-        }
-
-        // Check if there are alive characters in both teams
-        bool hasPlayerAlive = playerTeam.Any(p => p.GetAttributeCurrentValue(healthAttribute) > 0);
-        bool hasEnemyAlive = enemyTeam.Any(e => e.GetAttributeCurrentValue(healthAttribute) > 0);
-
-        // If either team has no living characters, battle should end
-        if (!hasPlayerAlive || !hasEnemyAlive) {
-            GD.PrintRich($"[color=pink]TurnController: Battle ending condition met - Players alive: {hasPlayerAlive}, Enemies alive: {hasEnemyAlive}.[/color]");
-            return false;
-        }
-
-        GD.PrintRich("[color=pink]TurnController: Battle continuing - both teams have active characters.[/color]");
-        return true;
+        return shouldContinue;
     }
 }

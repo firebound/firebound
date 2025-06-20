@@ -34,7 +34,9 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_eybki"]
 uv2_padding = 0.0
 
-[node name="BattleController" type="Node"]
+[node name="Battle" type="Node3D"]
+
+[node name="BattleController" type="Node" parent="."]
 script = ExtResource("1_hf7dd")
 PlayerCharacterStore = ExtResource("5_0omgf")
 EnemyCharacterStore = ExtResource("7_rbvwj")

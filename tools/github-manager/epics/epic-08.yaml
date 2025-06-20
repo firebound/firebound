@@ -9,22 +9,30 @@ sub-issues:
     description: |
       Como jogador, quero que a batalha comece com meus personagens e inimigos posicionados na grid para que o combate possa ser iniciado.
     sub-issues:
-      - title: "📝 Task 8.1.1: Definir locais para os personagens na grid de batalha"
+      - title: "📝 Task 8.1.1: Configurar posicionamento automático de personagens na grid"
         type: "📝 Task"
         state: "open"
         description: |
-          - Os personagens do jogador precisam ser posicionados de acordo com a configuração deles na equipe do player (PlayerSquad).
-          - Especificar o conjunto de coordenadas na grid de batalha onde os inimigos podem ser colocados programaticamente no início de uma batalha.
-      - title: "📝 Task 8.1.2: Implementar Instanciação e Posicionamento de Inimigos no BattleController"
+          Implementar sistema que:
+          - Cria grids de batalha (2x3) para player e inimigos
+          - Define posições configuráveis via PlayerGridPosition e EnemyGridPosition
+          - Posiciona automaticamente personagens nas células disponíveis
+      - title: "📝 Task 8.1.2: Implementar sistema de geração e posicionamento de times"
         type: "📝 Task"
         state: "open"
         description: |
-          Modificar o script BattleController.cs. Quando uma batalha começar, este script deve ser responsável por criar instâncias de personagens inimigos (provavelmente de uma PackedScene ou recurso CharacterType) e então posicionar estas instâncias na grid de batalha em um dos locais de spawn válidos definidos na Tarefa 8.1.1.
-      - title: "📝 Task 8.1.3: Registrar Inimigos Instanciados no TurnController"
+          Configurar BattleController para:
+          - Gerar inimigos a partir de EnemyCharacterStore
+          - Combinar times de player e inimigos
+          - Emitir eventos para posicionamento automático
+      - title: "📝 Task 8.1.3: Integrar personagens na fila de iniciativa"
         type: "📝 Task"
         state: "open"
         description: |
-          Após os personagens inimigos serem instanciados e posicionados na grid pelo BattleController, eles devem ser registrados no TurnController.cs. Isso garante que eles sejam adicionados à fila de turnos e participem do fluxo de turnos da batalha.
+          QueueController deve:
+          - Receber evento CharactersPositioned
+          - Calcular ordem de iniciativa baseada no atributo Speed
+          - Criar fila ordenada para controle de turnos
 
   - title: "📖 Story 8.2: Gerenciamento de Energia"
     type: "📖 Feature / Story"
@@ -32,26 +40,38 @@ sub-issues:
     description: |
       Como personagem, quero rolar meus dados no início do meu turno para ganhar energia e poder usá-la em ações.
     sub-issues:
-      - title: "📝 Task 8.2.1: Configurar Recursos CharacterType com Recursos DiceType Pré-definidos"
+      - title: "📝 Task 8.2.1: Validar configuração de dados nos recursos CharacterType"
         type: "📝 Task"
         state: "open"
         description: |
-          Para cada recurso CharacterType.tres que será usado para personagens jogadores e inimigos, use o Inspetor do Godot para atribuir recursos DiceType.tres específicos à sua propriedade EquippedDice (ou equivalente). Isso define quais dados cada tipo de personagem rolará para gerar energia.
-      - title: "📝 Task 8.2.2: Implementar lógica de rolagem de dados no início do turno do personagem do jogador no ActionsController"
+          Verificar que:
+          - PlayerVillager.tres tem TestingDice.tres equipado
+          - EnemyVillager.tres tem dados configurados
+          - Propriedade EquippedDice está populada corretamente
+      - title: "📝 Task 8.2.2: Integrar rolagem de energia na fase de declaração de ações"
         type: "📝 Task"
         state: "open"
         description: |
-          Modificar TurnController.cs. Quando for determinado que o turno de um personagem controlado pelo jogador está começando, o controlador deve acionar o mecanismo de rolagem de dados para aquele personagem. Isso envolve chamar o método existente CharacterType.RollEquippedDiceForEnergy() ou uma função similar associada ao personagem ativo para simular a rolagem dos dados.
-      - title: "📝 Task 8.2.3: Atualizar a energia atual do personagem baseado no resultado da Rolagem de Dados"
+          ActionsController deve:
+          - Rolar dados para jogadores na StartActionsDeclaration()
+          - Chamar RollEquippedDiceForEnergy() para cada personagem
+          - Emitir evento PlayerEnergyRolled após rolagem
+      - title: "📝 Task 8.2.3: Validar atualização automática de energia após rolagem"
         type: "📝 Task"
         state: "open"
         description: |
-          Após os dados serem rolados (conforme Tarefa 8.2.2), o valor de energia resultante precisa atualizar o pool de energia atual do personagem ativo. Isso tipicamente envolve modificar um atributo de energia dentro de um componente CharacterStats.cs ou uma estrutura de dados em tempo de execução associada ao CharacterType.
-      - title: "📝 Task 8.2.4: Implementar subtração de custo de energia para ações no ActionsController"
+          Sistema deve:
+          - Limpar AvailableEnergy antes da rolagem
+          - Adicionar energias roladas à AvailableEnergy
+          - Garantir que energia está disponível para validação de ações
+      - title: "📝 Task 8.2.4: Validar sistema de consumo de energia durante execução de ações"
         type: "📝 Task"
         state: "open"
         description: |
-          Quando um personagem executa uma ação que tem um custo de energia (definido em seu recurso ActionType), o sistema deve subtrair este custo do pool de energia atual do personagem. Esta lógica deve ser implementada dentro do ActionsController.cs (quando uma ação é processada) ou usando o CharacterService.
+          ActionService deve:
+          - Validar energia suficiente com CanAffordAction()
+          - Consumir energia após execução com ConsumeEnergy()
+          - Ser chamado pelo TurnController durante ExecuteCharacterAction()
 
   - title: "📖 Story 8.3: Ciclo Básico de Round e Turnos"
     type: "📖 Feature / Story"
@@ -59,21 +79,38 @@ sub-issues:
     description: |
       Como sistema, quero gerenciar a progressão dos turnos e rounds de forma ordenada para que a batalha siga uma estrutura lógica.
     sub-issues:
-      - title: "📝 Task 8.3.1: Implementar cálculo de iniciativa e definição da ordem Inicial de turnos no TurnController"
+      - title: "📝 Task 8.3.1: Validar sistema de iniciativa baseado em atributo Speed"
         type: "📝 Task"
         state: "open"
         description: |
-          Aprimorar TurnController.cs para calcular uma pontuação de iniciativa para cada personagem participante da batalha no seu início. Baseado nestas pontuações (ex: maior iniciativa vai primeiro), o controlador estabelecerá a sequência inicial de turnos para o primeiro round.
-      - title: "📝 Task 8.3.2: Implementar progressão de turno para o próximo personagem no TurnController"
+          QueueController deve:
+          - Calcular iniciativa usando atributo Speed dos personagens
+          - Ordenar fila em ordem decrescente de iniciativa
+          - Criar fila ordenada automaticamente no início da batalha
+      - title: "📝 Task 8.3.2: Validar progressão sequencial de turnos"
         type: "📝 Task"
         state: "open"
         description: |
-          Dentro de TurnController.cs, implementar o mecanismo central para avançar o estado da batalha do turno do personagem atual para o próximo personagem na fila de ordem de turno pré-definida. Isso envolve desativar o personagem atual e ativar o próximo.
-      - title: "📝 Task 8.3.3: Implementar Detecção de Fim de Round e Início do Próximo Round no RoundController"
+          TurnController deve:
+          - Obter próximo personagem da fila via QueueController.GetNextCharacter()
+          - Executar turno do personagem atual
+          - Avançar automaticamente para próximo personagem
+          - Emitir TurnsResolved quando fila estiver vazia
+      - title: "📝 Task 8.3.3: Validar transição automática entre rounds"
         type: "📝 Task"
         state: "open"
         description: |
-          Desenvolver lógica dentro de RoundController.cs (ou TurnController se os rounds forem gerenciados lá) para detectar quando cada personagem na ordem de turno completou seu turno para o round atual. Após a detecção, o controlador deve acionar os processos necessários para concluir o round atual e iniciar um novo (ex: resetar ordem de turno se a iniciativa for rolada novamente, aplicar efeitos baseados no round).
+          RoundController deve:
+          - Detectar fim de round via evento TurnsResolved
+          - Verificar condições de continuidade da batalha
+          - Iniciar próximo round automaticamente se ambos os times estão vivos
+          - Integrar com BattleResultsController para fim de batalha
+      - title: "📝 Task 8.3.4: Implementar tie-breaking aleatório para iniciativa"
+        state: "open"
+        description: |
+          QueueController deve:
+          - Adicionar tie-breaking aleatório quando personagens têm mesma iniciativa
+          - Usar ThenBy(c => GD.Randf()) na ordenação
 
   - title: "📖 Story 8.4: Condições de Fim de Batalha"
     type: "📖 Feature / Story"
@@ -81,18 +118,27 @@ sub-issues:
     description: |
       Como sistema, quero detectar o fim da batalha quando um dos lados for completamente derrotado para declarar um vencedor.
     sub-issues:
-      - title: "📝 Task 8.4.1: Implementar verificações de condição dd fim da batalha na derrota de equipe"
+      - title: "📝 Task 8.4.1: Validar verificação automática de fim de batalha"
         type: "📝 Task"
         state: "open"
         description: |
-          Implementar um sistema que, tipicamente após cada ação ser resolvida ou ao final do turno de cada personagem, verifica o status de todos os personagens. Se todos os personagens pertencentes a uma equipe (todos os personagens jogadores ou todos os personagens inimigos) foram derrotados (ex: seu HP está em ou abaixo de 0), uma condição de fim de batalha é atendida.
-      - title: "📝 Task 8.4.2: Chamar BattleResultsController e Passar Resultado ao Fim da Batalha"
+          Sistema verifica automaticamente ao fim de cada round:
+          - RoundController.CheckBattleState() verifica HP de ambos os times
+          - TurnController.ShouldContinueBattle() valida continuidade
+          - Usa atributo Health para determinar personagens vivos
+      - title: "📝 Task 8.4.2: Validar integração automática com BattleResultsController"
         type: "📝 Task"
         state: "open"
         description: |
-          Uma vez que uma condição de fim de batalha (da Tarefa 8.4.1) é detectada, o sistema (provavelmente o BattleController ou TurnController) deve invocar o BattleResultsController.cs. Esta chamada deve incluir informação sobre o resultado da batalha (ex: um enum indicando Vitória do Jogador ou Derrota do Jogador).
-      - title: "📝 Task 8.4.3: Implementar exibição básica de resultado da batalha no BattleResultsController"
+          Sistema integra automaticamente via eventos:
+          - RoundEnded event dispara BattleResultsController.CheckBattleResult()
+          - CheckVictoryCondition() e CheckDefeatCondition() validam times
+          - EmitBattleResultChecked() e TransitionToPostBattle() executam transição
+      - title: "📝 Task 8.4.3: Completar integração de exibição de resultados"
         type: "📝 Task"
         state: "open"
         description: |
-          Em `BattleResultsController.cs`, adicionar lógica inicial para apresentar o resultado da batalha ao jogador. Isso pode ser tão simples quanto imprimir "Vitória!" ou "Derrota!" no console do Godot ou exibir uma label básica e não interativo na tela.
+          Finalizar integração entre BattleResultsController e PostBattleController:
+          - Console logging já implementado
+          - Adicionar chamadas diretas ao PostBattleController
+          - Garantir que ShowVictoryScreen/ShowGameOverScreen sejam executados
