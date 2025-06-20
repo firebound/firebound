@@ -62,7 +62,7 @@ Para executar os scripts definidos no arquivo [`package.json`](package.json):
 - Para processar os arquivos da API:
 
   ```sh
-  npm --prefix docs run start
+  npm --prefix docs run process-api
   ```
 
   O comando irá executar o código `node processApiFiles.js`, que trata os arquivos gerados pelo DocFX de acordo com [`processApiFiles.js`](processApiFiles.js)
