@@ -4,6 +4,26 @@ As ações representam tudo o que um personagem pode fazer durante o jogo, espec
 
 ---
 
+## Tipos de Ações
+
+### Ações Básicas
+
+As ações básicas estão disponíveis para todos os personagens e incluem:
+
+- **Mover**: Permite reposicionar o personagem no campo de batalha para uma célula adjacente, facilitando estratégias de ataque ou defesa.
+- **Defender**: Aumenta temporariamente a defesa do personagem, reduzindo o dano recebido até o próximo turno.
+- **Ataque Básico**: Determinado pela arma equipada, define o tipo de ataque padrão do personagem, como golpes corpo a corpo ou ataques à distância ou projéteis mágicos.
+
+### Habilidades Especiais
+
+As habilidades especiais são desbloqueadas conforme o personagem evolui e são determinadas pelos papéis e arquétipos. Elas podem incluir ataques poderosos, efeitos de suporte ou habilidades de controle.
+
+### Passiva Única
+
+Cada personagem possui uma habilidade passiva única, que reflete sua função. Essa habilidade é ativada automaticamente e não consome recursos, proporcionando vantagens constantes durante o jogo.
+
+---
+
 ## Categorias
 
 ### Fortalecimentos (Buffs)

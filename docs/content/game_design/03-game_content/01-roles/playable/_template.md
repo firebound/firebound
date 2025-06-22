@@ -10,23 +10,21 @@ Descrição / Lore.
 - **Funções**:
 - **Tier**:
 
+### Estilo de Jogo
+
+### Sinergia com Outros Papéis
+
+### Progressão e Estratégia
+
 ---
 
-## Atributos Básicos
+## Atributos Base
 
 - **Vida**:
 - **Defesa**:
 - **Poder de Ataque**:
 - **Velocidade**:
-
-## Atributos Elementais
-
-| Elemento  | Afinidade  | Resistência  |
-|-----------|------------|--------------|
-| Fogo      |            |              |
-| Água      |            |              |
-| Terra     |            |              |
-| Vento     |            |              |
+- **Resistência Elemental**:
 
 ---
 
@@ -36,30 +34,29 @@ O jogador pode escolher e evoluir as habilidades abaixo conforme avança de nív
 
 ### Passiva Única
 
-- .
+Fixo.
 
 ### Nível 1
 
-- .
+Fixo.
 
 ### Nível 5
 
-- .
-- .
+Duas opções.
 
 ### Nível 10
 
-- .
-- .
+Duas opções.
 
 ### Nível 15
 
-- .
-- .
+Duas opções.
 
 ---
 
 ## Equipamento inicial
 
-- **Arma**:
-- **Armadura**:
+- **Arma**
+- **Armadura**
+- **Botas**
+- **Adorno**

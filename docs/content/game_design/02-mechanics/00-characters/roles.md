@@ -34,17 +34,25 @@ A combinação desses três elementos cria arquétipos únicos, como um humano g
 
 Os atributos base são as características fundamentais que definem o desempenho de cada personagem em combate e outras situações. Eles são influenciados pela espécie, função e tier do personagem, refletindo sua força, resistência e habilidades especiais.
 
+> Exemplo: Um humano guerreiro pode ter alta força e resistência, enquanto um xamã pode ter atributos focados em magia e suporte.
+
 ---
 
 ## Equipamento Inicial
 
 O equipamento inicial é composto por itens que cada personagem recebe no início do jogo, refletindo sua espécie e função. Esses itens são essenciais para a sobrevivência e eficácia em combate, proporcionando vantagens iniciais.
 
+> Exemplo: Um guerreiro pode começar com uma lança tribal e armadura pesada, enquanto um curandeiro pode ter um cajado e um amuleto de cura.
+
 ---
 
 ## Ações Disponíveis
 
-O arquétipo de cada personagem determina as ações que ele pode realizar durante o jogo. E podem ser escolhidas conforme o personagem evolui, desbloqueando novas habilidades e estratégias.
+O arquétipo de cada personagem determina as ações que ele pode realizar durante o jogo. Essas ações podem ser escolhidas conforme o personagem evolui, desbloqueando novas habilidades e estratégias.
+
+- **Ações Básicas**: Disponíveis para todos os personagens, incluem ações como mover, defender e ataque básico. O ataque básico é determinado pela arma equipada.
+- **Habilidades Especiais**: Desbloqueadas conforme o personagem evolui, são definidas pelos papéis e arquétipos.
+- **Passiva Única**: Uma habilidade passiva exclusiva que reflete a espécie e função do personagem.
 
 A escolha de ações acontece nos níveis 5, 10 e 15, permitindo que os jogadores personalizem seus personagens de acordo com seu estilo de jogo e as necessidades do grupo.
 
@@ -53,3 +61,5 @@ A escolha de ações acontece nos níveis 5, 10 e 15, permitindo que os jogadore
 ## Passiva Única
 
 Cada personagem possui uma habilidade passiva única, que reflete sua espécie e função. Essa habilidade é ativada automaticamente e não consome recursos, proporcionando vantagens constantes durante o jogo.
+
+> Exemplo: Um guerreiro jaguar pode ter uma passiva que aumenta sua defesa ao permanecer imóvel, enquanto um curandeiro pode receber um bônus de cura quando estiver próximo a aliados feridos.

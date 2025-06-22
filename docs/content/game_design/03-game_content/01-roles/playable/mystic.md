@@ -10,27 +10,31 @@ O **Místico das Marés** é um seguidor de **Umasit**, manipulando as águas pa
 - **Funções**: Healer, Suporte Mágico, Controle
 - **Tier**: 1
 
+### Estilo de Jogo
+
+O Místico é ideal para jogadores que preferem um papel de suporte ativo, equilibrando cura, controle e mitigação de danos. Ele é mais eficaz em grupos que precisam de um curandeiro versátil.
+
+### Sinergia com Outros Papéis
+
+O Místico complementa bem papéis como Tanks e DPS. Ele pode proteger aliados vulneráveis com habilidades como **Correnteza Vital** e amplificar a sobrevivência do grupo com **Maré Restauradora**. Sua capacidade de controle com **Dilúvio Ancestral** também ajuda a mitigar ameaças em combates intensos.
+
+### Progressão e Estratégia
+
+Conforme o Místico avança de nível, ele se torna mais eficiente em curar e controlar o campo de batalha. No início, ele deve focar em manter aliados vivos com **Toque das Marés**. Em níveis mais altos, habilidades como **Maré Restauradora** e **Eterna Maré** tornam-no indispensável em batalhas prolongadas.
+
 ---
 
-## Atributos Básicos
+## Atributos Base
 
 - **Vida**: Média
 - **Defesa**: Baixa
 - **Poder de Ataque**: Médio (foco em magia)
 - **Velocidade**: Média
-
-## Atributos Elementais
-
-| Elemento  | Afinidade  | Resistência  |
-|-----------|------------|--------------|
-| Fogo      | Baixa      | Baixa        |
-| Água      | Alta       | Alta         |
-| Terra     | Neutra     | Neutra       |
-| Vento     | Neutra     | Neutra       |
+- **Resistência Elemental**: Alta contra Água, Baixa contra Fogo
 
 ---
 
-## Ações
+## Ações Disponíveis
 
 O jogador pode escolher e evoluir as habilidades abaixo conforme avança de nível:
 

@@ -10,33 +10,37 @@ O **Guardião de Murikaan** é um guerreiro indomável que incorpora os ideais d
 - **Funções**: Tank, Protetor, Controle de Campo
 - **Tier**: 1
 
+### Estilo de Jogo
+
+O Guardião é ideal para jogadores que preferem um papel defensivo e estratégico, protegendo aliados e controlando o campo de batalha. Ele é mais eficaz em grupos que precisam de um personagem robusto para absorver dano e atrair a atenção dos inimigos.
+
+### Sinergia com Outros Papéis
+
+O Guardião complementa bem papéis como Healers e DPS. Ele pode proteger aliados vulneráveis com habilidades como **Muralha Viva** e **Chamariz Rochoso**, enquanto sua resistência permite que os aliados foquem em causar dano ou curar sem interrupções.
+
+### Progressão e Estratégia
+
+Conforme o Guardião avança de nível, ele se torna mais eficiente em absorver dano e controlar o campo de batalha. No início, ele deve focar em reduzir o dano recebido com **Postura Inabalável**. Em níveis mais altos, habilidades como **Montanha Eterna** e **Firmeza Inquebrantável** tornam-no indispensável em combates prolongados.
+
 ---
 
-## Atributos Básicos
+## Atributos Base
 
 - **Vida**: Alta
 - **Defesa**: Alta
 - **Poder de Ataque**: Médio
 - **Velocidade**: Baixa
-
-## Atributos Elementais
-
-| Elemento  | Afinidade  | Resistência  |
-|-----------|------------|--------------|
-| Fogo      | Neutra     | Neutra       |
-| Água      | Fraca      | Fraca        |
-| Terra     | Alta       | Alta         |
-| Vento     | Baixa      | Baixa        |
+- **Resistência Elemental**: Alta contra Terra, Baixa contra Vento
 
 ---
 
-## Ações
+## Ações Disponíveis
 
 O jogador pode escolher e evoluir as habilidades abaixo conforme avança de nível:
 
 ### Passiva Única
 
-- **Fortaleza Inabalável**: Defesa aumenta quanto mais tempo permanece
+- **Fortaleza Inabalável**: Aumenta a defesa do Guardião quanto mais tempo ele permanece no mesmo local.
 
 ### Nível 1
 
@@ -61,7 +65,7 @@ O jogador pode escolher e evoluir as habilidades abaixo conforme avança de nív
 
 ## Equipamento inicial
 
-- **Arma**: Bastão
-- **Armadura**: Armadura Pesada de couro
-- **Botas**: Botas reforçadas
+- **Arma**: Bastão ou Martelo de Guerra
+- **Armadura**: Armadura Pesada de couro (bônus de defesa)
+- **Botas**: Botas reforçadas (bônus de resistência a empurrões)
 - **Adorno**: Amuleto de pedra (bônus de defesa)

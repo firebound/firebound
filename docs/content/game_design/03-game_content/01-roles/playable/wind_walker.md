@@ -10,27 +10,31 @@ A **Caminhante dos ventos** é a emissária da deusa **Saikiliq**, trazendo a ju
 - **Funções**: DPS de Curto Alcance, Golpes Rápidos, Alta Iniciativa
 - **Tier**: 1
 
+### Estilo de Jogo
+
+A Caminhante dos Ventos é ideal para jogadores que preferem um estilo de combate ágil e estratégico, focado em ataques rápidos e controle de iniciativa. Ela é mais eficaz em grupos que precisam de um personagem para eliminar rapidamente alvos prioritários.
+
+### Sinergia com Outros Papéis
+
+A Caminhante dos Ventos complementa bem papéis como Tanks e Suportes. Sua alta mobilidade e capacidade de reduzir a iniciativa inimiga permitem que aliados mais lentos tenham vantagem no combate. Além disso, suas habilidades de dano em área e letalidade ajudam a limpar grupos de inimigos rapidamente.
+
+### Progressão e Estratégia
+
+Conforme a Caminhante dos Ventos avança de nível, ela se torna mais eficiente em controlar o campo de batalha e eliminar alvos prioritários. No início, ela deve focar em reduzir a iniciativa inimiga com **Gume da Tempestade**. Em níveis mais altos, habilidades como **Execução da Águia** e **Dança dos Quatro Ventos** tornam-na indispensável em combates intensos.
+
 ---
 
-## Atributos Básicos
+## Atributos Base
 
 - **Vida**: Média
 - **Defesa**: Baixa
 - **Poder de Ataque**: Médio-Alto
 - **Velocidade**: Alta
-
-## Atributos Elementais
-
-| Elemento     | Afinidade  | Resistência  |
-|--------------|------------|--------------|
-| 🔥 Fogo      | Neutra     | Neutra       |
-| 💧 Água      | Neutra     | Neutra       |
-| ⛰️ Terra     | Baixa      | Baixa        |
-| 🍃 Vento     | Alta       | Alta         |
+- **Resistência Elemental**: Alta contra Vento, Baixa contra Terra
 
 ---
 
-## Ações
+## Ações Disponíveis
 
 O jogador pode escolher e evoluir as habilidades abaixo conforme avança de nível:
 
@@ -62,6 +66,6 @@ O jogador pode escolher e evoluir as habilidades abaixo conforme avança de nív
 ## Equipamento inicial
 
 - **Arma**: Tomo-hawk duplo, Lâminas de Osso ou Bastão
-- **Armadura**: Traje leve de fibras e penas
-- **Botas**: Botas de couro flexíveis
+- **Armadura**: Traje leve de fibras e penas (bônus de mobilidade)
+- **Botas**: Botas de couro flexíveis (bônus de velocidade)
 - **Adorno**: Pingente de pena (bônus de iniciativa)
