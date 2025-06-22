@@ -21,7 +21,10 @@ const config: Config = {
     onBrokenLinks: 'warn',
     onBrokenMarkdownLinks: 'warn',
 
-    future: { experimental_faster: true },
+    future: {
+        experimental_faster: true,
+        v4: true,
+    },
 
     i18n: {
         defaultLocale: 'pt',
@@ -81,6 +84,7 @@ const config: Config = {
                     type: 'dropdown',
                     label: 'Framework',
                     position: 'left' as const,
+                    activeBasePath: 'docs/framework',
                     items: [
                         {
                             type: 'docSidebar',
@@ -100,7 +104,7 @@ const config: Config = {
                     type: 'dropdown',
                     label: 'Jogo',
                     position: 'left' as const,
-                    activeBaseRegex: '/game/',
+                    activeBasePath: 'docs/game',
                     items: [
                         {
                             type: 'docSidebar',
