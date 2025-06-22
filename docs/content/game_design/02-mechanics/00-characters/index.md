@@ -12,7 +12,7 @@ As personagens evoluem ao longo do jogo, adquirindo novas habilidades e aumentan
 
 ## Atributos
 
-As personagens possuem **Atributos Básicos**, como vida, força e defesa, que determinam seu desempenho em combate. Os valores iniciais variam conforme os arquétipos e papéis (role) das personagens.
+As personagens possuem **Atributos Básicos**, como vida, escudo mágico, força e defesa, que determinam seu desempenho em combate. Os valores iniciais variam conforme os arquétipos e papéis (role) das personagens.
 
 > Exemplo: Um curandeiro pode começar com 30-40 de vida, enquanto um guerreiro tribal começa com 50-60.
 
@@ -32,7 +32,7 @@ As personagens utilizam Energia para realizar a maioria de suas ações especiai
 
 ## Ações
 
-Cada personagem pode realizar uma ação por turno em combate. As ações incluem mover, defender, ataque básico e uso de habilidades especiais. Novas habilidades podem ser adquiridas conforme a personagem evolui.
+Cada personagem pode realizar uma ação por turno em combate. As ações incluem mover, defender, ataque básico, uso de habilidades especiais e passiva única. Novas habilidades podem ser adquiridas conforme a personagem evolui.
 
 > Exemplo: Mover para um bloco adjacente, defender para aumentar a defesa temporariamente, ou usar uma habilidade inspirada em rituais ancestrais do clã.
 
@@ -41,6 +41,12 @@ Cada personagem pode realizar uma ação por turno em combate. As ações inclue
 ## Equipamentos
 
 Personagens possuem slots para equipamentos, que modificam atributos, concedem novas ações ou habilidades e influenciam a estratégia de combate.
+
+- **Dados**: Determinam a energia gerada para habilidades.
+- **Armas**: Definem o tipo de ataque básico e podem conceder habilidades.
+- **Armaduras**: Aumentam a defesa e podem conceder resistências.
+- **Botas**: Influenciam a mobilidade e velocidade.
+- **Adornos**: Concedem bônus variados, como aumento de atributos ou resistências.
 
 > Exemplo: Um cajado cerimonial permite ataques à distância, enquanto uma lança tribal define o tipo de ataque básico disponível.
 
@@ -51,6 +57,12 @@ Personagens possuem slots para equipamentos, que modificam atributos, concedem n
 Cada personagem pertence a um arquétipo e desempenha um papel específico no combate.
 
 Esses arquétipos definem as habilidades, atributos e equipamentos iniciais, que determinam a função da personagem na equipe, além de influenciar sua evolução e as estratégias de combate.
+
+- **Perfil**: Espécie, Funções (ex: Tank, Healer), Tier.
+- **Atributos Base**: Determinam os valores iniciais de atributos.
+- **Equipamento Inicial**: Define os itens iniciais do personagem.
+- **Ações Disponíveis**: Lista de habilidades que podem ser desbloqueadas.
+- **Passiva Única**: Uma habilidade passiva exclusiva de cada arquétipo.
 
 > Exemplos:
 >
