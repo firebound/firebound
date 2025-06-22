@@ -1,4 +1,4 @@
-# Guardião (Warden)
+# Guardião
 
 O **Guardião de Murikaan** é um guerreiro indomável que incorpora os ideais de paciência, estabilidade e resistência. Como uma rocha inabalável diante das tempestades, ele se posiciona entre seus aliados e o perigo, absorvendo impactos e repelindo inimigos com sua força monumental.
 

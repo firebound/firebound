@@ -1,4 +1,4 @@
-# Caminhante dos Ventos (Wind Walker)
+# Caminhante dos Ventos
 
 A **Caminhante dos ventos** é a emissária da deusa **Saikiliq**, trazendo a justiça veloz e impiedosa dos céus. Com a leveza de uma rajada e a precisão de um gavião em mergulho, ela desfere golpes rápidos e fatais com suas armas sagradas, ceifando aqueles que não seguem o caminho correto. Sua agilidade lhe permite se mover como o próprio vento, golpeando antes que seus inimigos possam reagir.
 

@@ -1,4 +1,4 @@
-# Místico (Mystic)
+# Místico
 
 O **Místico das Marés** é um seguidor de **Umasit**, manipulando as águas para restaurar vidas e revelar os segredos ocultos do fluxo do tempo. Ele invoca o poder das ondas para curar aliados, purificar venenos e desorientar inimigos. Assim como o oceano pode ser tanto calmo quanto devastador, este curandeiro oscila entre um suporte compassivo e um misterioso guardião das profundezas.
 

@@ -84,7 +84,7 @@ N/A
 
 - **CharacterType**: Representa um tipo de personagem no jogo e inclui suas informações, atributos, ações, recursos visuais, localização e papel.
 
-![CharacterType model](../../../public/architecture/02-features/characters/CharacterType.png)
+![CharacterType model](../../../../public/framework/architecture/02-features/characters/CharacterType.png)
 
 ### Types externos
 
