@@ -23,11 +23,11 @@ docs/
 ├── content/                # Conteúdo da documentação em Markdown
 │ ├── api/                  # Arquivos do DocFX processados para funcionar no DocFX
 │ ├── architecture/         # Arquivos relacionados à arquitetura do projeto
-│ ├── game_design/          # Arquivos relacionados ao design do jogo
+│ ├── design/          # Arquivos relacionados ao design do jogo
 │ ├── tutorials/            # Tutoriais e guias da Framework
 ├── public/                 # Assets estáticos (imagens, vídeos, etc.)
 │ ├── img/                  # Imagens
-│ └── game_design/          # Arquivos relacionados ao design do jogo
+│ └── design/          # Arquivos relacionados ao design do jogo
 └── src/                    # Projeto do Docusaurus
   ├── components/           # Componentes React
   ├── css/                  # Estilos CSS

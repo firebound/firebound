@@ -1,0 +1,78 @@
+import ZoomableDiagram from "@site/src/components/ZoomableDiagram/index.tsx";
+
+# Fluxo de batalha
+
+## Fases da Batalha
+
+### Fase 1: Setup da Batalha
+
+1. Geração de Inimigos
+
+   - Os inimigos são gerados e exibidos para o jogador;
+
+2. Posicionamento dos Personagens
+
+   - Os personagens da equipe dos jogadores e da equipe inimiga são posicionados nas células da grid de batalha;
+
+3. Fila de Iniciativa
+
+   - A fila de iniciativa é definida, organizando todos os personagens de acordo com suas velocidades;
+   - Em caso de empate, o desempate é determinado pela velocidade base do personagem, sem modificadores;
+   - Se mesmo assim houver empate, a ordem é aleatória;
+
+4. Início das Rodadas
+   - Transição para a primeira rodada.
+
+---
+
+### Fase 2: Rodadas
+
+1. Início da Rodada
+
+2. Declaração de Ações
+
+   - Inimigos declaram suas ações e alvos;
+   - Personagens dos Jogadores rolam os dados equipados para coletar mana;
+   - Jogadores escolhem ações e alvos para seus personagens;
+   - Transição para a resolução dos turnos.
+
+3. Resolução em Turnos
+
+   - Cada personagem executa sua ação, na ordem da fila de iniciativa;
+   - Se um personagem morrer, ele é removido da fila de iniciativa;
+   - Personagens são movidos para o final da fila após executar sua ação.
+
+4. Fim da Rodada
+   - Após todos os personagens terem agido, a rodada termina;
+   - Se apenas uma equipe tiver personagens vivos, a batalha termina;
+   - Caso contrário, uma nova rodada começa.
+
+#### Pré-visualização de Ações
+
+Durante a declaração de ações, os jogadores podem **pré-visualizar** os resultados das ações de seus personagens e dos inimigos. Isso permite ajustar sua estratégia antes da execução das ações.
+
+Por exemplo, ao selecionar um inimigo como alvo, o jogador pode ver **o dano estimado** e **quaisquer efeitos colaterais** que a ação possa causar. Da mesma forma, pode verificar o impacto das ações inimigas e tentar mitigar seus efeitos.
+
+---
+
+### Fase 3: Resultado da Batalha
+
+1. Verificação
+
+   - Se todos os inimigos forem derrotados, o jogador vence a batalha;
+   - Se todos os personagens dos jogadores forem derrotados, a batalha termina com um game over.
+
+2. Transição para o Pós-Batalha
+
+---
+
+### Fase 4: Pós-Batalha
+
+- Recompensas
+  - O jogador recebe recompensas pela vitória, como experiência, ouro e itens;
+  - Os personagens podem subir de nível e aprender novas habilidades.
+
+ou
+
+- Game Over
+  - Tela exibida ao final de uma sessão de jogo, onde o jogador pode carregar um jogo salvo, voltar ao menu principal ou sair do jogo.

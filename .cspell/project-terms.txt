@@ -2,7 +2,9 @@ Abyka
 Agarrão
 Areiuno
 cherokees
+debuff
 Debuff
+Debuffer
 debuffs
 diceroll
 dicerolling
@@ -11,6 +13,7 @@ gameplay
 Gameplay
 gamificação
 Harutai
+Humanóide
 Humanóides
 imrp
 iratus

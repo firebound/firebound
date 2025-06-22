@@ -3,9 +3,9 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const apiDir = path.join(__dirname, 'api');
-const docsApiDir = path.join(__dirname, 'content', 'api');
+const docsApiDir = path.join(__dirname, 'content/framework', 'api');
 const tocFilePath = path.join(__dirname, 'api', 'toc.yml');
-const processedTocFilePath = path.join(__dirname, 'content', 'api', 'toc_processed.json');
+const processedTocFilePath = path.join(__dirname, 'content/framework', 'api', 'toc_processed.json');
 
 // Ensure the destination directory exists
 if (!fs.existsSync(docsApiDir)) {
@@ -97,14 +97,14 @@ const processToc = (tocFilePath, processedTocFilePath) => {
                 if (item.href) {
                     category.link = {
                         type: 'doc',
-                        id: `api/${item.href.replace('.md', '')}`,
+                        id: `framework/api/${item.href.replace('.md', '')}`,
                     };
                 }
                 return category;
             } else {
                 return {
                     type: 'doc',
-                    id: `api/${item.href.replace('.md', '')}`,
+                    id: `framework/api/${item.href.replace('.md', '')}`,
                     label: item.name,
                 };
             }
