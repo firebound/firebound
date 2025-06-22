@@ -71,14 +71,6 @@ const config: Config = {
                 src: 'img/logo.svg',
             },
             items: [
-                ...(fs.existsSync(path.join(__dirname, 'content', 'api', 'toc_processed.json')) ? [
-                    {
-                        type: 'docSidebar',
-                        sidebarId: 'apiSidebar',
-                        position: 'left' as const,
-                        label: 'API',
-                    }
-                ] : []),
                 {
                     type: 'docSidebar',
                     sidebarId: 'tutorialsSidebar',
@@ -86,16 +78,41 @@ const config: Config = {
                     label: 'Tutoriais',
                 },
                 {
-                    type: 'docSidebar',
-                    sidebarId: 'architectureSidebar',
-                    position: 'left' as const,
+                    type: 'dropdown',
                     label: 'Framework',
+                    position: 'left' as const,
+                    items: [
+                        {
+                            type: 'docSidebar',
+                            sidebarId: 'architectureSidebar',
+                            label: 'Arquitetura',
+                        },
+                        ...(fs.existsSync(path.join(__dirname, 'content/framework', 'api', 'toc_processed.json')) ? [
+                            {
+                                type: 'docSidebar',
+                                sidebarId: 'apiSidebar',
+                                label: 'API',
+                            }
+                        ] : []),
+                    ],
                 },
                 {
-                    type: 'docSidebar',
-                    sidebarId: 'gameDesignSidebar',
+                    type: 'dropdown',
+                    label: 'Jogo',
                     position: 'left' as const,
-                    label: 'O jogo',
+                    activeBaseRegex: '/game/',
+                    items: [
+                        {
+                            type: 'docSidebar',
+                            sidebarId: 'gameDesignSidebar',
+                            label: 'Game Design',
+                        },
+                        {
+                            type: 'docSidebar',
+                            sidebarId: 'gameContentSidebar',
+                            label: 'Game Content',
+                        },
+                    ],
                 },
                 {
                     href: 'https://github.com/Space-Wizard-Studios/sw-game-dice-rolling',
