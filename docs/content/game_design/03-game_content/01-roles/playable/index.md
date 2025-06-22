@@ -1,4 +1,4 @@
-# Funções e Arquétipos Jogáveis
+# Papéis Jogáveis
 
 ## Warden (Guardião)
 

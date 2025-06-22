@@ -81,21 +81,21 @@ const config: Config = {
                 ] : []),
                 {
                     type: 'docSidebar',
-                    sidebarId: 'architectureSidebar',
+                    sidebarId: 'tutorialsSidebar',
                     position: 'left' as const,
-                    label: 'Architecture',
+                    label: 'Tutoriais',
                 },
                 {
                     type: 'docSidebar',
-                    sidebarId: 'tutorialsSidebar',
+                    sidebarId: 'architectureSidebar',
                     position: 'left' as const,
-                    label: 'Tutorials',
+                    label: 'Framework',
                 },
                 {
                     type: 'docSidebar',
                     sidebarId: 'gameDesignSidebar',
                     position: 'left' as const,
-                    label: 'Game Design',
+                    label: 'O jogo',
                 },
                 {
                     href: 'https://github.com/Space-Wizard-Studios/sw-game-dice-rolling',

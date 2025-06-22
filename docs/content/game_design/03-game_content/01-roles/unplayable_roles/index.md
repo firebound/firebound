@@ -1,4 +1,4 @@
-# Papéis não jogáveis
+# Papéis não Jogáveis
 
 ## Arquétipos
 
