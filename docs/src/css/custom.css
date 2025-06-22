@@ -127,8 +127,12 @@ html {
 }
 
 html.docs-wrapper {
-    --doc-sidebar-width: 250px;
+    --doc-sidebar-width: 300px;
     --doc-sidebar-hidden-width: 24px;
+}
+
+.theme-doc-sidebar-container ul li{
+    font-size: 0.85rem;
 }
 
 html[data-theme='dark'] {
