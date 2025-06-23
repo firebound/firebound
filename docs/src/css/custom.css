@@ -130,14 +130,18 @@ html {
     --ifm-navbar-search-input-placeholder-color: var(--color-firebound-brown-950);
 }
 
-.navbar__search > * {
-    color: var(--ifm-navbar-search-input-color) !important;
+.navbar__search {
+    color: var(--ifm-navbar-link-color) !important; 
+
+    & .navbar__search-input {
+        border: 2px solid var(--ifm-navbar-search-input-color) !important;
+    }
 }
 
 .navbar__search > span > span {
     color: var(--ifm-navbar-link-color) !important;
     background: var(--ifm-navbar-background-color) !important;
-    border: 0 !important;
+    border: 2 black !important;
     box-shadow: none !important;
 }
 

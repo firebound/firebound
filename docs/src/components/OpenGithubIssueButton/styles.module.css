@@ -3,7 +3,7 @@
   display: flex;
   right: 10rem;
   bottom: -50px;
-  width: 200px;
+  /* width: 200px; */
   z-index: 1000;
   font-size: 14px;
   transition: bottom 0.5s;
@@ -12,7 +12,6 @@
 @media (max-width: 768px) {
   .openGithubIssueButton {
     right: 0;
-    left: 0;
     margin: auto;
   }
 }
