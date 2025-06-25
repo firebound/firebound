@@ -6,6 +6,16 @@ O sistema busca ser claro, dinâmico e recompensador, valorizando tanto o planej
 
 ---
 
+## Campos de Batalha
+
+Os campos de batalha são áreas onde os personagens se posicionam e interagem com o ambiente e entre si.
+
+Uma batalha tem mais de um campo, cada um representando o espaço que cada equipe ocupa.
+
+Cada campo é dividido1 em células.
+
+---
+
 ## Objetivo
 
 Derrotar todos os inimigos utilizando as habilidades, recursos e posicionamento dos personagens, enquanto gerencia riscos e oportunidades a cada rodada.

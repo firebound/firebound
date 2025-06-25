@@ -1,42 +1,57 @@
 # Template / Resumo das Personagens Jogáveis
 
-- Progressão
-  - Experiência
-  - Nível
+- [ ] Progressão
+  - [ ] Experiência
+  - [ ] Nível
 
-- Atributos
-  - Vida
-  - Escudo Mágico
-  - Poder de Ataque
-  - Defesa
-  - Velocidade
-  - Resistências Elementais
-    - Fogo
-    - Água
-    - Terra
-    - Vento
+- [ ] Papéis e Arquétipos
+  - [ ] Perfil
+    - [ ] Espécie
+    - [ ] Funções
+  - [ ] Atributos Base
+    - [ ] Atributos Básicos
+    - [ ] Resistências Base
+    - [ ] Progressão de Atributos
+  - [ ] Equipamento Inicial
+  - [ ] Passivas
+  - [ ] Habilidade Básica
+  - [ ] Habilidades Especiais
 
-- Energia
+- [ ] Atributos
+  - [ ] Atributos Básicos
+    - [ ] Vida
+    - [ ] Escudo Mágico
+    - [ ] Poder de Ataque
+    - [ ] Defesa
+    - [ ] Velocidade
+  - [ ] Resistências Elementais
+    - [ ] Fogo
+    - [ ] Água
+    - [ ] Terra
+    - [ ] Vento
+  - [ ] Resistências Físicas
+    - [ ] Cortante
+    - [ ] Perfurante
+    - [ ] Contundente
 
-- Ações
-  - Mover
-  - Defender
-  - Ataque Básico
-  - Habilidades Especiais
+- [ ] Energia
 
-- Equipamentos
-  - Dados
-  - Armas
-  - Armaduras
-  - Botas
-  - Adornos
+- [ ] Passivas
 
-- Arquétipos e Papéis
-  - Perfil
-    - Espécie
-    - Funções
-    - Tier
-  - Atributos Base
-  - Equipamento Inicial
-  - Ações Disponíveis
-  - Passiva Única
+- [ ] Ações
+  - [ ] Mover
+  - [ ] Defender
+  - [ ] Ataque Básico
+  - [ ] Habilidades Especiais
+
+- [ ] Status Effects
+  - [ ] Queimadura
+  - [ ] Envenenamento
+  - [ ] Atordoamento
+
+- [ ] Equipamentos
+  - [ ] Dados
+  - [ ] Armas
+  - [ ] Armaduras
+  - [ ] Botas
+  - [ ] Adornos

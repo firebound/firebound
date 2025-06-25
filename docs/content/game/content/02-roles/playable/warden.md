@@ -8,11 +8,10 @@ O **Guardião de Murikaan** é um guerreiro indomável que incorpora os ideais d
 
 - **Espécie**: Humano
 - **Funções**: Tank, Protetor, Controle de Campo
-- **Tier**: 1
 
 ### Estilo de Jogo
 
-O Guardião é ideal para jogadores que preferem um papel defensivo e estratégico, protegendo aliados e controlando o campo de batalha. Ele é mais eficaz em grupos que precisam de um personagem robusto para absorver dano e atrair a atenção dos inimigos.
+O Guardião é ideal para jogadores que preferem um papel defensivo e estratégico, protegendo aliados e controlando o campo de batalha. Ele é mais eficaz em grupos que precisam de uma personagem robusto para absorver dano e atrair a atenção dos inimigos.
 
 ### Sinergia com Outros Papéis
 

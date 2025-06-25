@@ -9,7 +9,7 @@ Na cidade existem vários locais onde o jogador pode realizar ações que ajudam
 Espaço dedicado ao crescimento dos personagens, onde é possível alocá-los para ganhar experiência e subir de nível.
 
 - Usa [gold](../../../03-currency/index.md#gold) para treinar;
-- O personagem fica temporariamente indisponível para batalhas enquanto treina.
+- a personagem fica temporariamente indisponível para batalhas enquanto treina.
 
 ### Restrições do treinamento
 
@@ -52,7 +52,7 @@ Espaço de cura e renascimento, onde personagens feridos podem se recuperar e aq
 - Aloca personagens para curar;
 - Permite ressuscitar personagens mortos usando seus restos mortais;
 - Usa [gold](../../../03-currency/index.md#gold) para os serviços;
-- O personagem fica temporariamente indisponível durante a cura.
+- a personagem fica temporariamente indisponível durante a cura.
 
 ### Restrições da enfermaria
 
@@ -70,7 +70,7 @@ Espaço de cura e renascimento, onde personagens feridos podem se recuperar e aq
 
 Mercado onde é possível comprar e vender armas, armaduras, dados e amuletos, todos confeccionados por artesãos locais e inspirados em artefatos tradicionais.
 
-- Compra e venda de [equipamentos](../../../../02-mechanics/00-characters/equipments.md) e dados por [gold](../../../03-currency/index.md#gold);
+- Compra e venda de [equipamentos](../../../00-characters/equipments/equipments.md) e dados por [gold](../../../03-currency/index.md#gold);
 - Seleção aleatória de itens disponíveis.
 
 ### Restrições da loja de equipamentos

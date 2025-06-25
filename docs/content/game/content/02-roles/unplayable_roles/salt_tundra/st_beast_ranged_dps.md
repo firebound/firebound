@@ -8,7 +8,6 @@ Aves gigantes como Zuyari atacam de longe, usando velocidade e ataques flamejant
 
 - **Espécie**: Besta
 - **Funções**: Ranged DPS
-- **Tier**: 1
 
 ### Estilo de Jogo
 

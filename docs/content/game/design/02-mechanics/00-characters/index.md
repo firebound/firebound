@@ -1,40 +1,92 @@
 # Personagens
 
-Esta seção apresenta um resumo das principais mecânicas que definem as personagens do jogo.
+Esta seção apresenta as principais mecânicas que definem as personagens do jogo.
+
+A ideia é fornecer uma visão geral das mecânicas que regem as personagens, incluindo atributos, habilidades, progressão e interações em combate, mas não entrar em detalhes específicos de como essas mecânicas são implementadas no jogo, como na narrativa, gráficos, ou aspectos de balanceamento e etc.
+
+Nesta página, você encontrará uma visão geral resumida de cada mecânica, com links para seções mais detalhadas onde você pode explorar cada aspecto em profundidade.
 
 ---
 
 ## Progressão
 
-As personagens evoluem ao longo do jogo, adquirindo novas habilidades e aumentando seus atributos. Essa evolução é representada por **experiência** e **níveis**, que são marcos usados para desbloquear novas habilidades.
+As personagens evoluem ao longo do jogo, adquirindo experiência, aumentando atributos e desbloqueando novas habilidades.
+
+Para mais detalhes, consulte a seção de [Progressão](progression/progression.md).
+
+---
+
+## Papéis e Arquétipos (Roles)
+
+Cada personagem pertence a um arquétipo que define suas características básicas, habilidades, estilos de jogo e funções em combate.
+
+> Exemplos:
+>
+> - **Guardião** é um arquétipo de combate corpo a corpo, com alta força e defesa, ideal para proteger aliados e causar dano direto.
+> - **Xamã** é um arquétipo de suporte, com habilidades de cura e controle, capaz de manipular elementos naturais para ajudar a equipe.
+> - **Arqueiro** é um arquétipo de ataque à distância, com alta agilidade e precisão, focado em causar dano a inimigos distantes.
+
+Para mais detalhes, consulte a seção de [Papéis e Arquétipos](roles/roles.md).
 
 ---
 
 ## Atributos
 
-As personagens possuem **Atributos Básicos**, como vida, escudo mágico, força e defesa, que determinam seu desempenho em combate. Os valores iniciais variam conforme os arquétipos e papéis (role) das personagens.
+As personagens possuem **Atributos Básicos** que determinam seu desempenho em combate. Os valores iniciais variam conforme os papéis e arquétipos (role) das personagens.
 
 > Exemplo: Um curandeiro pode começar com 30-40 de vida, enquanto um guerreiro tribal começa com 50-60.
 
-Além disso, as personagens possuem **Resistências Elementais**, que influenciam seus ataques e defesas dos elementos como fogo, água, terra e vento.
+As personagens também possuem **Resistências Elementais**, que influenciam seus ataques e defesas dos elementos como fogo, água, terra e vento.
 
-> Exemplo: Um xamã pode ter alta afinidade com o elemento água, aumentando o dano de seus ataques aquáticos.
+> Exemplo: Uma xamã pode ter alta afinidade com o elemento água, aumentando o dano de seus ataques aquáticos.
+
+E, além disso, as personagens têm **Resistências Físicas**, que reduzem o dano recebido de ataques físicos cortantes, perfurantes ou contundentes.
+
+> Exemplo: Um guerreiro com armadura de couro pode ter alta resistência a ataques cortantes, mas baixa resistência a ataques perfurantes.
+
+Para mais detalhes, consulte a seção de [Atributos](attributes/attributes.md).
 
 ---
 
 ## Energia
 
-As personagens utilizam Energia para realizar a maioria de suas ações especiais em combate. Essa Energia é obtida através da rolagem dos Dados equipados pela personagem e a quantidade e os tipos de Energia obtida dependem dos resultados dos Dados.
+As personagens utilizam Energia para realizar a maioria de suas habilidades em combate.
 
-> Exemplo: Um personagem pode rolar seus dados e obter Energia do tipo Fogo e Água, que podem ser usadas para ativar habilidades que requerem esses tipos específicos de Energia.
+Para mais detalhes, consulte a seção de [Energia](energy/energy.md).
+
+---
+
+## Passivas
+
+Habilidades passivas não requerem ação direta para serem ativadas, mas influenciam o desempenho da personagem de forma contínua ou sob certas condições.
+
+Para mais detalhes, consulte a seção de [Passivas](passives/passives.md).
 
 ---
 
 ## Ações
 
-Cada personagem pode realizar uma ação por turno em combate. As ações incluem mover, defender, ataque básico, uso de habilidades especiais e passiva única. Novas habilidades podem ser adquiridas conforme a personagem evolui.
+Cada personagem pode realizar uma ação por turno em combate.
+
+As **Ações Básicas** são comuns a todas as personagens e incluem mover, defender e atacar com sua arma (ou ataque básico do **Papel**).
+
+As **Habilidades** são determinadas pelo arquétipo e papel da personagem, podendo ser ações ofensivas, defensivas ou de suporte.
 
 > Exemplo: Mover para um bloco adjacente, defender para aumentar a defesa temporariamente, ou usar uma habilidade inspirada em rituais ancestrais do clã.
+
+Para mais detalhes, consulte a seção de [Ações](actions/actions.md).
+
+---
+
+## Efeitos de Status
+
+Durante o combate, as personagens podem ser afetadas por **efeitos temporários** que modificam seus atributos, ações ou comportamento.
+
+Esses efeitos podem ser positivos (buffs) ou negativos (debuffs) e são aplicados por habilidades, itens ou condições ambientais.
+
+> Exemplos: envenenamento, atordoamento, fortalecimento, regeneração.
+
+Para mais detalhes, consulte a seção de [Efeitos de Status](status-effects/status-effects.md).
 
 ---
 
@@ -42,55 +94,14 @@ Cada personagem pode realizar uma ação por turno em combate. As ações inclue
 
 Personagens possuem slots para equipamentos, que modificam atributos, concedem novas ações ou habilidades e influenciam a estratégia de combate.
 
-- **Dados**: Determinam a energia gerada para habilidades.
-- **Armas**: Definem o tipo de ataque básico e podem conceder habilidades.
-- **Armaduras**: Aumentam a defesa e podem conceder resistências.
-- **Botas**: Influenciam a mobilidade e velocidade.
-- **Adornos**: Concedem bônus variados, como aumento de atributos ou resistências.
-
 > Exemplo: Um cajado cerimonial permite ataques à distância, enquanto uma lança tribal define o tipo de ataque básico disponível.
 
----
-
-## Arquétipos e Papéis (Roles)
-
-Cada personagem pertence a um arquétipo e desempenha um papel específico no combate.
-
-Esses arquétipos definem as habilidades, atributos e equipamentos iniciais, que determinam a função da personagem na equipe, além de influenciar sua evolução e as estratégias de combate.
-
-- **Perfil**: Espécie, Funções (ex: Tank, Healer), Tier.
-- **Atributos Base**: Determinam os valores iniciais de atributos.
-- **Equipamento Inicial**: Define os itens iniciais do personagem.
-- **Ações Disponíveis**: Lista de habilidades que podem ser desbloqueadas.
-- **Passiva Única**: Uma habilidade passiva exclusiva de cada arquétipo.
-
-> Exemplos:
->
->- Humano, Guerreiro Jaguar, Tier 1: um combatente com alta defesa e ataque corpo a corpo, inspirado nos guerreiros das culturas mesoamericanas;
->- Humano, Curandeiro, Tier 2: um personagem com habilidades de cura e manipulação de energias espirituais, inspirado em líderes espirituais indígenas;
->- Besta, Serpente, Tier 3: um personagem ágil e furtivo, com habilidades de ataque rápido e evasão.
-
----
-
-## Efeitos de Status
-
-As personagens podem ser afetados por diversos Efeitos de Status **durante o combate**, que alteram temporariamente seus atributos, capacidades ou comportamento. Esses efeitos podem ser positivos (buffs) ou negativos (debuffs) e são geralmente aplicados por habilidades, itens ou interações com o ambiente.
-
-Cada efeito de status possui uma duração, normalmente medida em turnos, e pode ter uma variedade de impactos:
-
-- Modificar atributos (ex: aumentar ataque, diminuir defesa);
-- Causar dano contínuo (ex: envenenamento);
-- Restringir ações (ex: atordoamento impede qualquer ação);
-- Conceder bônus específicos (ex: regeneração de vida por turno).
-
-> Exemplo: Uma habilidade pode infligir "Queimadura" em um alvo, causando dano do tipo Fogo ao final de cada turno do alvo por 3 turnos. Outra personagem pode usar um item para ganhar "Fortalecido", aumentando seu atributo de Força por 2 turnos.
-
-A gestão dos efeitos (aplicação, remoção, contagem de turnos) é crucial para a dinâmica do combate.
+Para mais detalhes, consulte a seção de [Equipamentos](equipments/equipments.md).
 
 ---
 
 ## Morte
 
-Quando um personagem chega a 0 de vida, ele é considerado morto e não pode mais ser usado em combate. Personagens mortos podem ser revividos por meio de itens ou locais específicos do jogo.
+Quando uma personagem chega a 0 de vida, ele é considerado morto e não pode mais ser usado em combate. Personagens mortos podem ser revividos por meio de itens ou locais específicos do jogo.
 
 > Exemplo: a personagem morto se transforma em um item "Restos mortais", que pode ser usado para reviver a personagem na "enfermaria" da aldeia.

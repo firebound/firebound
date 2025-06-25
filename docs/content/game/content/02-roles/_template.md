@@ -8,7 +8,6 @@ Descrição / Lore.
 
 - **Espécie**:
 - **Funções**:
-- **Tier**:
 
 ### Estilo de Jogo
 

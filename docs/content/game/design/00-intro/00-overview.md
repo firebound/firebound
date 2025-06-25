@@ -4,13 +4,19 @@ Esta é uma visão geral do jogo.
 
 O objetivo é fornecer uma visão clara e concisa do que o jogo representa e como ele pode se destacar de outros jogos similares.
 
+---
+
 ## Tema e Ambientação
+
+O tema do jogo é uma mistura de fantasia épica e elementos de mitologias ameríndias. A ambientação é rica em simbolismo e referências culturais, criando um mundo vibrante e diversificado.
 
 ### História e Narrativa
 
-A narrativa do jogo é inspirada em mitologias e culturas indígenas das Américas, como Astecas, Maias, Tupi, Guarani e Cherokee. Elementos dessas culturas são reinterpretados para criar um universo de fantasia único, com divindades, heróis e monstros próprios. A história se desenvolve em ciclos míticos e históricos, abordando temas de criação, destruição e renascimento, sempre com respeito e valorização simbólica dessas tradições.
+A narrativa do jogo é inspirada em mitologias e culturas indígenas das Américas, como Astecas, Maias, Tupi, Guarani e Cherokee. Elementos dessas culturas são reinterpretados para criar um universo de fantasia único, com divindades, heróis e monstros próprios.
 
-Mais detalhes no [Guia de História](../01-setting/00-story_guide/index.md).  
+A história se desenvolve em ciclos míticos e históricos, abordando temas de criação, destruição e renascimento, sempre com respeito e valorização simbólica dessas tradições.
+
+Mais detalhes no [Guia de História](../01-setting/00-story_guide/index.md).
 
 ### Arte e Estilo Visual
 
@@ -77,23 +83,3 @@ Mais detalhes no [Guia de Música e Efeitos Sonoros](../01-setting/03-sound_guid
 ---
 
 ## Mecânicas Principais
-
-### 01 - Personagens
-
-#### Papéis e Arquétipos
-
-#### Atributos
-
-#### Equipamentos
-
-#### Ações
-
-### 02 - Exploração
-
-### 03 - Batalha
-
-### 04 - Progressão
-
-#### Inventários
-
-#### Sistema Monetário

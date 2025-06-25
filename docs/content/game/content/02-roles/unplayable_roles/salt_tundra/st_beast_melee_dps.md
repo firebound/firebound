@@ -8,7 +8,6 @@ Bestas predadoras da Tundra de Sal, como Kašurak e Yarák, são adaptadas para 
 
 - **Espécie**: Besta
 - **Funções**: Melee DPS, Tank (secundário)
-- **Tier**: 1-2
 
 ### Estilo de Jogo
 

@@ -8,7 +8,6 @@ O **Místico das Marés** é um seguidor de **Umasit**, manipulando as águas pa
 
 - **Espécie**: Humano
 - **Funções**: Healer, Suporte Mágico, Controle
-- **Tier**: 1
 
 ### Estilo de Jogo
 

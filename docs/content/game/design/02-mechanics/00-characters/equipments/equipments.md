@@ -40,4 +40,4 @@ Calçados ou ornamentos para os pés, feitos de materiais naturais, que aumentam
 
 Amuletos, colares, pulseiras ou pinturas corporais que concedem bônus especiais, proteção espiritual ou habilidades únicas.
 
-> Exemplo: Um colar de dentes de jaguar pode aumentar a força do personagem em situações de perigo.
+> Exemplo: Um colar de dentes de jaguar pode aumentar a força da personagem em situações de perigo.

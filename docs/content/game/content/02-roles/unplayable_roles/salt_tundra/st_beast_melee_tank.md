@@ -8,7 +8,6 @@ Bestas blindadas como Xo'olak são especialistas em resistir e bloquear avanços
 
 - **Espécie**: Besta
 - **Funções**: Melee Tank
-- **Tier**: 1-2
 
 ### Estilo de Jogo
 

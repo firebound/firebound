@@ -8,11 +8,10 @@ A **Caminhante dos ventos** é a emissária da deusa **Saikiliq**, trazendo a ju
 
 - **Espécie**: Humano
 - **Funções**: DPS de Curto Alcance, Golpes Rápidos, Alta Iniciativa
-- **Tier**: 1
 
 ### Estilo de Jogo
 
-A Caminhante dos Ventos é ideal para jogadores que preferem um estilo de combate ágil e estratégico, focado em ataques rápidos e controle de iniciativa. Ela é mais eficaz em grupos que precisam de um personagem para eliminar rapidamente alvos prioritários.
+A Caminhante dos Ventos é ideal para jogadores que preferem um estilo de combate ágil e estratégico, focado em ataques rápidos e controle de iniciativa. Ela é mais eficaz em grupos que precisam de uma personagem para eliminar rapidamente alvos prioritários.
 
 ### Sinergia com Outros Papéis
 

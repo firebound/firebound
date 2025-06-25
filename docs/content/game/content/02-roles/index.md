@@ -1,8 +1,8 @@
 # Papéis e Arquétipos
 
-Os papéis e arquétipos definem as funções e identidades dos personagens no jogo, sejam eles jogáveis ou não. Cada papel é composto por um conjunto de atributos, habilidades e características que determinam como o personagem se comporta em combate e como contribui para a estratégia geral.
+Os papéis e arquétipos definem as funções e identidades dos personagens no jogo, sejam eles jogáveis ou não. Cada papel é composto por um conjunto de atributos, habilidades e características que determinam como a personagem se comporta em combate e como contribui para a estratégia geral.
 
-Para mais detalhes sobre o que são papéis e arquétipos, consulte a seção [Papéis e Arquétipos](../../design/02-mechanics/00-characters/roles.md).
+Para mais detalhes sobre o que são papéis e arquétipos, consulte a seção [Papéis e Arquétipos](../../design/02-mechanics/00-characters/roles/roles.md).
 
 ---
 
@@ -10,11 +10,11 @@ Para mais detalhes sobre o que são papéis e arquétipos, consulte a seção [P
 
 Uma role é formada pelos seguintes elementos principais:
 
-- **Perfil**: Define a espécie, função e tier do personagem, determinando sua identidade e papel no grupo. [Saiba mais](../../design/02-mechanics/00-characters/roles.md#perfil).
-- **Atributos Base**: Características fundamentais como vida, defesa, ataque e resistências elementais, que influenciam diretamente o desempenho do personagem. [Saiba mais](../../design/02-mechanics/00-characters/attributes.md).
-- **Equipamento Inicial**: Itens que o personagem começa equipado, refletindo sua espécie e função. [Saiba mais](../../design/02-mechanics/00-characters/equipments.md).
-- **Ações Disponíveis**: Lista de habilidades que o personagem pode usar em combate, desbloqueadas conforme seu nível. [Saiba mais](../../design/02-mechanics/00-characters/actions.md).
-- **Passiva Única**: Uma habilidade passiva exclusiva que reflete a essência do arquétipo e oferece vantagens constantes. [Saiba mais](../../design/02-mechanics/00-characters/actions.md#passiva-única).
+- **Perfil**: Define a espécie e função da personagem, determinando sua identidade e papel no grupo. [Saiba mais](../../design/02-mechanics/00-characters/roles/roles.md#perfil).
+- **Atributos Base**: Características fundamentais como vida, defesa, ataque e resistências elementais, que influenciam diretamente o desempenho da personagem. [Saiba mais](../../design/02-mechanics/00-characters/attributes/attributes.md).
+- **Equipamento Inicial**: Itens que a personagem começa equipado, refletindo sua espécie e função. [Saiba mais](../../design/02-mechanics/00-characters/equipments/equipments.md).
+- **Ações Disponíveis**: Lista de habilidades que a personagem pode usar em combate, desbloqueadas conforme seu nível. [Saiba mais](../../design/02-mechanics/00-characters/actions/actions.md).
+- **Passiva Única**: Uma habilidade passiva exclusiva que reflete a essência do arquétipo e oferece vantagens constantes. [Saiba mais](../../design/02-mechanics/00-characters/passives/passives.md).
 
 ---
 
