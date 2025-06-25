@@ -100,13 +100,8 @@ html {
     --ifm-color-emphasis-500: var(--color-firebound-brown-600);
     --ifm-color-emphasis-600: var(--color-firebound-brown-700);
     --ifm-color-emphasis-700: var(--color-firebound-brown-800);
-<<<<<<< HEAD
-    --ifm-color-emphasis-800: var(--color-firebound-brown-800);
-    --ifm-color-emphasis-900: var(--color-firebound-brown-900);
-=======
     --ifm-color-emphasis-800: var(--color-firebound-brown-900);
     --ifm-color-emphasis-900: var(--color-firebound-brown-950);
->>>>>>> origin/documentation
     --ifm-color-emphasis-1000: var(--color-firebound-brown-950);
 
     --ifm-color-primary: var(--color-firebound-brown-500);
@@ -146,7 +141,6 @@ html {
 .navbar__search > span > span {
     color: var(--ifm-navbar-link-color) !important;
     background: var(--ifm-navbar-background-color) !important;
-    border: 2 black !important;
     box-shadow: none !important;
 }
 
