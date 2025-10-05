@@ -1,6 +1,10 @@
 Abyka
 Agarrão
+Arakéra
 Areiuno
+Ayratá
+Ayvu
+Ayvukéra
 cherokees
 debuff
 Debuff
@@ -17,6 +21,8 @@ Humanóide
 Humanóides
 imrp
 iratus
+Ka’yaru
+Karai
 Kašurak
 Kirim
 Legendarium
@@ -35,10 +41,13 @@ Saikiliq
 Silmarils
 Taruk
 Tepuyara
+theorycraft
 Tukariq
 Umasit
+Xelcan
 Xo'olak
 Yarák
 Yatilan
+Ymarã
 Zunayak
 Zuyari
