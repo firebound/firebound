@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths:
-      - "src/**"
+      - "apps/framework/**"
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
-      - "src/**"
+      - "apps/framework/**"
 
 permissions:
   contents: read
@@ -53,6 +53,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"Space-Wizard-Studios_sw-game-dice-rolling" /o:"space-wizard-studios" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.sources="src" /d:sonar.tests="src/tests" /d:sonar.exclusions="src/addons/**, !src/addons/@spacewiz/**" /d:sonar.scanner.scanAll=false
-          dotnet build src/dice-rolling.sln
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"firebound_firebound" /o:"firebound" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.exclusions="apps/framework/addons/**, !apps/framework/addons/@spacewiz/**" /d:sonar.scanner.scanAll=false
+          dotnet build apps/framework/dice-rolling.sln
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

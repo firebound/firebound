@@ -6,8 +6,8 @@
 # Production
 /build
 
-# Generated API files
-/content/api
+# Generated API files (DocFX raw + processed)
+/generated
 
 # Encrypted files
 /encrypted

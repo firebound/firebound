@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const apiDir = path.join(__dirname, 'api');
-const docsApiDir = path.join(__dirname, 'content', 'api');
-const tocFilePath = path.join(__dirname, 'api', 'toc.yml');
-const processedTocFilePath = path.join(__dirname, 'content', 'api', 'toc_processed.json');
+const apiDir = path.join(__dirname, 'generated', 'api-raw');
+const docsApiDir = path.join(__dirname, 'generated', 'api');
+const tocFilePath = path.join(__dirname, 'generated', 'api-raw', 'toc.yml');
+const processedTocFilePath = path.join(__dirname, 'generated', 'api', 'toc_processed.json');
 
 // Ensure the destination directory exists
 if (!fs.existsSync(docsApiDir)) {

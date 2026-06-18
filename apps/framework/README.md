@@ -19,7 +19,7 @@
 
 ```bash
 .
-└── src
+└── apps/framework
     ├── addons          # bibliotecas third party
     │   └── @spacewiz   # plugins desenvolvidos para o projeto
     │

@@ -6,6 +6,8 @@ on:
       - documentation
     paths:
       - "docs/**"
+      - "apps/docs/**"
+      - "apps/framework/**"
   workflow_dispatch:
 
 jobs:
@@ -45,23 +47,24 @@ jobs:
 
       - name: Build Documentation with DocFX
         run: docfx
+        working-directory: apps/docs
 
       - name: Install Packages in docs Folder
         run: npm install
-        working-directory: docs
+        working-directory: apps/docs
 
       - name: Process API Files
         run: npm run process-api
-        working-directory: docs
+        working-directory: apps/docs
 
       - name: Build Documentation
         run: npm run build
-        working-directory: docs
+        working-directory: apps/docs
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs/build
+          path: ./apps/docs/build
 
   deploy:
     needs: build

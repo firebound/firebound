@@ -4,11 +4,11 @@
     {
       "src": [
         {
-          "src": "src",
+          "src": "../framework",
           "files": ["**/*.csproj"]
         }
       ],
-      "output": "docs/api",
+      "output": "generated/api-raw",
       "outputFormat": "markdown",
       "properties": {
         "type": "API"
