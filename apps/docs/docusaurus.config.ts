@@ -25,8 +25,6 @@ const config: Config = {
     onBrokenMarkdownLinks: 'warn',
     onBrokenAnchors: 'warn',
 
-    future: { faster: true },
-
     i18n: {
         defaultLocale: 'pt',
         locales: ['pt'],
