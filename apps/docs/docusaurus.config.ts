@@ -23,6 +23,7 @@ const config: Config = {
 
     onBrokenLinks: 'warn',
     onBrokenMarkdownLinks: 'warn',
+    onBrokenAnchors: 'warn',
 
     future: { experimental_faster: true },
 
@@ -49,6 +50,7 @@ const config: Config = {
                     sidebarPath: './sidebars.ts',
                     remarkPlugins: [remarkRemoveLinkPrefix],
                 },
+                blog: false,
                 theme: {
                     customCss: './src/css/custom.css',
                 },
@@ -86,6 +88,30 @@ const config: Config = {
                 src: 'img/logo.svg',
             },
             items: [
+                {
+                    type: 'docSidebar',
+                    sidebarId: 'architectureSidebar',
+                    position: 'left' as const,
+                    label: 'Framework',
+                },
+                {
+                    type: 'docSidebar',
+                    sidebarId: 'gameDesignSidebar',
+                    position: 'left' as const,
+                    label: 'Game Design',
+                },
+                {
+                    type: 'docSidebar',
+                    sidebarId: 'gameContentSidebar',
+                    position: 'left' as const,
+                    label: 'Game Content',
+                },
+                {
+                    type: 'docSidebar',
+                    sidebarId: 'tutorialsSidebar',
+                    position: 'left' as const,
+                    label: 'Tutoriais',
+                },
                 ...(apiEnabled ? [
                     {
                         type: 'docSidebar' as const,
@@ -95,24 +121,6 @@ const config: Config = {
                         label: 'API',
                     }
                 ] : []),
-                {
-                    type: 'docSidebar',
-                    sidebarId: 'architectureSidebar',
-                    position: 'left' as const,
-                    label: 'Architecture',
-                },
-                {
-                    type: 'docSidebar',
-                    sidebarId: 'tutorialsSidebar',
-                    position: 'left' as const,
-                    label: 'Tutorials',
-                },
-                {
-                    type: 'docSidebar',
-                    sidebarId: 'gameDesignSidebar',
-                    position: 'left' as const,
-                    label: 'Game Design',
-                },
                 {
                     href: 'https://github.com/firebound/firebound',
                     label: 'GitHub',

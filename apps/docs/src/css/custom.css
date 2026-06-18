@@ -32,18 +32,18 @@
     --color-firebound-orange-900: #680904;
     --color-firebound-orange-950: #3c0103;
 
-    --color-firebound-brown: #8c340f;
-    --color-firebound-brown-50: #f4ede7;
-    --color-firebound-brown-100: #ecd9cb;
-    --color-firebound-brown-200: #dfb091;
-    --color-firebound-brown-300: #d78251;
-    --color-firebound-brown-400: #be5622;
-    --color-firebound-brown-500: #8c340f;
-    --color-firebound-brown-600: #6c3113;
-    --color-firebound-brown-700: #4f2812;
-    --color-firebound-brown-800: #372010;
-    --color-firebound-brown-900: #1e130b;
-    --color-firebound-brown-950: #150f0a;
+    --color-firebound-brown: #4f2812;
+    --color-firebound-brown-50: #f4dbcd;
+    --color-firebound-brown-100: #edc6b0;
+    --color-firebound-brown-200: #de966e;
+    --color-firebound-brown-300: #d0692f;
+    --color-firebound-brown-400: #8d4820;
+    --color-firebound-brown-500: #4f2812;
+    --color-firebound-brown-600: #42220f;
+    --color-firebound-brown-700: #32190b;
+    --color-firebound-brown-800: #251309;
+    --color-firebound-brown-900: #150b05;
+    --color-firebound-brown-950: #110804;
 
     --color-firebound-white: #fafafa;
 
@@ -79,7 +79,7 @@ html {
 }
 
 .footer.footer--dark {
-    background-color: var(--color-firebound-brown-900);
+    background-color: var(--color-firebound-brown-950);
 }
 
 .button.button--secondary.button--outline {
@@ -102,7 +102,7 @@ html {
     --ifm-color-emphasis-700: var(--color-firebound-brown-800);
     --ifm-color-emphasis-800: var(--color-firebound-brown-900);
     --ifm-color-emphasis-900: var(--color-firebound-brown-950);
-    --ifm-color-emphasis-1000: var(--color-firebound-brown-900);
+    --ifm-color-emphasis-1000: var(--color-firebound-brown-950);
 
     --ifm-color-primary: var(--color-firebound-brown-500);
     --ifm-color-primary-dark: var(--color-firebound-brown-600);
@@ -124,11 +124,34 @@ html {
     --custom-heading-color-target: var(--color-firebound-orange-500);
 
     --docusaurus-collapse-button-bg-hover: rgba(206, 89, 15, 0.1) !important;
+
+    --ifm-navbar-search-input-background-color: var(--color-firebound-beige-100);
+    --ifm-navbar-search-input-color: var(--color-firebound-brown-950);
+    --ifm-navbar-search-input-placeholder-color: var(--color-firebound-brown-950);
 }
 
+.navbar__search {
+    color: var(--ifm-navbar-link-color) !important; 
+
+    & .navbar__search-input {
+        border: 2px solid var(--ifm-navbar-search-input-color) !important;
+    }
+}
+
+.navbar__search > span > span {
+    color: var(--ifm-navbar-link-color) !important;
+    background: var(--ifm-navbar-background-color) !important;
+    box-shadow: none !important;
+}
+
+
 html.docs-wrapper {
-    --doc-sidebar-width: 250px;
+    --doc-sidebar-width: 300px;
     --doc-sidebar-hidden-width: 24px;
+}
+
+.theme-doc-sidebar-container ul li{
+    font-size: 0.85rem;
 }
 
 html[data-theme='dark'] {
@@ -152,9 +175,9 @@ html[data-theme='dark'] {
     --ifm-color-primary-lighter: var(--color-firebound-orange-300);
     --ifm-color-primary-lightest: var(--color-firebound-orange-200);
 
-    --ifm-navbar-background-color: var(--color-firebound-brown-900);
+    --ifm-navbar-background-color: var(--color-firebound-brown-950);
     --ifm-navbar-link-color: var(--color-firebound-beige-100);
-    --ifm-background-color: var(--color-firebound-brown-950);
+    --ifm-background-color: var(--color-firebound-brown-900);
     --ifm-background-surface-color: var(--color-firebound-brown-950);
 
     --ifm-menu-color: var(--color-firebound-beige-300);
@@ -164,9 +187,9 @@ html[data-theme='dark'] {
     --table-of-contents-color: var(--color-firebound-beige-200);
 
     --ifm-heading-color: var(--color-firebound-beige-100);
-    --ifm-font-color-base: var(--color-firebound-beige-50);
+    --ifm-font-color-base: var(--color-firebound-beige-200);
 
-    --ifm-footer-background-color: var(--color-firebound-brown-800);
+    --ifm-footer-background-color: var(--color-firebound-brown-950);
 
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
     --custom-heading-color-target: var(--color-firebound-beige-400);
