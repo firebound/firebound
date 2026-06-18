@@ -1,6 +1,9 @@
 # Environment variables
 .env
 
+# Node
+node_modules/
+
 # VsCode Stuff
 .VSCodeCounter
 build/
