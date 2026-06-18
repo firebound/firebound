@@ -53,6 +53,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"Space-Wizard-Studios_sw-game-dice-rolling" /o:"space-wizard-studios" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.sources="apps/framework" /d:sonar.tests="apps/framework/tests" /d:sonar.exclusions="apps/framework/addons/**, !apps/framework/addons/@spacewiz/**" /d:sonar.scanner.scanAll=false
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"firebound_firebound" /o:"firebound" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="apps/framework/addons/**, !apps/framework/addons/@spacewiz/**" /d:sonar.scanner.scanAll=false
           dotnet build apps/framework/dice-rolling.sln
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

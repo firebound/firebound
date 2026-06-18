@@ -2,7 +2,7 @@
 
 # FIREBOUND FRAMEWORK
 
-[![GitHub License](https://img.shields.io/github/license/Space-Wizard-Studios/sw-game-dice-rolling)](https://github.com/Space-Wizard-Studios/sw-game-dice-rolling/blob/main/LICENSE) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Space-Wizard-Studios/sw-game-dice-rolling) [![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/Space-Wizard-Studios_sw-game-dice-rolling?server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/summary/new_code?id=Space-Wizard-Studios_sw-game-dice-rolling) ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/Space-Wizard-Studios/firebound?utm_source=oss&utm_medium=github&utm_campaign=Space-Wizard-Studios%2Ffirebound&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+[![GitHub License](https://img.shields.io/github/license/firebound/firebound)](https://github.com/firebound/firebound/blob/main/LICENSE) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firebound/firebound) [![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/firebound_firebound?server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/summary/new_code?id=firebound_firebound) ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/firebound/firebound?utm_source=oss&utm_medium=github&utm_campaign=firebound%2Ffirebound&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
 - [FIREBOUND FRAMEWORK](#firebound-framework)
   - [Sobre](#sobre)

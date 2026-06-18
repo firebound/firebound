@@ -58,7 +58,7 @@
         "apps/docs/generated": true
     },
     "sonarlint.connectedMode.project": {
-        "connectionId": "space-wizard-studios",
-        "projectKey": "Space-Wizard-Studios_sw-game-dice-rolling"
+        "connectionId": "firebound",
+        "projectKey": "firebound_firebound"
     },
 }
