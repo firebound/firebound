@@ -103,7 +103,7 @@ Isso significa que os áudios, imagens e outros recursos que não sejam parte do
 ├── docs                    # Conteúdo da documentação (.md, legível no GitHub)
 ├── packages                # Pacotes/bridges entre apps (vazio por ora)
 ├── scripts                 # Scripts do repositório
-├── tools                   # Ferramentas (ex.: github-manager)
+├── tools                   # Scripts e ferramentas do repositório
 ├── specs                   # Specs de design e análises de arquitetura
 ├── .ai                     # Convenções e skills para agentes
 └── AGENTS.md               # Porta de entrada para agentes de IA
