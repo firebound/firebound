@@ -5,8 +5,11 @@ import path from 'path';
 import fs from 'fs';
 import remarkRemoveLinkPrefix from './src/plugins/remark-remove-link-prefix.js';
 
-// const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
-// const baseUrl = isGitHubPages ? '/sw-game-dice-rolling/' : '/';
+// Hand-written documentation content lives at the repo root in /docs.
+// Generated API docs (DocFX -> processApiFiles) are app-internal under ./generated
+// and only wired in when present (they are gitignored / built in CI).
+const handwrittenDocsPath = '../../docs';
+const apiEnabled = fs.existsSync(path.join(__dirname, 'generated', 'api', 'toc_processed.json'));
 
 const config: Config = {
     title: 'Firebound Docs',
@@ -15,7 +18,7 @@ const config: Config = {
     url: 'https://firebound.dev',
     baseUrl: '/',
 
-    organizationName: 'Space-Wizard-Studios',
+    organizationName: 'firebound',
     projectName: 'firebound',
 
     onBrokenLinks: 'warn',
@@ -42,7 +45,7 @@ const config: Config = {
             'classic',
             {
                 docs: {
-                    path: './content',
+                    path: handwrittenDocsPath,
                     sidebarPath: './sidebars.ts',
                     remarkPlugins: [remarkRemoveLinkPrefix],
                 },
@@ -56,6 +59,18 @@ const config: Config = {
     plugins: [
         // require.resolve('docusaurus-lunr-search'),
         ['./src/plugins/tailwind-config.js', {}],
+        ...(apiEnabled ? [
+            [
+                '@docusaurus/plugin-content-docs',
+                {
+                    id: 'api',
+                    path: './generated/api',
+                    routeBasePath: 'api',
+                    sidebarPath: './sidebars-api.ts',
+                    remarkPlugins: [remarkRemoveLinkPrefix],
+                },
+            ],
+        ] : []),
     ],
 
     themeConfig: {
@@ -67,13 +82,14 @@ const config: Config = {
         },
         navbar: {
             logo: {
-                alt: 'Dice Rolling Game Logo',
+                alt: 'Firebound Logo',
                 src: 'img/logo.svg',
             },
             items: [
-                ...(fs.existsSync(path.join(__dirname, 'content', 'api', 'toc_processed.json')) ? [
+                ...(apiEnabled ? [
                     {
-                        type: 'docSidebar',
+                        type: 'docSidebar' as const,
+                        docsPluginId: 'api',
                         sidebarId: 'apiSidebar',
                         position: 'left' as const,
                         label: 'API',
@@ -98,7 +114,7 @@ const config: Config = {
                     label: 'Game Design',
                 },
                 {
-                    href: 'https://github.com/Space-Wizard-Studios/sw-game-dice-rolling',
+                    href: 'https://github.com/firebound/firebound',
                     label: 'GitHub',
                     position: 'right' as const,
                 },

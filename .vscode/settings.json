@@ -1,6 +1,6 @@
 {
-    "dotnet.defaultSolution": "src/dice-rolling.sln",
-    "dotnet.unitTests.runSettingsPath": "src/.runsettings",
+    "dotnet.defaultSolution": "apps/framework/dice-rolling.sln",
+    "dotnet.unitTests.runSettingsPath": "apps/framework/.runsettings",
     "editor.quickSuggestions": {
         "strings": true
     },
@@ -53,9 +53,12 @@
         "**/.ssh": true,
         "**/*.uid": true,
         "**/node_modules": true,
-        "src/.godot": true,
-        "docs/.docusaurus": true,
-        "docs/content/api": false,
-        "docs/api": true
+        "apps/framework/.godot": true,
+        "apps/docs/.docusaurus": true,
+        "apps/docs/generated": true
+    },
+    "sonarlint.connectedMode.project": {
+        "connectionId": "space-wizard-studios",
+        "projectKey": "Space-Wizard-Studios_sw-game-dice-rolling"
     },
 }

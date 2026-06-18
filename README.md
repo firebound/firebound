@@ -97,11 +97,19 @@ Isso significa que os áudios, imagens e outros recursos que não sejam parte do
 
 ```powershell
 .
-├── docs                    # Documentação no Docusaurus
-└── src                     # Projeto na Godot Engine
+├── apps
+│   ├── framework           # Projeto na Godot Engine (framework + protótipo)
+│   └── docs                # App Docusaurus + pipeline DocFX
+├── docs                    # Conteúdo da documentação (.md, legível no GitHub)
+├── packages                # Pacotes/bridges entre apps (vazio por ora)
+├── scripts                 # Scripts do repositório
+├── tools                   # Ferramentas (ex.: github-manager)
+├── specs                   # Specs de design e análises de arquitetura
+├── .ai                     # Convenções e skills para agentes
+└── AGENTS.md               # Porta de entrada para agentes de IA
 ```
 
-Para mais detalhes, leia sobre a [framework](src/README.md) ou a [documentação](docs/README.md).
+Para mais detalhes, leia sobre a [framework](apps/framework/README.md) ou a [documentação](apps/docs/README.md).
 
 ## Contribuições e Código de Conduta
 
