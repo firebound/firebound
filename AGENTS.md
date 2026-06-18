@@ -17,7 +17,7 @@ O repositório é um **monorepo**: o framework/jogo (Godot) e o site de document
 | `docs/` | **Conteúdo** de documentação em Markdown — legível no GitHub e consumido por `apps/docs`. |
 | `packages/` | Reservado para pacotes/bridges entre apps. Vazio por ora. |
 | `scripts/` | Scripts do repositório (build, manutenção, automações). |
-| `tools/` | Ferramentas (ex.: `github-manager`). |
+| `tools/` | Scripts e ferramentas do repositório. |
 | `specs/` | Specs de design e análises de arquitetura. |
 | `.ai/` | Convenções e skills do projeto para agentes. Comece por `.ai/README.md`. |
 

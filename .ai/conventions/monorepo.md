@@ -12,7 +12,7 @@ Estrutura e o que pertence a cada pasta.
 ├── docs/              # CONTEÚDO de documentação (.md), legível no GitHub
 ├── packages/          # pacotes/bridges entre apps (vazio por ora)
 ├── scripts/           # scripts do repositório
-├── tools/             # ferramentas (ex.: github-manager)
+├── tools/             # scripts e ferramentas do repositório
 └── specs/             # specs de design e análises de arquitetura
 ```
 
