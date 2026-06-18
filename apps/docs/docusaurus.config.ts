@@ -9,7 +9,10 @@ import remarkRemoveLinkPrefix from './src/plugins/remark-remove-link-prefix.js';
 // Generated API docs (DocFX -> processApiFiles) are app-internal under ./generated
 // and only wired in when present (they are gitignored / built in CI).
 const handwrittenDocsPath = '../../docs';
-const apiEnabled = fs.existsSync(path.join(__dirname, 'generated', 'api', 'toc_processed.json'));
+// API reference docs (DocFX pipeline) are disabled until the generator/sidebar
+// is stabilized. Flip back to the fs.existsSync check to re-enable.
+const apiEnabled = false;
+void fs; void path;
 
 const config: Config = {
     title: 'Firebound Docs',
