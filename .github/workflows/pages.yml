@@ -3,11 +3,10 @@ name: Build Docs and Deploy to Github Pages
 on:
   push:
     branches:
-      - documentation
+      - main
     paths:
       - "docs/**"
       - "apps/docs/**"
-      - "apps/framework/**"
   workflow_dispatch:
 
 permissions:
@@ -18,46 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Documentation
 
-    env:
-      GODOT_VERSION: 4.4-rc2 # alterar ao atualizar o Godot
-      GODOT_FILENAME: Godot_v4.4-rc2_mono_linux_x86_64.zip # alterar ao atualizar o Godot
-      GODOT_URL: https://github.com/godotengine/godot-builds/releases/download/4.4-rc2/Godot_v4.4-rc2_mono_linux_x86_64.zip # alterar isso ao atualizar o Godot
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set Environment Variable
-        run: echo "GITHUB_ACTIONS=true" >> $GITHUB_ENV
-
-      - name: Set up .NET 9 SDK
-        uses: actions/setup-dotnet@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          dotnet-version: "9"
-
-      - name: Install Dependencies (Mono, unzip)
-        run: sudo apt-get update && sudo apt-get install -y mono-complete unzip
-
-      - name: Install Godot ${{ env.GODOT_VERSION }}
-        run: |
-          wget -q ${{ env.GODOT_URL }}
-          unzip ${{ env.GODOT_FILENAME }} -d /usr/local/bin
-          mv /usr/local/bin/Godot_v${{ env.GODOT_VERSION }}_mono_linux_x86_64 /usr/local/bin/godot
-          chmod +x /usr/local/bin/godot
-
-      - name: Install DocFX
-        run: dotnet tool install -g docfx
-
-      - name: Build Documentation with DocFX
-        run: docfx
-        working-directory: apps/docs
+          node-version: "20"
 
       - name: Install Packages in docs Folder
         run: npm install
-        working-directory: apps/docs
-
-      - name: Process API Files
-        run: npm run process-api
         working-directory: apps/docs
 
       - name: Build Documentation
