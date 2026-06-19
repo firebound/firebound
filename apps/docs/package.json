@@ -2,6 +2,7 @@
   "name": "docs",
   "version": "0.0.1",
   "private": true,
+  "packageManager": "pnpm@10.29.3",
   "scripts": {
     "docusaurus": "docusaurus",
     "dev": "docusaurus start",
@@ -46,14 +47,16 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "~5.6.2"
   },
-  "overrides": {
-    "ajv": "8.18.0",
-    "brace-expansion": "1.1.13",
-    "http-proxy-middleware": "3.0.6",
-    "joi": "17.13.4",
-    "picomatch": "2.3.2",
-    "serialize-javascript": "7.0.5",
-    "uuid": "11.1.1"
+  "pnpm": {
+    "overrides": {
+      "ajv": "8.18.0",
+      "brace-expansion": "1.1.13",
+      "http-proxy-middleware": "3.0.6",
+      "joi": "17.13.4",
+      "picomatch": "2.3.2",
+      "serialize-javascript": "7.0.5",
+      "uuid": "11.1.1"
+    }
   },
   "browserslist": {
     "production": [
