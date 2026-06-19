@@ -1,6 +1,6 @@
 # Fase 0 — Rename DiceRolling→Firebound + Princípios de Fronteira — Implementation Plan
 
-<!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD013 MD031 MD032 -->
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
