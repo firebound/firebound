@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",
-    "@docusaurus/faster": "^3.7.0",
     "@docusaurus/plugin-ideal-image": "^3.10.1",
     "@docusaurus/preset-classic": "^3.10.1",
     "@docusaurus/theme-mermaid": "^3.10.1",
@@ -51,11 +50,15 @@
     "overrides": {
       "ajv": "8.18.0",
       "brace-expansion": "1.1.13",
-      "http-proxy-middleware": "3.0.6",
+      "dompurify": "^3.4.11",
+      "http-proxy-middleware": "^3.0.7",
       "joi": "17.13.4",
+      "js-yaml": "^4.2.0",
       "picomatch": "2.3.2",
       "serialize-javascript": "7.0.5",
-      "uuid": "11.1.1"
+      "undici": "^7.28.0",
+      "uuid": "11.1.1",
+      "webpack-dev-server": "^5.2.5"
     }
   },
   "browserslist": {
