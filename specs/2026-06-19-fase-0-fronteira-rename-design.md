@@ -30,7 +30,7 @@ Executar a **Fase 0** do roadmap: as decisões baratas que destravam os refactor
 - **Recursos seguros:** `0` ocorrências de `DiceRolling`/`dice-rolling` em arquivos `.tres`/`.tscn`. Cenas e resources referenciam scripts por **caminho** (`res://...`) e `script_class` por **nome simples** (não namespaced) → o rename de namespace **não** os toca.
 - **Addons:** os de **primeira parte** `addons/@spacewiz/*` (Arc3DEditorPlugin, TargetBoardEditorPlugin) usam `DiceRolling` → entram no rename. Os **vendored** (`gdUnit4`, `shaker`, `imrp`, `SignalVisualizer`) **não** usam e ficam intactos.
 - **Autoloads** (`project.godot`): só `EventBus` é C# (registrado por caminho `res://events/EventBus.cs` → imune a namespace); `Shaker` e `SignalDebugger` são `.gd`. Stores/services **não** são autoloads.
-- **Toolchain:** projeto fixado em Godot **4.4** (`Godot.NET.Sdk/4.4.1`, `config/features=("4.4",...)`, `gdUnit4.api 4.4.0-rc9`). Editor instalado nesta máquina: **4.6.3.stable.mono**. `dotnet build` usa o SDK do NuGet (independe do editor); abrir o projeto no editor 4.6 dispara prompt de upgrade — relevante só para verificação manual.
+- **Toolchain:** já atualizada para Godot **4.6** (`Godot.NET.Sdk/4.6.3`, `config/features=("4.6",...)`, addon gdUnit4 6.1.3, `gdUnit4.api 5.0.0`, `gdUnit4.test.adapter 3.0.0`, `Microsoft.NET.Test.Sdk 18.6.0`), casando com o editor instalado **4.6.3.stable.mono**. `TargetFramework` segue `net8.0` (travado pelo Godot 4.6). `dotnet build` usa o SDK do NuGet 10.0.x (independe do editor). Feito antes do rename como pré-requisito (ver `chore(deps): upgrade Godot 4.4→4.6`).
 
 ## 3. Rename `DiceRolling` → `Firebound`
 
@@ -122,14 +122,14 @@ Não fazemos isso agora (abordagens B/flags e C/addon-assembly foram descartadas
 
 - **Rename amplo** (132 arquivos / 305 refs): risco de tocar vendored por engano. Mitigação: restringir a primeira parte (`@spacewiz` sim; `gdUnit4/shaker/imrp/SignalVisualizer` não); revisar `git status`/diff antes de commitar.
 - **`assembly_name` muda o nome da DLL.** Mitigação: cenas referenciam por caminho; validar com build + import headless.
-- **Versão do editor (4.6 instalado vs 4.4 do projeto):** import headless pode emitir avisos de upgrade. Não migrar a versão do projeto nesta fase. `dotnet build` é a verificação primária (independe do editor).
+- **Versão do editor:** resolvido — projeto e editor ambos em 4.6.3 (upgrade feito antes do rename). `dotnet build` segue como verificação primária (independe do editor).
 - **gdUnit4 precisa do runtime Godot:** `dotnet test` puro falha; a verificação de testes é via build + (opcional) runner gdUnit no editor. Não bloquear a fase em testes de runtime.
 - **Ocorrências históricas em specs:** não "corrigir" relato histórico cegamente; só instruções ativas.
 
 ## 7. Verificação (Definition of Done)
 
 1. `dotnet build apps/framework/firebound.sln` compila sem erro.
-2. `godot_console --headless --path apps/framework --import` conclui sem erro **novo** de script/namespace (avisos de versão 4.4→4.6 toleráveis e anotados).
+2. `godot_console --headless --editor --quit` (em `apps/framework`, com `.godot` limpa) conclui com exit 0 e sem erro de script/namespace.
 3. `git grep "DiceRolling"` / `git grep "dice-rolling"` → só specs históricas + vendored intactos; zero em código/build/config ativos.
 4. `git status` mostra renomeações (R) para `firebound.{sln,csproj,xsd}`, não delete+add.
 5. `.tres`/`.tscn` sem alterações no diff.
@@ -144,4 +144,5 @@ Não fazemos isso agora (abordagens B/flags e C/addon-assembly foram descartadas
 - **Nome do jogo** e criação de `apps/<game>`.
 - **Split físico em assemblies** (core vs módulos vs jogo).
 - Qualquer item de dívida do `ARCHITECTURE-ANALYSIS.md` (eventos, renderers, controllers).
-- Migração da versão do projeto Godot 4.4 → 4.6.
+- ~~Migração da versão do projeto Godot 4.4 → 4.6~~ — **feito** como pré-requisito (commit `chore(deps): upgrade Godot 4.4→4.6`).
+- Atualizar addons de terceiros `shaker`/`imrp` (fonte canônica indefinida; já importam OK em 4.6). `SignalVisualizer` já está na última versão (1.7.0).
