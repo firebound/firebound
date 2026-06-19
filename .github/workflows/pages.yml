@@ -21,17 +21,24 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: apps/docs/pnpm-lock.yaml
 
-      - name: Install Packages in docs Folder
-        run: npm install
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
         working-directory: apps/docs
 
       - name: Build Documentation
-        run: npm run build
+        run: pnpm build
         working-directory: apps/docs
 
       - name: Upload Pages Artifact
